@@ -1,0 +1,37 @@
+<div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-6">
+  <h1 class="display text-[32px] sm:text-[40px] leading-none">Collections</h1>
+  <p class="text-sm text-muted mt-2">Browse by topic — curated by Mavizio</p>
+</div>
+<section class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+  <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
+    {% for collection in collections %}
+      <a href="{{ collection.url }}" class="group bg-white border border-black/5 rounded-[18px] p-4 card-hover block">
+        {% if collection.featured_image %}
+          <img src="{{ collection.featured_image | image_url: width: 400 }}" alt="{{ collection.title }}" class="w-full h-28 object-cover rounded-xl bg-paper border border-black/5">
+        {% else %}
+          <div class="w-full h-28 rounded-xl bg-cream border border-black/5 grid place-items-center text-2xl">
+            {% if collection.title contains 'Business' %}<i class="ri-briefcase-4-line"></i>
+            {% elsif collection.title contains 'Self' %}<i class="ri-sparkling-2-line"></i>
+            {% elsif collection.title contains 'Fiction' %}<i class="ri-book-open-line"></i>
+            {% elsif collection.title contains 'UPSC' %}<i class="ri-graduation-cap-line"></i>
+            {% elsif collection.title contains 'Tech' %}<i class="ri-cpu-line"></i>
+            {% elsif collection.title contains 'Finance' %}<i class="ri-money-dollar-circle-line"></i>
+            {% else %}<i class="ri-stack-line"></i>{% endif %}
+          </div>
+        {% endif %}
+        <div class="font-bold text-sm mt-3 line-clamp-1">{{ collection.title }}</div>
+        <div class="text-xs text-muted">{{ collection.products_count }} ebooks</div>
+      </a>
+    {% else %}
+      {% assign cats = "Business:24,Self-Help:32,Fiction:18,UPSC / SSC:15,Tech & AI:21,Finance:12" | split: "," %}
+      {% for cat in cats %}
+        {% assign parts = cat | split: ":" %}
+        <a href="{{ routes.collections_url }}/all" class="group bg-white border border-black/5 rounded-[18px] p-4 card-hover block">
+          <div class="w-10 h-10 rounded-xl bg-cream grid place-items-center text-lg"><i class="ri-folder-3-line"></i></div>
+          <div class="font-bold text-sm mt-3">{{ parts[0] }}</div><div class="text-xs text-muted">{{ parts[1] }} ebooks</div>
+        </a>
+      {% endfor %}
+    {% endfor %}
+  </div>
+</section>
+{% schema %}{"name":"Main List Collections","settings":[]}{% endschema %}
