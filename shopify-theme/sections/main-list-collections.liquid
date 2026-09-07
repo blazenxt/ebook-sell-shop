@@ -22,7 +22,8 @@
         <div class="font-bold text-sm mt-3 line-clamp-1">{{ collection.title }}</div>
         <div class="text-xs text-muted">{{ collection.products_count }} ebooks</div>
       </a>
-    {% else %}
+    {% endfor %}
+    {% if collections.size == 0 %}
       {% assign cats = "Business:24,Self-Help:32,Fiction:18,UPSC / SSC:15,Tech & AI:21,Finance:12" | split: "," %}
       {% for cat in cats %}
         {% assign parts = cat | split: ":" %}
@@ -31,7 +32,21 @@
           <div class="font-bold text-sm mt-3">{{ parts[0] }}</div><div class="text-xs text-muted">{{ parts[1] }} ebooks</div>
         </a>
       {% endfor %}
-    {% endfor %}
+    {% elsif collections.size < 6 %}
+      {% assign need = 6 | minus: collections.size %}
+      {% assign placeholders = "Business:24,Self-Help:32,Fiction:18,UPSC / SSC:15,Tech & AI:21,Finance:12" | split: "," %}
+      {% for cat in placeholders limit: need %}
+        {% assign parts = cat | split: ":" %}
+        {% assign already = false %}
+        {% for col in collections %}{% if col.title contains parts[0] %}{% assign already = true %}{% endif %}{% endfor %}
+        {% unless already %}
+        <a href="{{ routes.collections_url }}/all" class="group bg-white/60 border border-dashed border-black/10 rounded-[18px] p-4 card-hover block">
+          <div class="w-10 h-10 rounded-xl bg-paper grid place-items-center text-lg opacity-60"><i class="ri-folder-3-line"></i></div>
+          <div class="font-bold text-sm mt-3">{{ parts[0] }}</div><div class="text-xs text-muted">{{ parts[1] }} ebooks • Soon</div>
+        </a>
+        {% endunless %}
+      {% endfor %}
+    {% endif %}
   </div>
 </section>
 {% schema %}{"name":"Main List Collections","settings":[]}{% endschema %}
