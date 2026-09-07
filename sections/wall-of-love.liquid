@@ -1,0 +1,36 @@
+<section class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-8">
+  <div class="bg-ink rounded-[28px] p-6 sm:p-8 text-white relative overflow-hidden">
+    <div class="absolute inset-0 opacity-20" style="background:radial-gradient(600px 300px at 20% 0%, #FFB800 0%, transparent 60%), radial-gradient(500px 300px at 90% 30%, #FF3B30 0%, transparent 50%)"></div>
+    <div class="relative flex flex-col lg:flex-row lg:items-end justify-between gap-4">
+      <div>
+        <div class="inline-flex items-center gap-2 bg-white/10 border border-white/15 rounded-full px-3 py-1 text-xs font-bold tracking-wide"><i class="ri-heart-3-fill text-red-400"></i> WALL OF LOVE • 2,400+ REVIEWS</div>
+        <h2 class="display text-[30px] sm:text-[38px] leading-none mt-3 font-extrabold">Real people.<br><span class="serif2 italic font-normal text-gold">Real results.</span></h2>
+      </div>
+      <div class="flex items-center gap-3 bg-white text-ink rounded-full px-4 py-2 text-sm font-bold shrink-0 self-start lg:self-auto">
+        <span class="flex text-gold"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></span> 4.9/5
+        <span class="w-px h-4 bg-black/10"></span> <span>2,400+ verified</span>
+      </div>
+    </div>
+    <div class="relative grid md:grid-cols-3 gap-4 mt-6">
+      {% assign loves = "Ankit:IIT-JEE cracked in 7 days with Tech ebook — worth 10x!:IIT aspirant;Sneha:Self-help bundle = my 5am miracle — instant download, no waiting:Working pro;Rahul:UPSC concise notes + audio — saved 3 months:UPSC Aspirant;Neha:Fiction collection is addictive, lifetime access is gold:Reader;Vikram:Business playbook helped my startup — ROI day 1:Founder;Priya:Finance ebook easy language — finally understood SIPs:Investor" | split: ";" %}
+      {% for l in loves %}
+        {% assign p = l | split: ":" %}
+        <div class="bg-white text-ink rounded-[20px] p-5 relative">
+          <div class="absolute -top-2 -right-2 bg-gold text-ink w-7 h-7 rounded-full grid place-items-center text-xs"><i class="ri-double-quotes-r"></i></div>
+          <div class="flex text-gold gap-0.5 text-xs">{% for i in (1..5) %}<i class="ri-star-fill"></i>{% endfor %}</div>
+          <p class="text-sm leading-relaxed font-medium mt-3">“{{ p[1] }}”</p>
+          <div class="flex items-center gap-3 mt-4">
+            <img src="https://i.pravatar.cc/100?img={{ forloop.index | plus: 10 }}" class="w-9 h-9 rounded-full border border-black/5">
+            <div><div class="text-sm font-bold">{{ p[0] }}</div><div class="text-xs text-muted">{{ p[2] }} • Verified</div></div>
+            <span class="ml-auto text-green-600"><i class="ri-verified-badge-fill"></i></span>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    <div class="relative mt-6 flex flex-wrap justify-center gap-3">
+      <a href="{{ routes.collections_url }}/all" class="bg-gold text-ink px-7 py-3 rounded-full font-extrabold text-sm hover:bg-white transition">Shop the love — 40% OFF →</a>
+      <span class="hidden sm:inline-flex items-center gap-2 bg-white/10 border border-white/15 text-white px-5 py-3 rounded-full text-xs font-bold"><span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span> 47 people bought in last hour</span>
+    </div>
+  </div>
+</section>
+{% schema %}{"name":"Wall of Love","settings":[]}{% endschema %}

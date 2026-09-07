@@ -8,6 +8,10 @@
       "type": "social-proof",
       "settings": {}
     },
+    "as-seen-on": {
+      "type": "as-seen-on",
+      "settings": {}
+    },
     "featured-products": {
       "type": "featured-products",
       "settings": {
@@ -18,6 +22,14 @@
     },
     "trust-bar": {
       "type": "trust-bar",
+      "settings": {}
+    },
+    "wall-of-love": {
+      "type": "wall-of-love",
+      "settings": {}
+    },
+    "comparison": {
+      "type": "comparison",
       "settings": {}
     },
     "testimonials": {
@@ -38,8 +50,11 @@
   "order": [
     "hero",
     "social-proof",
+    "as-seen-on",
     "featured-products",
     "trust-bar",
+    "wall-of-love",
+    "comparison",
     "testimonials",
     "faq-selling",
     "collection-list"
