@@ -35,7 +35,7 @@
       </div>
       <div class="flex items-baseline gap-3 mt-4">
         <span class="text-2xl font-bold">{{ product.price | money }}</span>
-        {% if product.compare_at_price > product.price %}<span class="text-sm line-through text-muted">{{ product.compare_at_price | money }}</span><span class="text-sm text-leaf font-bold bg-leafSoft border border-leaf/10 px-2 py-0.5 rounded-full">{{ product.compare_at_price | minus: product.price | times: 100 | divided_by: product.compare_at_price }}% off</span>{% endif %}
+        {% if product.compare_at_price > product.price %}<span class="text-sm line-through text-muted">{{ product.compare_at_price | money }}</span><span class="text-sm text-leaf font-bold bg-leafSoft border border-leaf/10 px-2 py-0.5 rounded-full">Special Offer</span>{% endif %}
       </div>
       <div class="text-xs text-muted">Inclusive of all taxes • GST invoice available • Instant download</div>
       {% if product.description != blank %}
