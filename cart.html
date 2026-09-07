@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Cart — Mavizio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,600;9..144,1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css">
+<script>tailwind.config={theme:{extend:{fontFamily:{fraunces:['Fraunces','serif'],jakarta:['Plus Jakarta Sans','sans-serif']},colors:{ink:'#0F0F0F',paper:'#FDF8F0',cream:'#FFF6E8',gold:'#FFB800',muted:'#6B6B6B'}}}}</script>
+<style>
+*{font-family:'Plus Jakarta Sans',sans-serif}
+.display{font-family:'Fraunces',serif}
+.ri-star-fill{font-size:13px}
+</style>
+</head>
+<body class="bg-paper text-ink antialiased overflow-x-hidden">
+<div class="bg-ink text-white text-[12px] tracking-wide text-center py-2.5 px-4 flex items-center justify-center gap-2 border-b border-white/10">
+  <span class="hidden sm:inline w-6 h-6 bg-white/15 rounded-full grid place-items-center"><i class="ri-gift-line text-gold"></i></span>
+  <span><b>DIWALI SALE LIVE</b> — 40% OFF on every ebook • Code: <b class="text-gold">MAVIZIO40</b> • Instant Download</span>
+</div>
+<header class="sticky top-0 z-40 bg-paper/90 backdrop-blur-xl border-b border-black/5">
+  <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-[68px] gap-4">
+      <a href="index.html" class="flex items-center gap-2.5 min-w-0 shrink-0">
+        <div class="w-9 h-9 bg-ink text-gold rounded-xl grid place-items-center text-[18px]"><i class="ri-book-open-line"></i></div>
+        <span class="display text-[20px] sm:text-[22px] tracking-tight leading-none shrink-0">Mavizio<span class="text-gold">.</span></span>
+        <span class="hidden lg:inline text-[10px] tracking-[0.18em] font-bold text-muted border border-black/10 rounded-full px-2 py-1 ml-1">EBOOK STORE</span>
+      </a>
+      <div class="flex items-center gap-1 sm:gap-2 shrink-0">
+        <a href="wishlist.html" class="relative w-9 h-9 sm:w-10 sm:h-10 grid place-items-center rounded-full hover:bg-black/5 transition">
+          <i class="ri-heart-3-line text-[20px]"></i><span id="wishlistCount" class="absolute -top-1 -right-1 bg-gold text-ink text-[11px] font-bold w-5 h-5 rounded-full grid place-items-center hidden">0</span>
+        </a>
+        <a href="cart.html" class="relative flex items-center gap-2 bg-ink text-white rounded-full pl-2 pr-3 sm:pr-4 py-1.5">
+          <span class="w-7 h-7 bg-white text-ink rounded-full grid place-items-center"><i class="ri-shopping-bag-line"></i></span>
+          <span class="hidden sm:inline text-sm font-bold">Cart</span>
+          <span id="cartCount" class="bg-gold text-ink text-xs font-bold px-1.5 py-0.5 rounded-full min-w-[20px] text-center">0</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-4">
+  <nav class="flex items-center gap-2 text-xs font-semibold text-muted">
+    <a href="index.html" class="hover:text-ink">Home</a> <i class="ri-arrow-right-s-line"></i> <span class="text-ink">Cart</span>
+  </nav>
+</div>
+
+<section class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+  <h1 class="display text-[30px] sm:text-[36px] leading-none">Your Cart</h1>
+  <p class="text-sm text-muted mt-2">Review your ebooks — instant download after payment. 30-day refund.</p>
+
+  <div id="emptyState" class="hidden text-center py-16 bg-white border border-black/5 rounded-[24px] mt-8">
+    <div class="w-20 h-20 bg-paper border border-black/5 rounded-full grid place-items-center mx-auto text-2xl text-muted"><i class="ri-shopping-bag-line text-3xl"></i></div>
+    <div class="font-bold mt-4 text-lg">Your cart is empty</div>
+    <div class="text-sm text-muted mt-1">Add some ebooks to get started</div>
+    <a href="shop.html" class="inline-flex mt-6 bg-ink text-white px-6 py-3 rounded-full font-bold text-sm">Continue Shopping</a>
+  </div>
+
+  <div id="cartLayout" class="grid lg:grid-cols-12 gap-6 mt-8">
+    <div class="lg:col-span-8 space-y-4" id="cartItems"></div>
+    <div class="lg:col-span-4">
+      <div class="bg-white border border-black/5 rounded-[24px] p-6 sticky top-[88px]">
+        <h3 class="font-bold text-lg">Order Summary</h3>
+        <div class="mt-4 space-y-3 text-sm">
+          <div class="flex justify-between"><span class="text-muted">Subtotal</span><span id="subtotal" class="font-bold">₹0</span></div>
+          <div class="flex justify-between"><span class="text-muted">Discount</span><span id="discount" class="font-bold text-green-600">-₹0</span></div>
+          <div class="flex justify-between"><span class="text-muted">GST (included)</span><span class="font-bold">₹0</span></div>
+          <div class="flex justify-between text-base font-extrabold border-t border-black/5 pt-3"><span>Total</span><span id="total">₹0</span></div>
+          <div class="text-xs text-muted text-center">Inclusive of GST • Instant download</div>
+        </div>
+
+        <div class="mt-5 flex gap-2">
+          <input id="couponInput" placeholder="Coupon code (MAVIZIO40)" class="flex-1 bg-paper border border-black/10 rounded-full px-4 py-2.5 text-sm outline-none min-w-0">
+          <button onclick="applyCoupon()" class="bg-ink text-white px-5 py-2.5 rounded-full text-sm font-bold shrink-0">Apply</button>
+        </div>
+        <div id="couponMsg" class="hidden mt-3 text-xs font-bold px-3 py-2 rounded-xl"></div>
+
+        <div class="mt-3 bg-cream border border-black/5 rounded-xl p-3 flex gap-2 text-xs">
+          <i class="ri-shield-check-fill text-green-600"></i>
+          <span><b>Secure & instant:</b> Download link in 10 seconds via email & WhatsApp.</span>
+        </div>
+
+        <a href="checkout.html" id="checkoutBtn" class="mt-5 w-full bg-gold text-ink py-3.5 rounded-full font-extrabold text-center flex items-center justify-center gap-2 hover:bg-yellow-400 transition">Proceed to Checkout <i class="ri-lock-2-fill"></i></a>
+        <a href="shop.html" class="mt-3 w-full bg-white border border-black/10 py-3 rounded-full font-bold text-center block hover:bg-paper transition">Continue Shopping</a>
+        <div class="flex items-center justify-center gap-2 mt-3 text-[11px] font-bold text-muted"><i class="ri-shield-check-line"></i> 100% Secure • Razorpay • UPI • Cards</div>
+
+        <div class="mt-6 pt-6 border-t border-black/5">
+          <div class="text-xs font-bold tracking-wide text-muted">WE ACCEPT</div>
+          <div class="flex flex-wrap gap-2 mt-2"><span class="bg-paper border border-black/10 px-3 py-2 rounded-xl text-xs font-bold">Razorpay</span><span class="bg-paper border border-black/10 px-3 py-2 rounded-xl text-xs font-bold">UPI</span><span class="bg-paper border border-black/10 px-3 py-2 rounded-xl text-xs font-bold">Cards</span><span class="bg-paper border border-black/10 px-3 py-2 rounded-xl text-xs font-bold">Netbanking</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="border-t border-black/5 bg-white">
+  <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-muted">
+      <span class="flex items-center gap-1">© 2026 Mavizio Store. Made with <i class="ri-heart-3-fill text-red-500"></i> in Asansol, West Bengal.</span>
+      <span class="flex gap-4"><a href="#" class="hover:text-ink">Privacy</a><a href="#" class="hover:text-ink">Terms</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/app.js"></script>
+<script>
+function renderCartPage(){
+  const container=document.getElementById('cartItems');
+  const empty=document.getElementById('emptyState');
+  const layout=document.getElementById('cartLayout');
+  if(cart.length===0){
+    empty.classList.remove('hidden');
+    layout.classList.add('hidden');
+    document.getElementById('checkoutBtn').classList.add('pointer-events-none','opacity-50');
+    return;
+  }
+  empty.classList.add('hidden');
+  layout.classList.remove('hidden');
+  document.getElementById('checkoutBtn').classList.remove('pointer-events-none','opacity-50');
+  container.innerHTML = cart.map(c=>{
+    const p=products.find(x=>x.id===c.id);
+    return `
+    <div class="bg-white border border-black/5 rounded-[20px] p-4 flex gap-4">
+      <a href="product.html?id=${p.id}" class="w-[90px] sm:w-[110px] h-[120px] sm:h-[150px] rounded-xl bg-gradient-to-br ${p.color} p-3 flex flex-col shrink-0 text-white">
+        <div class="text-[7px] tracking-widest opacity-60 font-bold">MAVIZIO</div>
+        <div class="text-[12px] font-bold leading-tight mt-2 line-clamp-3">${p.title}</div>
+        <div class="text-[10px] opacity-70 mt-1">${p.author}</div>
+        <div class="mt-auto text-[9px] bg-white/20 rounded-full px-2 py-1 text-center">PDF + EPUB</div>
+      </a>
+      <div class="flex-1 min-w-0 flex flex-col">
+        <div class="flex items-start justify-between gap-2">
+          <div class="min-w-0">
+            <a href="product.html?id=${p.id}" class="font-bold leading-tight hover:underline line-clamp-2">${p.title}</a>
+            <div class="text-xs text-muted mt-1">${p.author} • ${p.pages} pages • ${p.lang}</div>
+            <div class="flex items-center gap-2 mt-2 text-gold text-xs"><i class="ri-star-fill"></i> ${p.rating} <span class="text-muted">(${p.reviews})</span> <span class="bg-green-50 text-green-700 border border-green-200 px-2 py-0.5 rounded-full text-[10px] font-bold">Instant Download</span></div>
+          </div>
+          <button onclick="removeFromCart(${p.id})" class="w-8 h-8 rounded-full bg-paper border border-black/5 grid place-items-center shrink-0 hover:bg-red-50 hover:text-red-500 transition"><i class="ri-delete-bin-line"></i></button>
+        </div>
+        <div class="mt-auto flex flex-wrap items-center justify-between gap-3 pt-3">
+          <div class="flex items-center gap-2">
+            <button onclick="changeQty(${p.id},-1)" class="w-8 h-8 rounded-full bg-paper border border-black/10 grid place-items-center hover:bg-black/5">−</button>
+            <span class="w-8 text-center font-bold">${c.qty}</span>
+            <button onclick="changeQty(${p.id},1)" class="w-8 h-8 rounded-full bg-ink text-white grid place-items-center">+</button>
+          </div>
+          <div class="flex items-baseline gap-2">
+            <span class="text-[18px] font-extrabold">${formatPrice(p.price * c.qty)}</span>
+            ${c.qty>1?`<span class="text-xs text-muted">${formatPrice(p.price)} each</span>`:''}
+            <span class="text-xs line-through text-muted">${formatPrice(p.mrp * c.qty)}</span>
+          </div>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+
+  const {subtotal, discount, total}=getCartTotals();
+  document.getElementById('subtotal').textContent=formatPrice(subtotal);
+  document.getElementById('discount').textContent='-'+formatPrice(discount);
+  document.getElementById('total').textContent=formatPrice(total);
+  const msg=document.getElementById('couponMsg');
+  if(coupon){
+    msg.classList.remove('hidden');
+    msg.className='mt-3 text-xs font-bold px-3 py-2 rounded-xl bg-green-50 text-green-700 border border-green-200';
+    msg.innerHTML='<i class="ri-check-line"></i> Coupon '+coupon+' applied — you saved '+formatPrice(discount)+'!';
+  } else msg.classList.add('hidden');
+}
+function applyCoupon(){
+  const val=document.getElementById('couponInput').value;
+  const m=document.getElementById('couponMsg');
+  if(applyCouponCode(val)){
+    renderCartPage();
+    toast('Coupon applied: '+val.toUpperCase());
+  } else {
+    m.classList.remove('hidden');
+    m.className='mt-3 text-xs font-bold px-3 py-2 rounded-xl bg-red-50 text-red-600 border border-red-200';
+    m.innerHTML='<i class="ri-close-line"></i> Invalid coupon. Try MAVIZIO40';
+  }
+}
+document.addEventListener('DOMContentLoaded', renderCartPage);
+</script>
+</body>
+</html>

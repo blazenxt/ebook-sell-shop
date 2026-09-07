@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Mavizio</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css">
+<script>tailwind.config={theme:{extend:{fontFamily:{fraunces:['Fraunces','serif'],jakarta:['Plus Jakarta Sans','sans-serif']},colors:{ink:'#0F0F0F',paper:'#FDF8F0',cream:'#FFF6E8',gold:'#FFB800',muted:'#6B6B6B'}}}}</script>
+<style>
+*{font-family:'Plus Jakarta Sans',sans-serif}
+.display{font-family:'Fraunces',serif}
+</style>
+</head>
+<body class="bg-paper text-ink antialiased overflow-x-hidden">
+<div class="bg-ink text-white text-[12px] tracking-wide text-center py-2.5 px-4">
+  <span class="inline-flex items-center gap-2"><i class="ri-customer-service-line text-gold"></i> Reply in 2 hours • 10 AM - 8 PM IST</span>
+</div>
+<header class="sticky top-0 z-40 bg-paper/90 backdrop-blur-xl border-b border-black/5">
+  <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-[68px] gap-4">
+      <a href="index.html" class="flex items-center gap-2.5 min-w-0 shrink-0">
+        <div class="w-9 h-9 bg-ink text-gold rounded-xl grid place-items-center text-[18px]"><i class="ri-book-open-line"></i></div>
+        <span class="display text-[20px] sm:text-[22px] tracking-tight leading-none shrink-0">Mavizio<span class="text-gold">.</span></span>
+        <span class="hidden lg:inline text-[10px] tracking-[0.18em] font-bold text-muted border border-black/10 rounded-full px-2 py-1 ml-1">EBOOK STORE</span>
+      </a>
+      <nav class="hidden lg:flex items-center gap-6 text-[13px] font-semibold tracking-wide">
+        <a href="shop.html" class="hover:text-gold transition">Shop</a>
+        <a href="about.html" class="hover:text-gold transition">About</a>
+        <a href="contact.html" class="text-gold">Contact</a>
+      </nav>
+      <div class="flex items-center gap-1 sm:gap-2 shrink-0">
+        <a href="wishlist.html" class="relative w-9 h-9 sm:w-10 sm:h-10 grid place-items-center rounded-full hover:bg-black/5 transition">
+          <i class="ri-heart-3-line text-[20px]"></i><span id="wishlistCount" class="absolute -top-1 -right-1 bg-gold text-ink text-[11px] font-bold w-5 h-5 rounded-full grid place-items-center hidden">0</span>
+        </a>
+        <a href="cart.html" class="relative flex items-center gap-2 bg-ink text-white rounded-full pl-2 pr-3 sm:pr-4 py-1.5 hover:bg-black transition">
+          <span class="w-7 h-7 bg-white text-ink rounded-full grid place-items-center"><i class="ri-shopping-bag-line"></i></span>
+          <span class="hidden sm:inline text-sm font-bold">Cart</span>
+          <span id="cartCount" class="bg-gold text-ink text-xs font-bold px-1.5 py-0.5 rounded-full min-w-[20px] text-center">0</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12">
+  <div class="max-w-[720px]">
+    <h1 class="display text-[36px] sm:text-[48px] leading-none">Contact us</h1>
+    <p class="text-sm text-muted mt-3">Questions about an ebook, download, refund or GST invoice? We're here — reply in ~2 hours, 10 AM - 8 PM IST.</p>
+  </div>
+
+  <div class="grid lg:grid-cols-12 gap-6 mt-8">
+    <div class="lg:col-span-7">
+      <form onsubmit="handleContact(event)" class="bg-white border border-black/5 rounded-[24px] p-6 sm:p-8 space-y-4">
+        <div class="grid sm:grid-cols-2 gap-4">
+          <label class="text-sm font-bold block">Full name *<input required type="text" placeholder="Your name" class="mt-1.5 w-full bg-paper border border-black/10 rounded-xl px-4 py-3 text-sm outline-none focus:border-ink/20"></label>
+          <label class="text-sm font-bold block">Email *<input required type="email" placeholder="you@email.com" class="mt-1.5 w-full bg-paper border border-black/10 rounded-xl px-4 py-3 text-sm outline-none focus:border-ink/20"></label>
+        </div>
+        <label class="text-sm font-bold block">Order ID (if any)<input type="text" placeholder="MVZ123456 (optional)" class="mt-1.5 w-full bg-paper border border-black/10 rounded-xl px-4 py-3 text-sm outline-none"></label>
+        <label class="text-sm font-bold block">Topic
+          <select class="mt-1.5 w-full bg-paper border border-black/10 rounded-xl px-4 py-3 text-sm outline-none">
+            <option>Download not received</option>
+            <option>Refund request</option>
+            <option>GST invoice</option>
+            <option>Payment issue</option>
+            <option>Other</option>
+          </select>
+        </label>
+        <label class="text-sm font-bold block">Message *<textarea required rows="5" placeholder="How can we help?" class="mt-1.5 w-full bg-paper border border-black/10 rounded-xl px-4 py-3 text-sm outline-none resize-none"></textarea></label>
+        <button type="submit" class="w-full bg-ink text-white py-3.5 rounded-full font-bold hover:bg-black transition flex items-center justify-center gap-2"><i class="ri-send-plane-line"></i> Send Message</button>
+        <div class="text-xs text-muted text-center">We usually reply via email & WhatsApp within 2 hours.</div>
+      </form>
+
+      <div class="mt-6 bg-white border border-black/5 rounded-[24px] p-6">
+        <h3 class="font-bold">Frequently asked questions</h3>
+        <div class="mt-4 space-y-3">
+          <details class="bg-paper rounded-xl p-4" open>
+            <summary class="font-bold text-sm cursor-pointer">When will I get my download link?</summary>
+            <p class="text-sm text-muted mt-2">Instantly — within 10 seconds after payment via email & WhatsApp. Also available forever in My Downloads.</p>
+          </details>
+          <details class="bg-paper rounded-xl p-4">
+            <summary class="font-bold text-sm cursor-pointer">What formats do I get?</summary>
+            <p class="text-sm text-muted mt-2">PDF, EPUB, MOBI + free audio summary where listed. Works on phone, Kindle, laptop. Lifetime re-download.</p>
+          </details>
+          <details class="bg-paper rounded-xl p-4">
+            <summary class="font-bold text-sm cursor-pointer">What is your refund policy?</summary>
+            <p class="text-sm text-muted mt-2">30-day money-back guarantee, no questions asked. Just email us your Order ID.</p>
+          </details>
+          <details class="bg-paper rounded-xl p-4">
+            <summary class="font-bold text-sm cursor-pointer">Do you provide GST invoice?</summary>
+            <p class="text-sm text-muted mt-2">Yes, auto-emailed after purchase. Add your GSTIN at checkout if needed.</p>
+          </details>
+        </div>
+      </div>
+    </div>
+
+    <div class="lg:col-span-5 space-y-4">
+      <div class="bg-ink text-white rounded-[24px] p-6 sm:p-8">
+        <h3 class="font-bold text-lg">Talk to us</h3>
+        <div class="mt-4 space-y-4 text-sm">
+          <a href="mailto:hello@mavizio.store" class="flex gap-3 items-center hover:text-gold transition">
+            <span class="w-10 h-10 bg-white/10 rounded-xl grid place-items-center shrink-0"><i class="ri-mail-line"></i></span>
+            <div><div class="font-bold">Email</div><div class="text-white/70">hello@mavizio.store</div></div>
+          </a>
+          <a href="https://wa.me/919000012345" class="flex gap-3 items-center hover:text-gold transition">
+            <span class="w-10 h-10 bg-green-500 rounded-xl grid place-items-center shrink-0"><i class="ri-whatsapp-line"></i></span>
+            <div><div class="font-bold">WhatsApp</div><div class="text-white/70">+91 90000 12345 (10 AM - 8 PM)</div></div>
+          </a>
+          <div class="flex gap-3 items-center">
+            <span class="w-10 h-10 bg-white/10 rounded-xl grid place-items-center shrink-0"><i class="ri-map-pin-line"></i></span>
+            <div><div class="font-bold">Address</div><div class="text-white/70 text-xs">Mavizio, Asansol, West Bengal, India — 713301</div></div>
+          </div>
+        </div>
+        <div class="mt-6 flex gap-2">
+          <a href="#" class="w-9 h-9 bg-white/10 rounded-full grid place-items-center hover:bg-white hover:text-ink transition"><i class="ri-instagram-line"></i></a>
+          <a href="#" class="w-9 h-9 bg-white/10 rounded-full grid place-items-center hover:bg-white hover:text-ink transition"><i class="ri-twitter-x-line"></i></a>
+          <a href="#" class="w-9 h-9 bg-white/10 rounded-full grid place-items-center hover:bg-white hover:text-ink transition"><i class="ri-youtube-line"></i></a>
+        </div>
+      </div>
+
+      <div class="bg-white border border-black/5 rounded-[24px] p-6">
+        <h3 class="font-bold">Our response time</h3>
+        <div class="mt-4 space-y-3 text-sm">
+          <div class="flex justify-between"><span class="text-muted">Email</span><span class="font-bold">~2 hours</span></div>
+          <div class="flex justify-between"><span class="text-muted">WhatsApp</span><span class="font-bold">~30 mins</span></div>
+          <div class="flex justify-between"><span class="text-muted">Refund</span><span class="font-bold">24 hours</span></div>
+        </div>
+        <div class="mt-4 bg-green-50 border border-green-200 rounded-xl p-3 flex gap-2 text-xs">
+          <i class="ri-checkbox-circle-fill text-green-600"></i>
+          <span><b>Instant downloads</b> — no need to contact for delivery. Check My Downloads or spam folder.</span>
+        </div>
+      </div>
+
+      <div class="bg-cream border border-black/5 rounded-[24px] p-6">
+        <div class="font-bold">Visit our store</div>
+        <div class="text-sm text-muted mt-1">Mavizio is digital-only — no physical store. All ebooks are delivered online. GSTIN: 22ABCDE1234F1Z5</div>
+        <a href="shop.html" class="mt-4 inline-flex bg-white border border-black/10 px-5 py-2.5 rounded-full text-sm font-bold">Browse Ebooks</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="border-t border-black/5 bg-white mt-12">
+  <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-muted">
+      <span class="flex items-center gap-1">© 2026 Mavizio Store. Made with <i class="ri-heart-3-fill text-red-500"></i> in Asansol, West Bengal.</span>
+      <span class="flex gap-4"><a href="#" class="hover:text-ink">Privacy</a><a href="#" class="hover:text-ink">Terms</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/app.js"></script>
+<script>
+function handleContact(e){
+  e.preventDefault();
+  toast('Message sent! We will reply within 2 hours <i class="ri-check-line ml-1"></i>');
+  e.target.reset();
+}
+</script>
+</body>
+</html>

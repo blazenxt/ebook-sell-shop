@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Order Confirmed — Mavizio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css">
+<script>tailwind.config={theme:{extend:{fontFamily:{fraunces:['Fraunces','serif'],jakarta:['Plus Jakarta Sans','sans-serif']},colors:{ink:'#0F0F0F',paper:'#FDF8F0',cream:'#FFF6E8',gold:'#FFB800',muted:'#6B6B6B'}}}}</script>
+<style>
+*{font-family:'Plus Jakarta Sans',sans-serif}
+.display{font-family:'Fraunces',serif}
+</style>
+</head>
+<body class="bg-paper text-ink antialiased overflow-x-hidden">
+<header class="bg-white border-b border-black/5">
+  <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-[68px]">
+      <a href="index.html" class="flex items-center gap-2.5">
+        <div class="w-9 h-9 bg-ink text-gold rounded-xl grid place-items-center text-[18px]"><i class="ri-book-open-line"></i></div>
+        <span class="display text-[22px] tracking-tight leading-none">Mavizio<span class="text-gold">.</span></span>
+      </a>
+      <div class="flex items-center gap-2 text-xs font-bold">
+        <span class="hidden sm:inline-flex items-center gap-1.5 bg-green-50 text-green-700 border border-green-200 px-3 py-1.5 rounded-full"><i class="ri-checkbox-circle-fill"></i> Payment Successful</span>
+        <a href="shop.html" class="bg-ink text-white px-4 py-2 rounded-full">Continue Shopping</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="max-w-[720px] mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+  <div class="bg-white border border-black/5 rounded-[24px] p-6 sm:p-10 text-center">
+    <div class="w-16 h-16 bg-green-500 text-white rounded-full grid place-items-center mx-auto text-3xl"><i class="ri-check-line"></i></div>
+    <h1 class="display text-[28px] sm:text-[32px] leading-none mt-4">Payment successful!</h1>
+    <p class="text-sm text-muted mt-3 max-w-[480px] mx-auto">Thank you for your purchase. Your ebooks are ready to download. We've also sent the download links to your email & WhatsApp. Access them anytime in <a href="downloads.html" class="underline font-bold text-ink">My Downloads</a>.</p>
+    
+    <div class="mt-6 bg-cream border border-black/5 rounded-2xl p-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-left">
+      <div class="text-sm">
+        <div class="font-bold">Order ID: <span id="orderId" class="font-mono">MVZ123456</span></div>
+        <div class="text-xs text-muted">Date: <span id="orderDate"></span> • GST invoice emailed</div>
+      </div>
+      <div class="flex gap-2">
+        <button onclick="window.print()" class="bg-white border border-black/10 px-4 py-2 rounded-full text-xs font-bold hover:bg-paper transition"><i class="ri-printer-line"></i> Print Invoice</button>
+        <a href="downloads.html" class="bg-ink text-white px-4 py-2 rounded-full text-xs font-bold">Go to Downloads</a>
+      </div>
+    </div>
+
+    <div id="orderItems" class="mt-6 space-y-3 text-left"></div>
+
+    <div class="mt-6 bg-green-50 border border-green-200 rounded-xl p-4 flex gap-3 text-left text-sm">
+      <i class="ri-information-line text-green-600 text-lg shrink-0"></i>
+      <div>
+        <b>What happens next?</b>
+        <ul class="mt-1 space-y-1 text-xs text-muted list-disc list-inside">
+          <li>Download links sent to your email & WhatsApp (check spam folder)</li>
+          <li>Re-download anytime at <b class="text-ink">mavizio.store/downloads</b></li>
+          <li>Need help? Contact <b class="text-ink">hello@mavizio.store</b> or WhatsApp +91 90000 12345</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-8 grid grid-cols-3 gap-3">
+      <div class="bg-paper border border-black/5 rounded-2xl p-4 text-center">
+        <div class="w-8 h-8 bg-white rounded-full grid place-items-center mx-auto"><i class="ri-flashlight-line"></i></div>
+        <div class="text-xs font-bold mt-2">Instant Access</div>
+        <div class="text-[11px] text-muted">Download in 10 seconds</div>
+      </div>
+      <div class="bg-paper border border-black/5 rounded-2xl p-4 text-center">
+        <div class="w-8 h-8 bg-white rounded-full grid place-items-center mx-auto"><i class="ri-refresh-line"></i></div>
+        <div class="text-xs font-bold mt-2">Lifetime Access</div>
+        <div class="text-[11px] text-muted">Re-download anytime</div>
+      </div>
+      <div class="bg-paper border border-black/5 rounded-2xl p-4 text-center">
+        <div class="w-8 h-8 bg-white rounded-full grid place-items-center mx-auto"><i class="ri-refund-2-line"></i></div>
+        <div class="text-xs font-bold mt-2">30-Day Refund</div>
+        <div class="text-[11px] text-muted">No questions asked</div>
+      </div>
+    </div>
+
+    <div class="mt-8">
+      <h3 class="font-bold text-left">You may also like</h3>
+      <div id="related" class="grid grid-cols-2 gap-3 mt-3"></div>
+    </div>
+  </div>
+
+  <div class="text-center mt-6">
+    <a href="shop.html" class="inline-flex items-center gap-2 text-sm font-bold text-muted hover:text-ink"><i class="ri-arrow-left-line"></i> Continue Shopping</a>
+  </div>
+</section>
+
+<footer class="border-t border-black/5 bg-white mt-8">
+  <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-muted">
+      <span>© 2026 Mavizio Store. Secure payment by Razorpay.</span>
+      <span class="flex gap-4"><a href="#" class="hover:text-ink">Privacy</a><a href="#" class="hover:text-ink">Terms</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/app.js"></script>
+<script>
+const params=new URLSearchParams(window.location.search);
+const orderId=params.get('order') || JSON.parse(localStorage.getItem('mavizio_last_order')||'{}').id || 'MVZ123456';
+document.getElementById('orderId').textContent=orderId;
+document.getElementById('orderDate').textContent=new Date().toLocaleDateString('en-IN', {day:'numeric', month:'long', year:'numeric'});
+
+const lastOrder=JSON.parse(localStorage.getItem('mavizio_last_order')||'null');
+let items=[];
+if(lastOrder && lastOrder.items){
+  items=lastOrder.items.map(c=>{
+    const p=products.find(x=>x.id===c.id);
+    return {...p, qty:c.qty};
+  });
+} else {
+  // fallback demo
+  items=products.slice(0,2).map(p=>({...p, qty:1}));
+}
+
+document.getElementById('orderItems').innerHTML = items.map(p=>`
+  <div class="flex gap-4 bg-paper border border-black/5 rounded-2xl p-4">
+    <div class="w-[72px] h-[96px] rounded-xl bg-gradient-to-br ${p.color} p-3 flex flex-col shrink-0 text-white">
+      <div class="text-[7px] tracking-widest opacity-60 font-bold">MAVIZIO</div>
+      <div class="text-[11px] font-bold leading-tight mt-2 line-clamp-3">${p.title}</div>
+      <div class="mt-auto text-[9px] bg-white/20 rounded-full px-2 py-1 text-center">PDF</div>
+    </div>
+    <div class="flex-1 min-w-0 flex flex-col">
+      <div class="font-bold leading-tight">${p.title}</div>
+      <div class="text-xs text-muted">${p.author} • ${p.pages} pages • Qty: ${p.qty}</div>
+      <div class="mt-auto flex gap-2">
+        <button onclick="toast('Downloading ${p.title}...')" class="flex-1 bg-ink text-white py-2.5 rounded-full text-sm font-bold flex items-center justify-center gap-1"><i class="ri-download-2-line"></i> Download PDF</button>
+        <button onclick="toast('Downloading EPUB...')" class="bg-white border border-black/10 px-4 py-2.5 rounded-full text-sm font-bold">EPUB</button>
+      </div>
+    </div>
+  </div>
+`).join('') + `<div class="text-xs text-muted text-center mt-3">Links also sent to <b>${lastOrder?lastOrder.email:'your email'}</b> + WhatsApp. Re-download anytime at mavizio.store/downloads</div>`;
+
+// related
+const related=products.filter(x=>!items.find(i=>i.id===x.id)).slice(0,2);
+document.getElementById('related').innerHTML=related.map(r=>`
+  <a href="product.html?id=${r.id}" class="bg-white border border-black/5 rounded-2xl p-3 flex gap-3">
+    <div class="w-[64px] h-[84px] rounded-xl bg-gradient-to-br ${r.color} p-2 flex flex-col shrink-0 text-white"><div class="text-[9px] font-bold line-clamp-2">${r.title}</div></div>
+    <div class="flex-1 min-w-0"><div class="font-bold text-sm line-clamp-2">${r.title}</div><div class="text-xs text-muted">${r.author}</div><div class="font-extrabold text-sm mt-1">${formatPrice(r.price)}</div></div>
+  </a>
+`).join('');
+</script>
+</body>
+</html>
