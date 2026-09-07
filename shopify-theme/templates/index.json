@@ -1,9 +1,5 @@
 {
   "sections": {
-    "header": {
-      "type": "header",
-      "settings": {}
-    },
     "hero": {
       "type": "hero",
       "settings": {}
@@ -21,17 +17,11 @@
       "settings": {
         "heading": "Shop by Collection"
       }
-    },
-    "footer": {
-      "type": "footer",
-      "settings": {}
     }
   },
   "order": [
-    "header",
     "hero",
     "featured-products",
-    "collection-list",
-    "footer"
+    "collection-list"
   ]
 }
