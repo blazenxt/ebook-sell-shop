@@ -1,50 +1,25 @@
-<div class="bg-ink text-white text-[11px] sm:text-[12px] tracking-wide text-center py-2 px-3 flex items-center justify-center gap-2 sm:gap-3 border-b border-white/10 overflow-hidden">
-  <span class="hidden sm:inline-flex items-center gap-1.5 bg-red text-white px-2.5 py-1 rounded-full text-[10px] font-extrabold tracking-widest animate-pulse shrink-0"><span class="w-1.5 h-1.5 bg-white rounded-full"></span> LIVE</span>
-  <span class="font-bold truncate min-w-0">DIWALI SALE — <span class="text-gold">40% OFF</span> <span class="hidden sm:inline">on every ebook • Code: <b class="text-gold">MAVIZIO40</b></span><span class="sm:hidden"> • MAVIZIO40</span></span>
-  <span class="hidden md:inline-flex items-center gap-1.5 bg-white/10 border border-white/15 rounded-full px-2.5 py-1 text-[11px] font-bold shrink-0">Ends in <span class="countdown flex gap-1" data-countdown>00:00:00</span></span>
-  <a href="{{ routes.collections_url }}/all" class="inline-flex bg-gold text-ink px-3 py-1 rounded-full font-extrabold text-[11px] hover:bg-white transition shrink-0">Claim →</a>
-</div>
-
-<header class="sticky top-0 z-40 bg-paper/90 backdrop-blur-xl border-b border-black/5">
+<header class="sticky top-0 z-40 bg-[#0A0A0A] border-b border-white/10">
   <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-between h-[68px] gap-4">
-      <div class="flex items-center gap-4 sm:gap-8 min-w-0 flex-1 lg:flex-none">
-        <a href="{{ routes.root_url }}" class="flex items-center gap-2.5 min-w-0 shrink-0">
-          <div class="w-9 h-9 bg-ink text-gold rounded-xl grid place-items-center text-[18px] pulse-gold"><i class="ri-flashlight-fill"></i></div>
-          <span class="display text-[20px] sm:text-[22px] tracking-tight leading-none shrink-0 font-extrabold">{{ section.settings.logo_text | default: 'Mavizio' }}<span class="text-gold">.</span></span>
-          <span class="hidden lg:inline text-[10px] tracking-[0.18em] font-extrabold text-white bg-red rounded-full px-2 py-1 ml-1">SELLING FAST</span>
-        </a>
-        <nav class="hidden lg:flex items-center gap-6 text-[13px] font-bold tracking-wide">
-          <a href="{{ routes.collections_url }}/all" class="hover:text-gold transition flex items-center gap-1">Shop <span class="bg-gold text-ink text-[9px] px-1.5 py-0.5 rounded-full">HOT</span></a>
-          <a href="{{ routes.collections_url }}" class="hover:text-gold transition">Bundles</a>
-          <a href="#testimonials" class="hover:text-gold transition">Reviews</a>
-          <span class="w-px h-4 bg-black/10"></span>
-          <span class="text-muted font-medium text-xs">⚡ Instant download • Lifetime</span>
+    <div class="flex items-center justify-between h-[64px] gap-6">
+      <a href="{{ routes.root_url }}" class="flex items-center gap-8">
+        <span class="brand text-[22px] font-light tracking-[0.15em] text-[#FFB800]">MAVIZIO</span>
+        <nav class="hidden lg:flex items-center gap-6 text-[13px] text-white/80">
+          <a href="{{ routes.collections_url }}/all" class="hover:text-[#FFB800] transition">New Arrivals</a>
+          <a href="{{ routes.collections_url }}/all" class="hover:text-[#FFB800] transition">Bestsellers</a>
+          <a href="{{ routes.collections_url }}" class="hover:text-[#FFB800] transition">Collections</a>
+          <a href="{{ routes.collections_url }}" class="hover:text-[#FFB800] transition">Genres</a>
+          <a href="{{ pages.about.url | default: '#' }}" class="hover:text-[#FFB800] transition">About</a>
         </nav>
-      </div>
-
-      <div class="hidden md:flex flex-1 max-w-[420px] mx-6 relative">
-        <form action="{{ routes.search_url }}" method="get" class="w-full">
-          <input type="search" name="q" placeholder="Search ebooks, authors, topics..." class="w-full bg-white border border-black/10 rounded-full pl-11 pr-4 py-[11px] text-[14px] focus:outline-none focus:border-ink/20 focus:ring-4 focus:ring-black/5 transition">
-          <i class="ri-search-line absolute left-4 top-1/2 -translate-y-1/2 text-muted"></i>
-        </form>
-      </div>
-
-      <div class="flex items-center gap-1 sm:gap-2 shrink-0">
-        <a href="{{ routes.cart_url }}" class="relative flex items-center gap-2 bg-ink text-white rounded-full pl-2 pr-3 sm:pr-4 py-1.5 hover:bg-black transition shine">
-          <span class="w-7 h-7 bg-gold text-ink rounded-full grid place-items-center"><i class="ri-shopping-bag-line"></i></span>
-          <span class="hidden sm:inline text-sm font-bold">Cart</span>
-          <span class="bg-white text-ink text-xs font-bold px-1.5 py-0.5 rounded-full min-w-[20px] text-center">{{ cart.item_count }}</span>
+      </a>
+      <div class="flex items-center gap-4 text-[#FFB800]">
+        <a href="{{ routes.search_url }}" class="w-8 h-8 grid place-items-center hover:text-white transition"><i class="ri-search-line text-lg"></i></a>
+        <a href="{{ routes.account_url }}" class="w-8 h-8 grid place-items-center hover:text-white transition hidden sm:grid"><i class="ri-user-line text-lg"></i></a>
+        <a href="{{ routes.cart_url }}" class="flex items-center gap-1.5 hover:text-white transition">
+          <i class="ri-shopping-bag-line text-lg"></i><span class="text-sm text-white">{{ cart.item_count }}</span>
         </a>
-        <a href="{{ routes.account_login_url }}" class="hidden sm:grid w-10 h-10 place-items-center rounded-full bg-white border border-black/10"><i class="ri-user-3-line"></i></a>
+        <button class="lg:hidden w-8 h-8 grid place-items-center text-white/80"><i class="ri-menu-line text-xl"></i></button>
       </div>
-    </div>
-    <div id="mobileSearch" class="hidden md:hidden pb-4">
-      <form action="{{ routes.search_url }}" method="get" class="relative">
-        <input type="search" name="q" placeholder="Search ebooks..." class="w-full bg-white border border-black/10 rounded-full pl-11 pr-4 py-3 text-sm focus:outline-none">
-        <i class="ri-search-line absolute left-4 top-1/2 -translate-y-1/2 text-muted"></i>
-      </form>
     </div>
   </div>
 </header>
-{% schema %}{"name":"Header","settings":[{"type":"text","id":"logo_text","label":"Logo text","default":"Mavizio"}]}{% endschema %}
+{% schema %}{"name":"Header Luxury","settings":[]}{% endschema %}

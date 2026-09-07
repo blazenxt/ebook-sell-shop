@@ -4,59 +4,15 @@
       "type": "hero",
       "settings": {}
     },
-    "social-proof": {
-      "type": "social-proof",
-      "settings": {}
-    },
-    "as-seen-on": {
-      "type": "as-seen-on",
-      "settings": {}
-    },
     "featured-products": {
       "type": "featured-products",
       "settings": {
-        "heading": "Bestsellers",
-        "subheading": "Our most-loved titles",
-        "products_to_show": 8
-      }
-    },
-    "trust-bar": {
-      "type": "trust-bar",
-      "settings": {}
-    },
-    "wall-of-love": {
-      "type": "wall-of-love",
-      "settings": {}
-    },
-    "comparison": {
-      "type": "comparison",
-      "settings": {}
-    },
-    "testimonials": {
-      "type": "testimonials",
-      "settings": {}
-    },
-    "faq-selling": {
-      "type": "faq-selling",
-      "settings": {}
-    },
-    "collection-list": {
-      "type": "collection-list",
-      "settings": {
-        "heading": "Shop by Collection"
+        "products_to_show": 4
       }
     }
   },
   "order": [
     "hero",
-    "social-proof",
-    "as-seen-on",
-    "featured-products",
-    "trust-bar",
-    "wall-of-love",
-    "comparison",
-    "testimonials",
-    "faq-selling",
-    "collection-list"
+    "featured-products"
   ]
 }
