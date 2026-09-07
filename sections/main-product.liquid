@@ -1,10 +1,10 @@
-{% comment %} TEST CLEAN v3 + dynamic img_url {% endcomment %}
+{% comment %} TEST dynamic image_url width 640 {% endcomment %}
 <div class="bg-white border-b border-line">
   <div class="max-w-[1280px] mx-auto px-4 py-6 text-center">
-    <div class="inline-flex bg-leafSoft text-leaf border border-leaf/10 px-3 py-1 rounded-full text-xs font-bold">TEST dynamic image_url</div>
-    <h1 class="font-serif text-3xl font-bold mt-4">{{ product.title }} — dynamic test</h1>
+    <div class="inline-flex bg-leafSoft text-leaf border border-leaf/10 px-3 py-1 rounded-full text-xs font-bold">TEST width 640</div>
+    <h1 class="font-serif text-3xl font-bold mt-4">{{ product.title }} — width640</h1>
     <p class="text-muted mt-2">Price: {{ product.price | money }}</p>
-    {% if product.featured_image %}<img src="{{ product.featured_image | image_url }}" alt="test" class="w-full h-auto mt-4">{% endif %}
+    {% if product.featured_image %}<img src="{{ product.featured_image | image_url: width: 640 }}" alt="test" class="w-full h-auto mt-4">{% endif %}
   </div>
 </div>
 {% schema %}{"name":"Main Product TEST","settings":[]}{% endschema %}
