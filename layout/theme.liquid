@@ -1,39 +1,36 @@
 <!doctype html>
-<html class="no-js" lang="{{ request.locale.iso_code }}">
+<html lang="{{ request.locale.iso_code }}">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#0A0A0A">
-  <link rel="canonical" href="{{ canonical_url }}">
-  {%- if settings.favicon != blank -%}<link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32 }}">{%- endif -%}
-  <title>{{ page_title }}{% if current_tags %} — {{ current_tags | join: ', ' }}{% endif %}{% if current_page != 1 %} — Page {{ current_page }}{% endif %}{% unless page_title contains shop.name %} — {{ shop.name }}{% endunless %}</title>
-  {% if page_description %}<meta name="description" content="{{ page_description | escape }}">{% endif %}
-  {{ content_for_header }}
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@400;500;600&family=Fraunces:opsz,wght@9..144,600&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css">
-  <script>
-    tailwind.config={theme:{extend:{fontFamily:{display:['Fraunces','serif'],serif:['Cormorant Garamond','serif'],sans:['Inter','sans-serif']},colors:{ink:'#0A0A0A',paper:'#0F0F0F',gold:'#FFB800',muted:'#8B8B8B',cream:'#1A1A1A'}}}}
-  </script>
-  <style>
-    *{font-family:'Inter',sans-serif}
-    .display{font-family:'Cormorant Garamond',serif}
-    .brand{font-family:'Cormorant Garamond',serif;letter-spacing:0.08em}
-    html,body{max-width:100%;overflow-x:hidden;background:#0A0A0A;color:#F5F5F5}
-    ::selection{background:#FFB800;color:#0A0A0A}
-    .card{transition:all .35s cubic-bezier(.16,1,.3,1)}
-    .card:hover{transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,0.5)}
-    *{overflow-wrap:break-word;word-break:break-word}
-  </style>
-  {{ 'mavizio.css' | asset_url | stylesheet_tag }}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0A0A0A">
+<link rel="canonical" href="{{ canonical_url }}">
+{%- if settings.favicon != blank -%}<link rel="icon" href="{{ settings.favicon | image_url: width: 32 }}">{%- endif -%}
+<title>{{ page_title }}{% if current_tags %} — {{ current_tags | join: ', ' }}{% endif %}{% if current_page != 1 %} — Page {{ current_page }}{% endif %}{% unless page_title contains shop.name %} — {{ shop.name }}{% endunless %}</title>
+{% if page_description %}<meta name="description" content="{{ page_description | escape }}">{% endif %}
+{{ content_for_header }}
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css">
+<script>tailwind.config={theme:{extend:{fontFamily:{serif:['Fraunces','serif'],sans:['Inter','sans-serif']},colors:{ink:'#0A0A0A',paper:'#F8F6F0',line:'#ECE8E0',gold:'#C9A86A',gold2:'#FFB800',leaf:'#1A7F64'}}}}</script>
+<style>
+  *{font-family:'Inter',sans-serif}
+  html,body{background:#F8F6F0;color:#0A0A0A;max-width:100%;overflow-x:hidden}
+  *{overflow-wrap:break-word;word-break:break-word}
+  img{max-width:100%;height:auto}
+  .mv-card{transition:all .22s ease}
+  .mv-card:hover{box-shadow:0 8px 24px rgba(10,10,10,0.06);transform:translateY(-1px)}
+  .line-clamp-2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .scrollbar-hide{scrollbar-width:none;-ms-overflow-style:none}
+  .scrollbar-hide::-webkit-scrollbar{display:none}
+</style>
 </head>
-<body class="bg-[#0A0A0A] text-[#F5F5F5] antialiased overflow-x-hidden">
-  {% section 'header' %}
-  <main id="MainContent" class="focus-none" role="main" tabindex="-1">
-    {{ content_for_layout }}
-  </main>
-  {% section 'footer' %}
-  <script src="{{ 'mavizio.js' | asset_url }}" defer></script>
+<body class="bg-paper antialiased">
+{% section 'header' %}
+<main id="MainContent" role="main" tabindex="-1">
+{{ content_for_layout }}
+</main>
+{% section 'footer' %}
+<script src="{{ 'mavizio.js' | asset_url }}" defer></script>
 </body>
 </html>

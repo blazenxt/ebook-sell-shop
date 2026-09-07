@@ -1,0 +1,27 @@
+<div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-4">
+  <div class="bg-white rounded-2xl border border-line overflow-hidden grid md:grid-cols-12">
+    <div class="md:col-span-8 relative min-h-[220px] sm:min-h-[320px]">
+      <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?w=1200&h=600&fit=crop" alt="Mavizio" class="absolute inset-0 w-full h-full object-cover">
+      <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent"></div>
+      <div class="relative h-full flex flex-col justify-center p-6 sm:p-10 max-w-[560px]">
+        <span class="inline-flex self-start bg-gold text-ink text-xs font-bold px-2.5 py-1 rounded-full tracking-wide">NEW SEASON • UP TO 40% OFF</span>
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white leading-tight mt-3">Read it today,<br>own it forever.</h2>
+        <p class="text-white/80 text-sm mt-2">Bestsellers, UPSC, business — instant PDF + EPUB, lifetime access.</p>
+        <a href="{{ routes.collections_url }}/all" class="inline-flex mt-5 bg-white text-ink px-6 py-2.5 rounded-full text-sm font-bold self-start hover:bg-paper">Shop Bestsellers <i class="ri-arrow-right-line ml-1"></i></a>
+      </div>
+    </div>
+    <div class="hidden md:flex md:col-span-4 flex-col border-l border-line bg-paper/60">
+      <a href="{{ routes.collections_url }}/all" class="flex-1 flex items-center gap-4 p-5 hover:bg-white transition border-b border-line">
+        <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=200&h=200&fit=crop" class="w-20 h-20 object-cover rounded-xl border border-line">
+        <div><div class="text-sm font-bold">Bestsellers</div><div class="text-xs text-leaf font-semibold">Min 40% off</div><div class="text-xs text-muted">Business • Self-Help</div></div>
+        <i class="ri-arrow-right-s-line text-muted ml-auto"></i>
+      </a>
+      <a href="{{ routes.collections_url }}/all" class="flex-1 flex items-center gap-4 p-5 hover:bg-white transition">
+        <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=200&h=200&fit=crop" class="w-20 h-20 object-cover rounded-xl border border-line">
+        <div><div class="text-sm font-bold">UPSC / SSC</div><div class="text-xs text-leaf font-semibold">From ₹149</div><div class="text-xs text-muted">Quick revision notes</div></div>
+        <i class="ri-arrow-right-s-line text-muted ml-auto"></i>
+      </a>
+    </div>
+  </div>
+</div>
+{% schema %}{"name":"Banner Mavizio","settings":[]}{% endschema %}

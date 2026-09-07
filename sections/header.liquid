@@ -1,25 +1,41 @@
-<header class="sticky top-0 z-40 bg-[#0A0A0A] border-b border-white/10">
+<header class="bg-white border-b border-line sticky top-0 z-40">
   <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-between h-[64px] gap-6">
-      <a href="{{ routes.root_url }}" class="flex items-center gap-8">
-        <span class="brand text-[22px] font-light tracking-[0.15em] text-[#FFB800]">MAVIZIO</span>
-        <nav class="hidden lg:flex items-center gap-6 text-[13px] text-white/80">
-          <a href="{{ routes.collections_url }}/all" class="hover:text-[#FFB800] transition">New Arrivals</a>
-          <a href="{{ routes.collections_url }}/all" class="hover:text-[#FFB800] transition">Bestsellers</a>
-          <a href="{{ routes.collections_url }}" class="hover:text-[#FFB800] transition">Collections</a>
-          <a href="{{ routes.collections_url }}" class="hover:text-[#FFB800] transition">Genres</a>
-          <a href="{{ pages.about.url | default: '#' }}" class="hover:text-[#FFB800] transition">About</a>
-        </nav>
+    <div class="flex items-center gap-4 sm:gap-6 h-[64px]">
+      <!-- Logo: Mavizio serif + dot gold -->
+      <a href="{{ routes.root_url }}" class="flex items-center gap-2 shrink-0">
+        <span class="font-serif text-[22px] font-bold tracking-tight text-ink">MAVIZIO<span class="text-gold">.</span></span>
+        <span class="hidden sm:inline text-[10px] tracking-[0.18em] text-muted font-semibold border border-line rounded-full px-2 py-0.5">EST. 2024</span>
       </a>
-      <div class="flex items-center gap-4 text-[#FFB800]">
-        <a href="{{ routes.search_url }}" class="w-8 h-8 grid place-items-center hover:text-white transition"><i class="ri-search-line text-lg"></i></a>
-        <a href="{{ routes.account_url }}" class="w-8 h-8 grid place-items-center hover:text-white transition hidden sm:grid"><i class="ri-user-line text-lg"></i></a>
-        <a href="{{ routes.cart_url }}" class="flex items-center gap-1.5 hover:text-white transition">
-          <i class="ri-shopping-bag-line text-lg"></i><span class="text-sm text-white">{{ cart.item_count }}</span>
-        </a>
-        <button class="lg:hidden w-8 h-8 grid place-items-center text-white/80"><i class="ri-menu-line text-xl"></i></button>
+
+      <!-- Search - inspired by Flipkart structure but our styling (white pill with border, not blue) -->
+      <form action="{{ routes.search_url }}" method="get" class="flex-1 max-w-[640px] flex">
+        <div class="flex-1 relative">
+          <i class="ri-search-line absolute left-3 top-1/2 -translate-y-1/2 text-muted"></i>
+          <input type="search" name="q" placeholder="Search ebooks, authors, UPSC, business..." class="w-full bg-paper border border-line rounded-l-full pl-9 pr-4 py-2.5 text-sm placeholder:text-muted focus:outline-none focus:border-gold focus:bg-white">
+        </div>
+        <button type="submit" class="bg-ink text-white rounded-r-full px-6 text-sm font-semibold hover:bg-black">Search</button>
+      </form>
+
+      <!-- Actions -->
+      <div class="hidden lg:flex items-center gap-5 text-sm shrink-0">
+        <a href="{{ routes.account_login_url }}" class="flex items-center gap-1.5 font-medium hover:text-gold"><i class="ri-user-line text-lg"></i> Account</a>
+        <span class="w-px h-5 bg-line"></span>
+        <a href="{{ routes.cart_url }}" class="flex items-center gap-1.5 font-semibold"><i class="ri-shopping-bag-line text-lg"></i> Cart <span class="bg-ink text-white text-xs px-1.5 py-0.5 rounded-full">{{ cart.item_count }}</span></a>
       </div>
+      <!-- Mobile -->
+      <a href="{{ routes.cart_url }}" class="lg:hidden flex items-center gap-1.5 bg-ink text-white px-3 py-1.5 rounded-full text-sm font-bold shrink-0"><i class="ri-shopping-bag-line"></i> {{ cart.item_count }}</a>
     </div>
+
+    <!-- Secondary nav - Flipkart-like categories but text links not icons overloaded -->
+    <nav class="hidden md:flex items-center gap-6 text-sm border-t border-line -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-2.5 overflow-x-auto scrollbar-hide">
+      <a href="{{ routes.collections_url }}/all" class="font-semibold whitespace-nowrap">All Titles</a>
+      <a href="{{ routes.collections_url }}/all" class="text-muted hover:text-ink whitespace-nowrap">Bestsellers</a>
+      <a href="{{ routes.collections_url }}/all" class="text-muted hover:text-ink whitespace-nowrap">New Releases</a>
+      <a href="{{ routes.collections_url }}/all" class="text-muted hover:text-ink whitespace-nowrap">Business</a>
+      <a href="{{ routes.collections_url }}/all" class="text-muted hover:text-ink whitespace-nowrap">UPSC</a>
+      <a href="{{ routes.collections_url }}/all" class="text-muted hover:text-ink whitespace-nowrap">Fiction</a>
+      <span class="ml-auto hidden lg:flex items-center gap-1.5 text-xs font-medium text-leaf"><i class="ri-truck-line"></i> Instant delivery</span>
+    </nav>
   </div>
 </header>
-{% schema %}{"name":"Header Luxury","settings":[]}{% endschema %}
+{% schema %}{"name":"Header Mavizio Clean","settings":[]}{% endschema %}

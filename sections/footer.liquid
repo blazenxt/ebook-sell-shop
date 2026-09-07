@@ -1,69 +1,56 @@
-<footer class="bg-[#0A0A0A] border-t border-white/10 mt-16">
-  <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <div class="grid md:grid-cols-12 gap-8">
-      <!-- Brand -->
-      <div class="md:col-span-4">
-        <div class="brand text-[20px] tracking-[0.15em] text-[#FFB800]">MAVIZIO</div>
-        <p class="text-sm text-white/60 leading-relaxed mt-3 max-w-[320px]">Curated digital editions. Business, Self-Help, Fiction, UPSC — instant download, lifetime access. No shipping, no waiting.</p>
-        <div class="flex gap-3 mt-5">
-          <a href="https://instagram.com" target="_blank" aria-label="Instagram" class="w-9 h-9 rounded-full bg-white/5 border border-white/10 grid place-items-center text-white/70 hover:bg-white hover:text-black transition"><i class="ri-instagram-line"></i></a>
-          <a href="https://twitter.com" target="_blank" aria-label="X" class="w-9 h-9 rounded-full bg-white/5 border border-white/10 grid place-items-center text-white/70 hover:bg-white hover:text-black transition"><i class="ri-twitter-x-line"></i></a>
-          <a href="https://youtube.com" target="_blank" aria-label="YouTube" class="w-9 h-9 rounded-full bg-white/5 border border-white/10 grid place-items-center text-white/70 hover:bg-white hover:text-black transition"><i class="ri-youtube-line"></i></a>
+<footer class="bg-ink text-white mt-6">
+  <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <div class="grid grid-cols-2 md:grid-cols-5 gap-8 text-sm">
+      <div>
+        <div class="font-serif text-lg font-bold">MAVIZIO<span class="text-gold">.</span></div>
+        <p class="text-white/60 text-xs leading-relaxed mt-2">Ebooks that feel like real books. Instant, lifetime, GST-ready. Built for readers who do.</p>
+        <div class="flex items-center gap-2 mt-4">
+          <a href="#" class="w-8 h-8 rounded-full bg-white/10 grid place-items-center hover:bg-gold hover:text-ink transition"><i class="ri-instagram-line"></i></a>
+          <a href="#" class="w-8 h-8 rounded-full bg-white/10 grid place-items-center hover:bg-gold hover:text-ink transition"><i class="ri-twitter-x-line"></i></a>
+          <a href="#" class="w-8 h-8 rounded-full bg-white/10 grid place-items-center hover:bg-gold hover:text-ink transition"><i class="ri-youtube-line"></i></a>
         </div>
       </div>
-      <!-- Shop -->
-      <div class="md:col-span-2">
-        <div class="text-xs tracking-[0.18em] text-white/40">SHOP</div>
-        <div class="mt-4 space-y-2.5 text-sm">
-          <a href="{{ routes.collections_url }}/all" class="block text-white/70 hover:text-[#FFB800] transition">All Titles</a>
-          <a href="{{ routes.collections_url }}/all" class="block text-white/70 hover:text-[#FFB800] transition">Bestsellers</a>
-          <a href="{{ routes.collections_url }}" class="block text-white/70 hover:text-[#FFB800] transition">Collections</a>
-          <a href="{{ routes.search_url }}" class="block text-white/70 hover:text-[#FFB800] transition">Search</a>
+      <div>
+        <div class="text-white/40 tracking-widest text-[11px] font-semibold">SHOP</div>
+        <div class="mt-3 space-y-2 text-white/80 text-xs">
+          <a href="{{ routes.collections_url }}/all" class="block hover:text-gold">All Titles</a>
+          <a href="{{ routes.collections_url }}/all" class="block hover:text-gold">Bestsellers</a>
+          <a href="{{ routes.collections_url }}/all" class="block hover:text-gold">New Releases</a>
+          <a href="{{ routes.search_url }}" class="block hover:text-gold">Search</a>
         </div>
       </div>
-      <!-- Company -->
-      <div class="md:col-span-2">
-        <div class="text-xs tracking-[0.18em] text-white/40">COMPANY</div>
-        <div class="mt-4 space-y-2.5 text-sm">
-          <a href="{{ pages.about.url | default: '/pages/about' }}" class="block text-white/70 hover:text-[#FFB800] transition">About Us</a>
-          <a href="{{ pages.contact.url | default: '/pages/contact' }}" class="block text-white/70 hover:text-[#FFB800] transition">Contact</a>
-          <a href="{{ routes.search_url }}?q=about" class="block text-white/70 hover:text-[#FFB800] transition">Our Story</a>
-          <a href="https://wa.me/919000012345" target="_blank" class="block text-white/70 hover:text-[#FFB800] transition flex items-center gap-1.5"><i class="ri-whatsapp-line text-green-400"></i> WhatsApp</a>
+      <div>
+        <div class="text-white/40 tracking-widest text-[11px] font-semibold">COMPANY</div>
+        <div class="mt-3 space-y-2 text-white/80 text-xs">
+          <a href="{{ pages.about.url | default: '/pages/about' }}" class="block hover:text-gold">About Us</a>
+          <a href="{{ pages.contact.url | default: '/pages/contact' }}" class="block hover:text-gold">Contact</a>
+          <a href="#" class="block hover:text-gold">Careers</a>
+          <a href="https://blazenxt.github.io" target="_blank" class="block hover:text-gold">BlazeNXT</a>
         </div>
       </div>
-      <!-- Legal + Newsletter -->
-      <div class="md:col-span-4">
-        <div class="text-xs tracking-[0.18em] text-white/40">LEGAL</div>
-        <div class="mt-4 flex flex-wrap gap-3 text-xs">
-          <a href="{{ pages['privacy-policy'].url | default: '/policies/privacy-policy' }}" class="text-white/60 hover:text-[#FFB800] underline">Privacy Policy</a>
-          <a href="{{ pages['terms-of-service'].url | default: '/policies/terms-of-service' }}" class="text-white/60 hover:text-[#FFB800] underline">Terms</a>
-          <a href="{{ pages['refund-policy'].url | default: '/policies/refund-policy' }}" class="text-white/60 hover:text-[#FFB800] underline">Refund</a>
-          <a href="/policies/shipping-policy" class="text-white/60 hover:text-[#FFB800] underline">Shipping</a>
+      <div>
+        <div class="text-white/40 tracking-widest text-[11px] font-semibold">LEGAL</div>
+        <div class="mt-3 space-y-2 text-white/80 text-xs">
+          <a href="{{ pages['privacy-policy'].url | default: '/policies/privacy-policy' }}" class="block hover:text-gold">Privacy Policy</a>
+          <a href="{{ pages['terms-of-service'].url | default: '/policies/terms-of-service' }}" class="block hover:text-gold">Terms of Use</a>
+          <a href="{{ pages['refund-policy'].url | default: '/policies/refund-policy' }}" class="block hover:text-gold">Refund Policy</a>
+          <a href="{{ pages['shipping-policy'].url | default: '/policies/shipping-policy' }}" class="block hover:text-gold">Shipping Policy</a>
         </div>
-        <div class="mt-6">
-          <div class="text-xs tracking-[0.18em] text-white/40">NEWSLETTER</div>
-          <p class="text-xs text-white/50 mt-2">New releases, no spam.</p>
-          {% form 'customer' %}
-            <div class="flex gap-2 mt-3">
-              <input type="email" name="contact[email]" placeholder="you@email.com" required class="flex-1 bg-white/5 border border-white/10 rounded-full px-4 py-2.5 text-sm text-white placeholder:text-white/40 focus:outline-none focus:border-[#FFB800]/50">
-              <button type="submit" class="bg-[#FFB800] text-black px-5 py-2.5 rounded-full text-sm font-bold hover:bg-white transition">Join</button>
-            </div>
-          {% endform %}
-        </div>
-        <div class="mt-5 flex flex-wrap items-center gap-2 text-[11px]">
-          <span class="bg-white text-black px-2.5 py-1 rounded-full font-bold">Razorpay</span>
-          <span class="bg-white/10 border border-white/10 text-white px-2.5 py-1 rounded-full">UPI</span>
-          <span class="bg-white/10 border border-white/10 text-white px-2.5 py-1 rounded-full">Cards</span>
-          <span class="text-white/40 flex items-center gap-1"><i class="ri-lock-2-fill text-green-400"></i> 100% Secure</span>
-        </div>
+      </div>
+      <div class="col-span-2 md:col-span-1">
+        <div class="text-white/40 tracking-widest text-[11px] font-semibold">NEWSLETTER</div>
+        <p class="text-white/60 text-xs mt-3">Get 10% off your first order.</p>
+        {% form 'customer', class: 'mt-3 flex' %}
+          <input type="email" name="contact[email]" placeholder="you@email.com" required class="flex-1 bg-white/10 border border-white/20 rounded-l-full px-3 py-2 text-xs placeholder:text-white/50 focus:outline-none">
+          <button type="submit" class="bg-gold text-ink px-4 rounded-r-full text-xs font-bold">Join</button>
+        {% endform %}
+        <div class="mt-4 flex flex-wrap gap-1.5 text-[11px]"><span class="bg-white text-ink px-2 py-1 rounded-full font-bold">Razorpay</span><span class="bg-white text-ink px-2 py-1 rounded-full font-bold">UPI</span><span class="bg-white text-ink px-2 py-1 rounded-full font-bold">Cards</span><span class="border border-white/20 px-2 py-1 rounded-full">100% Secure</span></div>
       </div>
     </div>
-    <div class="mt-10 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
-      <span class="text-white/40">© {{ 'now' | date: '%Y' }} Mavizio. Made with <i class="ri-heart-3-fill text-red-500"></i> by <a href="https://blazenxt.github.io" class="underline hover:text-white">BlazeNXT</a></span>
-      <span class="flex gap-4 text-white/40">
-        <span>Instant download</span><span>•</span><span>Lifetime access</span><span>•</span><span>GST invoice</span>
-      </span>
+    <div class="mt-8 pt-6 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-white/60">
+      <div>© {{ 'now' | date: '%Y' }} Mavizio. Made with ♥ by <a href="https://blazenxt.github.io" target="_blank" class="text-gold hover:underline">BlazeNXT</a></div>
+      <div class="flex items-center gap-3"><span class="hidden sm:inline">Payments:</span><span class="bg-white text-ink px-2 py-1 rounded-full font-bold text-[11px]">VISA • MC • UPI</span></div>
     </div>
   </div>
 </footer>
-{% schema %}{"name":"Footer Luxury Full","settings":[]}{% endschema %}
+{% schema %}{"name":"Footer Mavizio Clean","settings":[]}{% endschema %}

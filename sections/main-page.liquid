@@ -1,15 +1,12 @@
-<div class="max-w-[860px] mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
-  <div class="text-center border-b border-white/10 pb-8">
-    <div class="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-3 py-1 text-xs tracking-[0.15em] text-white/60">— {{ page.title | upcase }}</div>
-    <h1 class="display text-[32px] sm:text-[44px] leading-[0.9] mt-4 text-white">{{ page.title }}</h1>
-    {% if page.created_at %}<div class="text-xs text-white/40 mt-2">Last updated: {{ page.created_at | date: '%B %d, %Y' }}</div>{% endif %}
-  </div>
-  <div class="mt-8 prose prose-invert max-w-none prose-headings:font-semibold prose-headings:text-white prose-p:text-white/70 prose-p:leading-relaxed prose-a:text-[#FFB800] prose-a:no-underline hover:prose-a:underline prose-strong:text-white prose-li:text-white/70">
-    {{ page.content }}
-  </div>
-  <div class="mt-10 flex justify-center gap-3">
-    <a href="{{ routes.root_url }}" class="bg-white text-black px-6 py-3 rounded-full text-sm font-bold hover:bg-[#FFB800] transition">Back to home</a>
-    <a href="{{ routes.collections_url }}/all" class="bg-white/5 border border-white/10 text-white px-6 py-3 rounded-full text-sm font-bold hover:bg-white hover:text-black transition">Shop</a>
+<div class="bg-white border-b border-line">
+  <div class="max-w-[960px] mx-auto px-4 sm:px-6 lg:px-8 py-3">
+    <div class="flex items-center gap-1.5 text-xs text-muted"><a href="{{ routes.root_url }}" class="hover:text-ink">Home</a> <i class="ri-arrow-right-s-line text-line"></i> <span class="text-ink font-medium">{{ page.title }}</span></div>
   </div>
 </div>
-{% schema %}{"name":"Main Page Luxury","settings":[]}{% endschema %}
+<div class="max-w-[960px] mx-auto px-4 sm:px-6 lg:px-8 mt-4">
+  <div class="bg-white rounded-2xl border border-line p-6 sm:p-8">
+    <h1 class="font-serif text-2xl font-bold">{{ page.title }}</h1>
+    <div class="prose max-w-none mt-4 text-sm leading-relaxed text-[#2b2b2b]">{{ page.content }}</div>
+  </div>
+</div>
+{% schema %}{"name":"Main Page Clean","settings":[]}{% endschema %}

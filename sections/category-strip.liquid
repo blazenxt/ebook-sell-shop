@@ -1,0 +1,25 @@
+<div class="bg-white border-b border-line">
+  <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex gap-4 sm:gap-5 overflow-x-auto scrollbar-hide py-4">
+      {%- assign cats = "Business:ri-briefcase-4-line|Self-Help:ri-mental-health-line|Fiction:ri-book-open-line|UPSC:ri-graduation-cap-line|Tech:ri-cpu-line|Finance:ri-funds-line|Kids:ri-bear-smile-line|Biography:ri-user-star-line" | split: "|" -%}
+      {% for cat in cats %}
+        {% assign parts = cat | split: ":" %}
+        <a href="{{ routes.collections_url }}/all" class="flex flex-col items-center gap-2 shrink-0 min-w-[84px] group">
+          <div class="w-[64px] h-[64px] rounded-2xl bg-paper border border-line grid place-items-center text-ink text-xl group-hover:bg-ink group-hover:text-white group-hover:border-ink transition">
+            <i class="{{ parts[1] }}"></i>
+          </div>
+          <span class="text-xs font-medium">{{ parts[0] }}</span>
+        </a>
+      {% endfor %}
+      {% for collection in collections limit: 4 %}
+        <a href="{{ collection.url }}" class="flex flex-col items-center gap-2 shrink-0 min-w-[84px] group">
+          <div class="w-[64px] h-[64px] rounded-2xl overflow-hidden border border-line bg-paper">
+            {% if collection.featured_image %}<img src="{{ collection.featured_image | image_url: width: 120 }}" alt="{{ collection.title }}" class="w-full h-full object-cover">{% else %}<div class="w-full h-full grid place-items-center text-ink"><i class="ri-stack-line text-xl"></i></div>{% endif %}
+          </div>
+          <span class="text-xs font-medium">{{ collection.title | truncate: 12 }}</span>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% schema %}{"name":"Category Strip (inspired)","settings":[]}{% endschema %}

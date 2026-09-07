@@ -1,14 +1,16 @@
-<section class="max-w-[720px] mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 text-center">
-  <div class="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-3 py-1 text-xs tracking-[0.15em] text-white/60">— 404</div>
-  <h1 class="display text-[40px] sm:text-[52px] leading-[0.9] mt-4 text-white">Page not found</h1>
-  <p class="text-sm text-white/60 leading-relaxed max-w-[480px] mx-auto mt-4">The page you’re looking for doesn’t exist or was moved.</p>
-  <form action="{{ routes.search_url }}" method="get" class="flex gap-2 max-w-[460px] mx-auto mt-8">
-    <input type="search" name="q" placeholder="Search titles" class="flex-1 bg-[#141414] border border-white/10 rounded-full px-5 py-3 text-sm text-white placeholder:text-white/40 focus:outline-none focus:border-[#FFB800]/50">
-    <button class="bg-[#FFB800] text-black px-6 py-3 rounded-full text-sm font-bold">Search</button>
-  </form>
-  <div class="flex justify-center gap-3 mt-6">
-    <a href="{{ routes.root_url }}" class="bg-white text-black px-6 py-3 rounded-full text-sm font-bold">Back to home</a>
-    <a href="{{ routes.collections_url }}/all" class="bg-white/5 border border-white/10 text-white px-6 py-3 rounded-full text-sm font-bold hover:bg-white hover:text-black transition">All titles</a>
+<section class="max-w-[960px] mx-auto px-4 sm:px-6 lg:px-8 mt-4">
+  <div class="bg-white rounded-2xl border border-line p-10 sm:p-16 text-center">
+    <div class="w-16 h-16 rounded-2xl bg-paper border border-line grid place-items-center mx-auto"><i class="ri-error-warning-line text-2xl text-muted"></i></div>
+    <h1 class="font-serif text-2xl font-bold mt-6">We couldn't find that page</h1>
+    <p class="text-sm text-muted mt-2">Try searching or return home.</p>
+    <form action="{{ routes.search_url }}" method="get" class="flex gap-2 max-w-[400px] mx-auto mt-6">
+      <input type="search" name="q" placeholder="Search ebooks" class="flex-1 border border-line rounded-full px-4 py-2.5 text-sm focus:outline-none bg-paper">
+      <button class="bg-ink text-white px-6 py-2.5 rounded-full text-sm font-bold">Search</button>
+    </form>
+    <div class="flex justify-center gap-3 mt-6">
+      <a href="{{ routes.root_url }}" class="bg-ink text-white px-6 py-2.5 rounded-full text-sm font-bold">Home</a>
+      <a href="{{ routes.collections_url }}/all" class="border border-line px-6 py-2.5 rounded-full text-sm font-bold bg-white">Shop</a>
+    </div>
   </div>
 </section>
-{% schema %}{"name":"Main 404 Luxury","settings":[]}{% endschema %}
+{% schema %}{"name":"Main 404 Clean","settings":[]}{% endschema %}

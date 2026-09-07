@@ -1,39 +1,26 @@
-<section class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 pt-10 sm:pt-16 pb-8">
-  <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+<section class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
+  <div class="grid lg:grid-cols-12 gap-8 items-center bg-white rounded-2xl border border-line p-6 sm:p-10">
     <div class="lg:col-span-6">
-      <h1 class="display text-[42px] sm:text-[54px] lg:text-[62px] leading-[0.9] text-white">
-        Read it today,<br>
-        <span class="italic font-light text-white">own it forever.</span>
-      </h1>
-      <p class="text-sm sm:text-[15px] leading-relaxed text-white/60 max-w-[480px] mt-4">
-        Discover curated digital editions and exclusive ebooks. Premium quality storytelling at your fingertips.
-      </p>
-      <a href="{{ routes.collections_url }}/all" class="inline-flex items-center gap-2 bg-[#FFB800] text-black px-6 py-3 rounded-md font-bold text-sm mt-6 hover:bg-white transition">
-        Shop Now
-      </a>
+      <div class="inline-flex bg-gold text-ink text-xs font-bold px-2.5 py-1 rounded-full">MAVIZIO ORIGINALS</div>
+      <h1 class="font-serif text-[36px] sm:text-[48px] leading-[0.95] font-bold mt-3">Read it today,<br><span class="italic font-light text-gold">own it forever.</span></h1>
+      <p class="text-sm leading-relaxed text-muted max-w-[480px] mt-3">Curated ebooks — business, fiction, UPSC, tech. Instant PDF + EPUB, lifetime access, GST invoice. No courier wait.</p>
+      <a href="{{ routes.collections_url }}/all" class="inline-flex items-center gap-2 bg-ink text-white px-6 py-3 rounded-full font-bold text-sm mt-6 hover:bg-black">Shop Now <i class="ri-arrow-right-line"></i></a>
+      <div class="flex items-center gap-3 mt-6 text-xs text-muted"><span class="flex items-center gap-1"><i class="ri-shield-check-line text-leaf"></i> Secure</span><span class="w-1 h-1 bg-line rounded-full"></span><span>Instant download</span><span class="w-1 h-1 bg-line rounded-full"></span><span>1,842 reviews 4.9★</span></div>
     </div>
-    <div class="lg:col-span-6 relative flex justify-center lg:justify-end">
-      <div class="absolute inset-0 bg-gradient-to-br from-[#FFB800]/20 via-transparent to-transparent blur-3xl rounded-full"></div>
-      <div class="relative w-[280px] sm:w-[360px] aspect-[3/4] max-w-full">
+    <div class="lg:col-span-6 flex justify-center lg:justify-end">
+      <div class="w-[280px] sm:w-[340px] aspect-[3/4] rounded-2xl overflow-hidden border border-line shadow-lg bg-paper p-2">
         {% assign p = all_products[section.settings.featured_product] %}
         {% if p == blank %}{% assign p = collections.all.products.first %}{% endif %}
         {% if p and p.featured_image %}
-          <img src="{{ p.featured_image | image_url: width: 600 }}" alt="{{ p.title | escape }}" class="w-full h-full object-cover rounded-[12px] shadow-[0_20px_60px_rgba(255,184,0,0.3)]">
-          <div class="absolute inset-0 rounded-[12px] shadow-[0_0_80px_rgba(255,184,0,0.4)] pointer-events-none"></div>
-          <div class="absolute -inset-4 bg-[#FFB800]/20 blur-3xl -z-10 rounded-full"></div>
+          <img src="{{ p.featured_image | image_url: width: 600 }}" alt="{{ p.title | escape }}" class="w-full h-full object-cover rounded-xl">
         {% else %}
-          <div class="w-full h-full rounded-[12px] bg-gradient-to-br from-[#1A1A1A] to-[#2A2A2A] border border-[#FFB800]/30 flex flex-col p-6 shadow-[0_20px_60px_rgba(255,184,0,0.2)]">
-            <div class="text-[10px] tracking-[0.2em] text-white/50">MAVIZIO ORIGINALS</div>
-            <div class="mt-auto text-white">
-              <div class="text-2xl font-bold leading-none" style="font-family:'Cormorant Garamond'">CHRONICLES<br>OF ELORIA</div>
-              <div class="text-xs text-white/60 mt-2">Elias Thorne</div>
-            </div>
-            <div class="absolute inset-0 rounded-[12px] shadow-[0_0_60px_rgba(255,184,0,0.25)] pointer-events-none"></div>
+          <div class="w-full h-full rounded-xl bg-ink text-white flex flex-col p-6">
+            <div class="text-[10px] tracking-widest text-white/60">MAVIZIO ORIGINALS</div>
+            <div class="mt-auto"><div class="font-serif text-2xl font-bold leading-none">CHRONICLES<br>OF ELORIA</div><div class="text-xs text-white/60 mt-2">Elias Thorne</div></div>
           </div>
-          <div class="absolute -inset-6 bg-[#FFB800]/15 blur-3xl -z-10 rounded-full"></div>
         {% endif %}
       </div>
     </div>
   </div>
 </section>
-{% schema %}{"name":"Hero Luxury","settings":[{"type":"product","id":"featured_product","label":"Featured book (right side)"}]}{% endschema %}
+{% schema %}{"name":"Hero Clean","settings":[{"type":"product","id":"featured_product","label":"Featured book"}]}{% endschema %}

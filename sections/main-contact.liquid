@@ -1,50 +1,51 @@
-<div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
-  <div class="text-center max-w-[640px] mx-auto">
-    <div class="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-3 py-1 text-xs tracking-[0.15em] text-white/60">— CONTACT</div>
-    <h1 class="display text-[32px] sm:text-[44px] leading-[0.9] text-white mt-3">We’re here to help</h1>
-    <p class="text-sm text-white/60 mt-3">Replies in 2 hours • 9am–11pm IST • WhatsApp fastest</p>
+<div class="bg-white border-b border-line">
+  <div class="max-w-[960px] mx-auto px-4 sm:px-6 lg:px-8 py-2.5">
+    <nav class="flex items-center gap-1.5 text-xs text-muted"><a href="{{ routes.root_url }}" class="hover:text-ink">Home</a><i class="ri-arrow-right-s-line text-line"></i><span class="text-ink font-medium">Contact</span></nav>
   </div>
-
-  <div class="mt-8 grid lg:grid-cols-12 gap-6">
+</div>
+<div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-4">
+  <div class="text-center max-w-[640px] mx-auto bg-white rounded-2xl border border-line p-6 sm:p-8">
+    <div class="inline-flex items-center gap-2 bg-paper border border-line rounded-full px-3 py-1 text-xs tracking-wide text-muted font-semibold">— CONTACT</div>
+    <h1 class="font-serif text-3xl sm:text-4xl font-bold mt-3">We're here to help</h1>
+    <p class="text-sm text-muted mt-2">Replies in 2 hours • 9am–11pm IST • WhatsApp fastest</p>
+  </div>
+  <div class="mt-4 grid lg:grid-cols-12 gap-4">
     <div class="lg:col-span-5 space-y-4">
-      <div class="bg-[#141414] border border-white/10 rounded-[16px] p-5">
-        <div class="w-10 h-10 rounded-full bg-[#FFB800] text-black grid place-items-center"><i class="ri-whatsapp-fill"></i></div>
-        <div class="font-bold text-white mt-3">WhatsApp</div>
-        <div class="text-sm text-white/60">+91 90000 12345</div>
-        <a href="https://wa.me/919000012345" target="_blank" class="inline-flex mt-3 bg-[#25D366] text-white px-4 py-2 rounded-full text-xs font-bold">Chat on WhatsApp →</a>
+      <div class="bg-white border border-line rounded-2xl p-5">
+        <div class="w-10 h-10 rounded-full bg-[#25D366] text-white grid place-items-center"><i class="ri-whatsapp-fill text-lg"></i></div>
+        <div class="font-bold mt-3">WhatsApp</div>
+        <div class="text-sm text-muted">+91 90000 12345</div>
+        <a href="https://wa.me/919000012345" target="_blank" class="inline-flex mt-3 bg-ink text-white px-4 py-2 rounded-full text-xs font-bold hover:bg-black">Chat on WhatsApp →</a>
       </div>
-      <div class="bg-[#141414] border border-white/10 rounded-[16px] p-5">
-        <div class="w-10 h-10 rounded-full bg-white/5 border border-white/10 grid place-items-center text-white"><i class="ri-mail-line"></i></div>
-        <div class="font-bold text-white mt-3">Email</div>
-        <div class="text-sm text-white/60">support@mavizio.store</div>
-        <div class="text-xs text-white/40 mt-1">GST invoice + download help</div>
+      <div class="bg-white border border-line rounded-2xl p-5">
+        <div class="w-10 h-10 rounded-full bg-paper border border-line grid place-items-center"><i class="ri-mail-line"></i></div>
+        <div class="font-bold mt-3">Email</div>
+        <div class="text-sm text-muted">support@mavizio.store</div>
+        <div class="text-xs text-muted mt-1">GST invoice + download help</div>
       </div>
-      <div class="bg-[#141414] border border-white/10 rounded-[16px] p-5">
-        <div class="w-10 h-10 rounded-full bg-white/5 border border-white/10 grid place-items-center text-white"><i class="ri-map-pin-line"></i></div>
-        <div class="font-bold text-white mt-3">Asansol • Digital Only</div>
-        <div class="text-sm text-white/60">No physical store — instant delivery worldwide</div>
+      <div class="bg-white border border-line rounded-2xl p-5">
+        <div class="w-10 h-10 rounded-full bg-paper border border-line grid place-items-center"><i class="ri-map-pin-line"></i></div>
+        <div class="font-bold mt-3">Asansol • Digital Only</div>
+        <div class="text-sm text-muted">No physical store — instant delivery worldwide</div>
       </div>
     </div>
-
     <div class="lg:col-span-7">
-      <div class="bg-[#141414] border border-white/10 rounded-[20px] p-6 sm:p-8">
-        <h3 class="font-bold text-white">Send a message</h3>
-        <p class="text-xs text-white/50 mt-1">We’ll reply on email + WhatsApp</p>
+      <div class="bg-white border border-line rounded-2xl p-6 sm:p-8">
+        <h3 class="font-bold">Send a message</h3>
+        <p class="text-xs text-muted mt-1">We'll reply on email + WhatsApp</p>
         {% form 'contact' %}
-          {% if form.posted_successfully? %}<div class="mt-4 bg-green-500/10 border border-green-500/20 text-green-400 rounded-xl px-4 py-3 text-sm">Message sent — we’ll reply in 2 hours!</div>{% endif %}
+          {% if form.posted_successfully? %}<div class="mt-4 bg-leaf/10 border border-leaf/20 text-leaf rounded-xl px-4 py-3 text-sm">Message sent — we'll reply in 2 hours!</div>{% endif %}
           <div class="grid sm:grid-cols-2 gap-4 mt-6">
-            <input type="text" name="contact[name]" placeholder="Your name" required class="bg-[#0A0A0A] border border-white/10 rounded-full px-4 py-3 text-sm text-white placeholder:text-white/40 focus:outline-none focus:border-[#FFB800]/50">
-            <input type="email" name="contact[email]" placeholder="Email" required class="bg-[#0A0A0A] border border-white/10 rounded-full px-4 py-3 text-sm text-white placeholder:text-white/40 focus:outline-none focus:border-[#FFB800]/50">
+            <input type="text" name="contact[name]" placeholder="Your name" required class="bg-paper border border-line rounded-full px-4 py-3 text-sm placeholder:text-muted focus:outline-none focus:border-ink">
+            <input type="email" name="contact[email]" placeholder="Email" required class="bg-paper border border-line rounded-full px-4 py-3 text-sm placeholder:text-muted focus:outline-none focus:border-ink">
           </div>
-          <input type="text" name="contact[subject]" placeholder="Subject" class="w-full mt-4 bg-[#0A0A0A] border border-white/10 rounded-full px-4 py-3 text-sm text-white placeholder:text-white/40 focus:outline-none focus:border-[#FFB800]/50">
-          <textarea name="contact[body]" rows="5" placeholder="How can we help?" required class="w-full mt-4 bg-[#0A0A0A] border border-white/10 rounded-[16px] px-4 py-3 text-sm text-white placeholder:text-white/40 focus:outline-none focus:border-[#FFB800]/50"></textarea>
-          <button type="submit" class="w-full mt-6 bg-[#FFB800] text-black py-3.5 rounded-full font-bold hover:bg-white transition">Send Message</button>
+          <input type="text" name="contact[subject]" placeholder="Subject" class="w-full mt-4 bg-paper border border-line rounded-full px-4 py-3 text-sm placeholder:text-muted focus:outline-none focus:border-ink">
+          <textarea name="contact[body]" rows="5" placeholder="How can we help?" required class="w-full mt-4 bg-paper border border-line rounded-2xl px-4 py-3 text-sm placeholder:text-muted focus:outline-none focus:border-ink"></textarea>
+          <button type="submit" class="w-full mt-6 bg-ink text-white py-3.5 rounded-full font-bold hover:bg-black">Send Message</button>
         {% endform %}
-        <div class="mt-6 prose prose-invert max-w-none prose-p:text-white/60 prose-a:text-[#FFB800]">
-          {{ page.content }}
-        </div>
+        {% if page.content != blank %}<div class="mt-6 prose prose-sm max-w-none">{{ page.content }}</div>{% endif %}
       </div>
     </div>
   </div>
 </div>
-{% schema %}{"name":"Main Contact Luxury","settings":[]}{% endschema %}
+{% schema %}{"name":"Main Contact Clean","settings":[]}{% endschema %}
