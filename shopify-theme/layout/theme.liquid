@@ -1,0 +1,58 @@
+<!doctype html>
+<html class="no-js" lang="{{ request.locale.iso_code }}">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0F0F0F">
+  <link rel="canonical" href="{{ canonical_url }}">
+
+  {%- if settings.favicon != blank -%}
+    <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+  {%- endif -%}
+
+  <title>
+    {{ page_title }}
+    {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
+    {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+    {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+  </title>
+
+  {% if page_description %}
+    <meta name="description" content="{{ page_description | escape }}">
+  {% endif %}
+
+  {{ content_for_header }}
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css">
+  <script>
+    tailwind.config={theme:{extend:{fontFamily:{fraunces:['Fraunces','serif'],jakarta:['Plus Jakarta Sans','sans-serif'],serif2:['Instrument Serif','serif']},colors:{ink:'#0F0F0F',paper:'#FDF8F0',cream:'#FFF6E8',gold:'#FFB800',muted:'#6B6B6B'}}}}
+  </script>
+  <style>
+    *{font-family:'Plus Jakarta Sans',sans-serif}
+    .display{font-family:'Fraunces',serif}
+    .serif2{font-family:'Instrument Serif',serif}
+    .line-clamp-2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+    .card-hover{transition:all .35s cubic-bezier(.16,1,.3,1)}
+    .card-hover:hover{transform:translateY(-6px);box-shadow:0 20px 40px -12px rgba(0,0,0,.12)}
+    html,body{max-width:100%;overflow-x:hidden}
+    .ri-star-fill{font-size:13px}
+  </style>
+
+  {{ 'mavizio.css' | asset_url | stylesheet_tag }}
+</head>
+
+<body class="bg-paper text-ink antialiased overflow-x-hidden">
+  {% section 'header' %}
+  <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
+    {{ content_for_layout }}
+  </main>
+  {% section 'footer' %}
+
+  <script src="{{ 'mavizio.js' | asset_url }}" defer></script>
+</body>
+</html>

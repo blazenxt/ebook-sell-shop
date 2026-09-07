@@ -1,0 +1,51 @@
+<section id="collection" class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-10">
+  <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3 sm:gap-4">
+    <div>
+      <div class="text-[11px] tracking-[0.2em] font-extrabold text-muted">BROWSE BY TOPIC</div>
+      <h2 class="display text-[28px] sm:text-[32px] leading-none mt-1">{{ section.settings.heading | default: 'Shop by Collection' }}</h2>
+    </div>
+  </div>
+  <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4 mt-6">
+    {% for collection in collections limit: 6 %}
+      <a href="{{ collection.url }}" class="group text-left bg-white border border-black/5 rounded-[18px] p-4 card-hover block">
+        <div class="w-10 h-10 rounded-xl bg-cream grid place-items-center text-lg">
+          {% if collection.title contains 'Business' %}<i class="ri-briefcase-4-line"></i>
+          {% elsif collection.title contains 'Self' %}<i class="ri-sparkling-2-line"></i>
+          {% elsif collection.title contains 'Fiction' %}<i class="ri-book-open-line"></i>
+          {% elsif collection.title contains 'Tech' %}<i class="ri-cpu-line"></i>
+          {% elsif collection.title contains 'Finance' %}<i class="ri-money-dollar-circle-line"></i>
+          {% else %}<i class="ri-stack-line"></i>{% endif %}
+        </div>
+        <div class="font-bold text-sm mt-3">{{ collection.title }}</div><div class="text-xs text-muted">{{ collection.products_count }} ebooks</div>
+      </a>
+    {% else %}
+      {% assign cats = "Business:24,Self-Help:32,Fiction:18,UPSC / SSC:15,Tech & AI:21,Finance:12" | split: "," %}
+      {% for cat in cats %}
+        {% assign parts = cat | split: ":" %}
+        <a href="{{ routes.collections_url }}" class="group text-left bg-white border border-black/5 rounded-[18px] p-4 card-hover block">
+          <div class="w-10 h-10 rounded-xl bg-cream grid place-items-center text-lg"><i class="ri-folder-3-line"></i></div>
+          <div class="font-bold text-sm mt-3">{{ parts[0] }}</div><div class="text-xs text-muted">{{ parts[1] }} ebooks</div>
+        </a>
+      {% endfor %}
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collection List",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Shop by Collection"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection List"
+    }
+  ]
+}
+{% endschema %}
