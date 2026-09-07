@@ -6,28 +6,46 @@
     </div>
   </div>
   <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4 mt-6">
+    {% assign shown = 0 %}
     {% for collection in collections limit: 6 %}
+      {% assign shown = shown | plus: 1 %}
       <a href="{{ collection.url }}" class="group text-left bg-white border border-black/5 rounded-[18px] p-4 card-hover block">
         <div class="w-10 h-10 rounded-xl bg-cream grid place-items-center text-lg">
           {% if collection.title contains 'Business' %}<i class="ri-briefcase-4-line"></i>
           {% elsif collection.title contains 'Self' %}<i class="ri-sparkling-2-line"></i>
           {% elsif collection.title contains 'Fiction' %}<i class="ri-book-open-line"></i>
+          {% elsif collection.title contains 'UPSC' %}<i class="ri-graduation-cap-line"></i>
           {% elsif collection.title contains 'Tech' %}<i class="ri-cpu-line"></i>
           {% elsif collection.title contains 'Finance' %}<i class="ri-money-dollar-circle-line"></i>
           {% else %}<i class="ri-stack-line"></i>{% endif %}
         </div>
         <div class="font-bold text-sm mt-3">{{ collection.title }}</div><div class="text-xs text-muted">{{ collection.products_count }} ebooks</div>
       </a>
-    {% else %}
+    {% endfor %}
+    {% if shown == 0 %}
       {% assign cats = "Business:24,Self-Help:32,Fiction:18,UPSC / SSC:15,Tech & AI:21,Finance:12" | split: "," %}
       {% for cat in cats %}
         {% assign parts = cat | split: ":" %}
-        <a href="{{ routes.collections_url }}" class="group text-left bg-white border border-black/5 rounded-[18px] p-4 card-hover block">
+        <a href="{{ routes.collections_url }}/all" class="group text-left bg-white border border-black/5 rounded-[18px] p-4 card-hover block">
           <div class="w-10 h-10 rounded-xl bg-cream grid place-items-center text-lg"><i class="ri-folder-3-line"></i></div>
           <div class="font-bold text-sm mt-3">{{ parts[0] }}</div><div class="text-xs text-muted">{{ parts[1] }} ebooks</div>
         </a>
       {% endfor %}
-    {% endfor %}
+    {% elsif shown < 6 %}
+      {% assign placeholders = "Business:24,Self-Help:32,Fiction:18,UPSC / SSC:15,Tech & AI:21,Finance:12" | split: "," %}
+      {% assign need = 6 | minus: shown %}
+      {% for cat in placeholders limit: need %}
+        {% assign parts = cat | split: ":" %}
+        {% assign already_shown = false %}
+        {% for col in collections limit: 6 %}{% if col.title contains parts[0] %}{% assign already_shown = true %}{% endif %}{% endfor %}
+        {% unless already_shown %}
+        <a href="{{ routes.collections_url }}/all" class="group text-left bg-white/60 border border-dashed border-black/10 rounded-[18px] p-4 card-hover block">
+          <div class="w-10 h-10 rounded-xl bg-paper grid place-items-center text-lg opacity-60"><i class="ri-folder-3-line"></i></div>
+          <div class="font-bold text-sm mt-3">{{ parts[0] }}</div><div class="text-xs text-muted">{{ parts[1] }} ebooks • Soon</div>
+        </a>
+        {% endunless %}
+      {% endfor %}
+    {% endif %}
   </div>
 </section>
 

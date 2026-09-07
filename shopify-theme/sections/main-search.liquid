@@ -1,0 +1,46 @@
+<div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-6">
+  <h1 class="display text-[30px] sm:text-[36px] leading-none">Search</h1>
+  <form action="{{ routes.search_url }}" method="get" class="mt-4 flex gap-2 max-w-[640px]">
+    <input type="search" name="q" value="{{ search.terms | escape }}" placeholder="Search ebooks, collections..." class="flex-1 bg-white border border-black/10 rounded-full px-5 py-3.5 text-sm outline-none focus:border-ink">
+    <button type="submit" class="bg-ink text-white px-6 py-3.5 rounded-full font-bold text-sm">Search</button>
+  </form>
+</div>
+{% if search.performed %}
+<section class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+  <div class="flex items-center gap-3">
+    <span class="bg-white border border-black/10 rounded-full px-4 py-2 text-xs font-bold">{{ search.results_count }} results for "{{ search.terms | escape }}"</span>
+  </div>
+  {% if search.results_count > 0 %}
+  <div class="grid gap-4 mt-6">
+    {% for item in search.results %}
+      {% if item.object_type == 'product' %}
+        <a href="{{ item.url }}" class="flex gap-4 bg-white border border-black/5 rounded-2xl p-4 card-hover">
+          <img src="{{ item.featured_image | image_url: width: 200 }}" alt="{{ item.title }}" class="w-20 h-28 object-cover rounded-xl bg-paper border border-black/5 shrink-0">
+          <div class="min-w-0 flex-1">
+            <div class="text-[11px] tracking-widest font-bold text-muted">MAVIZIO • EBOOK</div>
+            <div class="font-bold leading-tight mt-1 line-clamp-2">{{ item.title }}</div>
+            <div class="text-xs text-muted mt-1">{{ item.vendor }}</div>
+            <div class="font-extrabold mt-2">{{ item.price | money }}</div>
+          </div>
+          <span class="hidden sm:inline-flex self-center bg-ink text-white px-4 py-2 rounded-full text-xs font-bold shrink-0">View</span>
+        </a>
+      {% else %}
+        <a href="{{ item.url }}" class="bg-white border border-black/5 rounded-2xl p-5 card-hover block">
+          <div class="text-[11px] tracking-widest font-bold text-muted">{{ item.object_type | upcase }}</div>
+          <div class="font-bold mt-1">{{ item.title }}</div>
+          <div class="text-sm text-muted mt-2 line-clamp-2">{{ item.content | strip_html | truncate: 160 }}</div>
+        </a>
+      {% endif %}
+    {% endfor %}
+  </div>
+  {% else %}
+    <div class="text-center bg-white border border-black/5 rounded-[24px] p-10 mt-6">
+      <div class="w-14 h-14 bg-paper border border-black/5 rounded-full grid place-items-center mx-auto"><i class="ri-search-line text-xl"></i></div>
+      <div class="font-bold mt-3">No results found</div>
+      <div class="text-sm text-muted mt-1">Try different keywords or browse collections</div>
+      <a href="{{ routes.collections_url }}" class="inline-flex mt-5 bg-ink text-white px-6 py-3 rounded-full font-bold text-sm">Browse collections</a>
+    </div>
+  {% endif %}
+</section>
+{% endif %}
+{% schema %}{"name":"Main Search","settings":[]}{% endschema %}
