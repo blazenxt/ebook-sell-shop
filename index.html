@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Granth — Ebook Store | Gyaan, Instant Milega</title>
+<meta name="description" content="India's favourite ebook store. Business, Self-Help, Fiction, UPSC — sab ebooks instant download. UPI, Razorpay supported.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,600;9..144,1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css">
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      fontFamily: { fraunces: ['Fraunces','serif'], jakarta: ['Plus Jakarta Sans','sans-serif'], serif2: ['Instrument Serif','serif'] },
+      colors: {
+        ink: '#0F0F0F',
+        paper: '#FDF8F0',
+        cream: '#FFF6E8',
+        gold: '#FFB800',
+        muted: '#6B6B6B'
+      }
+    }
+  }
+}
+</script>
+<style>
+  *{font-family:'Plus Jakarta Sans',sans-serif}
+  .display{font-family:'Fraunces',serif}
+  .serif2{font-family:'Instrument Serif',serif}
+  ::-webkit-scrollbar{width:6px;height:6px}::-webkit-scrollbar-thumb{background:#D1CCC3;border-radius:999px}
+  .hide-scrollbar::-webkit-scrollbar{display:none}
+  .line-clamp-2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+</style>
+</head>
+<body class="bg-paper text-ink antialiased">
+
+<!-- Top Bar -->
+<div class="bg-ink text-white text-[12px] tracking-wide text-center py-2.5 px-4 flex items-center justify-center gap-2">
+  <span class="hidden sm:inline">🎉</span> <span><b>DIWALI SALE LIVE</b> — Har ebook par 40% off • Code: <b class="text-gold">GRANTH40</b> • Instant Download</span>
+  <a href="#collection" class="ml-2 hidden md:inline-flex bg-white text-ink px-3 py-1 rounded-full font-bold text-[11px]">Shop Now →</a>
+</div>
+
+<!-- Header -->
+<header class="sticky top-0 z-40 bg-paper/90 backdrop-blur-xl border-b border-black/5">
+  <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-[68px] gap-4">
+      <!-- Logo + Nav -->
+      <div class="flex items-center gap-8">
+        <a href="#" class="flex items-center gap-2.5">
+          <div class="w-9 h-9 bg-ink text-gold rounded-xl grid place-items-center text-[18px]"><i class="ri-book-open-line"></i></div>
+          <span class="display text-[22px] tracking-tight leading-none">Granth<span class="text-gold">.</span></span>
+          <span class="hidden lg:inline text-[10px] tracking-[0.18em] font-bold text-muted border border-black/10 rounded-full px-2 py-1 ml-1">EBOOK STORE</span>
+        </a>
+        <nav class="hidden lg:flex items-center gap-6 text-[13px] font-semibold tracking-wide">
+          <a href="#bestsellers" class="hover:text-gold transition">Bestsellers</a>
+          <a href="#collection" class="hover:text-gold transition">Categories</a>
+          <a href="#" onclick="openAbout();return false" class="hover:text-gold transition">About</a>
+          <span class="w-px h-4 bg-black/10"></span>
+          <span class="text-muted font-medium">Support: <b class="text-ink">+91 90000 12345</b></span>
+        </nav>
+      </div>
+
+      <!-- Search -->
+      <div class="hidden md:flex flex-1 max-w-[420px] mx-6 relative">
+        <input id="searchInput" type="text" placeholder="Search ebooks, authors, topics..." class="w-full bg-white border border-black/10 rounded-full pl-11 pr-4 py-[11px] text-[14px] focus:outline-none focus:border-ink/20 focus:ring-4 focus:ring-black/5 transition">
+        <i class="ri-search-line absolute left-4 top-1/2 -translate-y-1/2 text-muted"></i>
+        <kbd class="absolute right-2 top-1/2 -translate-y-1/2 hidden xl:flex bg-cream border border-black/10 rounded-full px-2.5 py-1 text-[11px] font-bold text-muted">⌘ K</kbd>
+      </div>
+
+      <!-- Actions -->
+      <div class="flex items-center gap-1 sm:gap-2">
+        <button onclick="toggleSearchMobile()" class="md:hidden w-9 h-9 grid place-items-center rounded-full hover:bg-black/5"><i class="ri-search-line text-lg"></i></button>
+        <button onclick="toggleWishlist()" class="relative w-9 h-9 sm:w-10 sm:h-10 grid place-items-center rounded-full hover:bg-black/5 transition">
+          <i class="ri-heart-3-line text-[20px]"></i><span id="wishlistCount" class="absolute -top-1 -right-1 bg-gold text-ink text-[11px] font-bold w-5 h-5 rounded-full grid place-items-center hidden">0</span>
+        </button>
+        <button onclick="openCart()" class="relative flex items-center gap-2 bg-ink text-white rounded-full pl-2 pr-3 sm:pr-4 py-1.5 hover:bg-black transition">
+          <span class="w-7 h-7 bg-white text-ink rounded-full grid place-items-center"><i class="ri-shopping-bag-line"></i></span>
+          <span class="hidden sm:inline text-sm font-bold">Cart</span>
+          <span id="cartCount" class="bg-gold text-ink text-xs font-bold px-1.5 py-0.5 rounded-full min-w-[20px] text-center">0</span>
+        </button>
+        <button class="hidden sm:grid w-10 h-10 place-items-center rounded-full bg-white border border-black/10"><i class="ri-user-3-line"></i></button>
+        <button onclick="toggleMobileMenu()" class="lg:hidden w-10 h-10 grid place-items-center rounded-full bg-white border border-black/10"><i class="ri-menu-line"></i></button>
+      </div>
+    </div>
+    <!-- Mobile Search -->
+    <div id="mobileSearch" class="hidden md:hidden pb-4">
+      <div class="relative">
+        <input id="searchInputMobile" type="text" placeholder="Search ebooks..." class="w-full bg-white border border-black/10 rounded-full pl-11 pr-4 py-3 text-sm focus:outline-none">
+        <i class="ri-search-line absolute left-4 top-1/2 -translate-y-1/2 text-muted"></i>
+      </div>
+    </div>
+  </div>
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="hidden lg:hidden border-t border-black/5 bg-white px-6 py-4 space-y-3 text-sm font-semibold">
+    <a href="#bestsellers" class="block py-2">Bestsellers</a><a href="#collection" class="block py-2">Categories</a><a href="#" class="block py-2">My Downloads</a><a href="#" class="block py-2">Help & Support</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 pt-6 sm:pt-10">
+  <div class="grid lg:grid-cols-[1.15fr_0.85fr] gap-6 items-stretch">
+    <!-- Left Hero Card -->
+    <div class="relative overflow-hidden rounded-[28px] bg-ink text-white p-6 sm:p-10 lg:p-12 flex flex-col justify-between min-h-[520px]">
+      <div class="absolute inset-0 opacity-[0.07]" style="background-image:radial-gradient(circle at 1px 1px, white 1px, transparent 0);background-size:22px 22px"></div>
+      <div class="absolute -right-20 -bottom-20 w-[380px] h-[380px] bg-gold/20 blur-[80px] rounded-full"></div>
+      <div class="relative">
+        <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur border border-white/10 rounded-full px-3 py-1.5 text-xs font-semibold tracking-wide">
+          <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span> 12,847+ Readers ne aaj download kiya
+        </div>
+        <h1 class="display text-[42px] sm:text-[54px] lg:text-[62px] leading-[0.92] tracking-tight mt-6">
+          Gyaan ka<br>
+          <span class="serif2 italic font-normal text-gold">naya safar.</span><br>
+          Instant milega.
+        </h1>
+        <p class="text-white/70 text-[15px] sm:text-[16px] leading-relaxed max-w-[520px] mt-4">
+          Curated ebooks — Business, Self-Help, Fiction, UPSC. Pay via UPI / Razorpay & download in 10 seconds. No waiting, no shipping.
+        </p>
+        <div class="flex flex-wrap gap-3 mt-8">
+          <a href="#bestsellers" class="inline-flex items-center gap-2 bg-gold text-ink px-7 py-3.5 rounded-full font-bold text-sm hover:bg-white transition">Explore Ebooks <i class="ri-arrow-right-line"></i></a>
+          <button onclick="document.getElementById('howItWorks').scrollIntoView({behavior:'smooth'})" class="inline-flex items-center gap-2 bg-white/10 backdrop-blur border border-white/20 text-white px-7 py-3.5 rounded-full font-bold text-sm hover:bg-white hover:text-ink transition"><i class="ri-play-circle-line"></i> Kaise kaam karta hai?</button>
+        </div>
+        <div class="flex items-center gap-6 mt-10">
+          <div class="flex -space-x-2">
+            <img src="https://i.pravatar.cc/100?img=32" class="w-9 h-9 rounded-full border-2 border-ink">
+            <img src="https://i.pravatar.cc/100?img=14" class="w-9 h-9 rounded-full border-2 border-ink">
+            <img src="https://i.pravatar.cc/100?img=28" class="w-9 h-9 rounded-full border-2 border-ink">
+            <span class="w-9 h-9 rounded-full bg-gold text-ink grid place-items-center text-xs font-bold border-2 border-ink">+12k</span>
+          </div>
+          <div class="text-sm leading-tight">
+            <div class="flex text-gold text-[14px]">★★★★★ <span class="text-white/80 ml-2 font-bold">4.9/5</span></div>
+            <div class="text-white/60 text-xs">2,400+ verified reviews</div>
+          </div>
+          <div class="hidden sm:flex items-center gap-2 ml-auto">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apple/apple-original.svg" class="w-6 h-6 invert opacity-70">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/200px-Mastercard-logo.svg.png" class="h-6 opacity-80 bg-white rounded px-1">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Featured Product + Mini -->
+    <div class="grid grid-rows-[1.6fr_0.9fr] gap-6">
+      <!-- Featured Ebook Card -->
+      <div class="relative overflow-hidden rounded-[28px] bg-white border border-black/5 p-6 sm:p-7 flex gap-6 items-center">
+        <div class="absolute top-0 right-0 bg-gold text-ink text-[11px] font-extrabold tracking-widest px-4 py-1.5 rounded-bl-2xl">EDITORS' CHOICE</div>
+        <div class="shrink-0">
+          <div class="w-[160px] sm:w-[185px] h-[232px] sm:h-[268px] rounded-2xl overflow-hidden shadow-[0_18px_40px_rgba(0,0,0,0.18)] rotate-[-2deg] relative bg-gradient-to-br from-[#1A2332] to-[#0F172A] p-3 flex flex-col">
+            <div class="text-[9px] tracking-[0.2em] text-white/60 font-bold">GRANTH ORIGINALS</div>
+            <div class="mt-3 text-white leading-tight">
+              <div class="text-[18px] font-bold leading-none display">The Art of<br><span class="text-gold">Deep Work</span></div>
+              <div class="text-[11px] text-white/70 mt-2">Hindi + English • Audio summary free</div>
+            </div>
+            <div class="mt-auto flex items-center gap-2">
+              <img src="https://i.pravatar.cc/100?img=15" class="w-6 h-6 rounded-full">
+              <span class="text-[11px] text-white font-semibold">A. Sharma</span>
+            </div>
+            <div class="absolute -right-6 -bottom-6 w-24 h-24 bg-gold/30 blur-2xl rounded-full"></div>
+          </div>
+        </div>
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center gap-2 text-xs font-bold">
+            <span class="bg-green-50 text-green-700 border border-green-200 px-2.5 py-1 rounded-full">● Instant Download</span>
+            <span class="hidden sm:inline text-muted font-medium">PDF + EPUB + MOBI</span>
+          </div>
+          <h3 class="display text-[22px] leading-tight mt-3">The Art of Deep Work</h3>
+          <p class="text-sm text-muted leading-relaxed mt-1.5 line-clamp-2">Focus, discipline aur 10x productivity — bina burnout ke. 120 pages, practical exercises.</p>
+          <div class="flex items-center gap-1.5 mt-3 text-gold text-sm">★★★★★ <span class="text-ink font-bold text-sm">4.9</span> <span class="text-muted font-medium text-xs">(1,842)</span> <span class="ml-2 bg-cream border border-black/5 px-2 py-0.5 rounded-full text-ink text-xs font-bold">Bestseller #1</span></div>
+          <div class="flex items-baseline gap-2 mt-4">
+            <span class="text-[26px] font-extrabold tracking-tight">₹199</span>
+            <span class="text-sm line-through text-muted">₹499</span>
+            <span class="text-xs font-extrabold bg-green-500 text-white px-2 py-1 rounded-full">60% OFF</span>
+          </div>
+          <div class="flex gap-2 mt-4">
+            <button onclick="addToCart(1)" class="flex-1 bg-ink text-white rounded-full py-3 font-bold text-sm hover:bg-black transition">Add to Cart</button>
+            <button onclick="buyNow(1)" class="flex-1 bg-gold text-ink rounded-full py-3 font-bold text-sm hover:bg-yellow-400 transition">Buy Now</button>
+          </div>
+          <div class="flex items-center justify-center gap-3 mt-3 text-[11px] font-semibold text-muted">
+            <span class="flex items-center gap-1"><i class="ri-shield-check-line"></i> Secure Payment</span>
+            <span>•</span>
+            <span>30-day refund</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats strip -->
+      <div class="grid grid-cols-3 gap-4">
+        <div class="bg-gold rounded-[22px] p-5 flex flex-col justify-center">
+          <div class="text-[28px] font-extrabold leading-none">50k+</div>
+          <div class="text-xs font-bold tracking-wide opacity-70 mt-1">EBOOKS SOLD</div>
+          <div class="mt-3 text-xs font-medium opacity-70">Trusted by readers across India</div>
+        </div>
+        <div class="bg-white border border-black/5 rounded-[22px] p-5 flex flex-col justify-center">
+          <div class="w-8 h-8 bg-cream rounded-full grid place-items-center"><i class="ri-flashlight-line"></i></div>
+          <div class="text-sm font-extrabold mt-3 leading-tight">10 Sec<br>Delivery</div>
+          <div class="text-xs text-muted mt-1">Email + WhatsApp</div>
+        </div>
+        <div class="bg-white border border-black/5 rounded-[22px] p-5 flex flex-col justify-center">
+          <div class="w-8 h-8 bg-cream rounded-full grid place-items-center"><i class="ri-customer-service-2-line"></i></div>
+          <div class="text-sm font-extrabold mt-3 leading-tight">Lifetime<br>Access</div>
+          <div class="text-xs text-muted mt-1">Re-download anytime</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<section class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-6">
+  <div class="bg-white border border-black/5 rounded-[18px] px-4 sm:px-6 py-4 flex flex-wrap items-center justify-between gap-4 text-xs font-bold tracking-wide">
+    <span class="flex items-center gap-2"><span class="w-7 h-7 bg-green-50 rounded-full grid place-items-center text-green-600"><i class="ri-verified-badge-line"></i></span> 100% Secure Payments via Razorpay & UPI</span>
+    <span class="hidden sm:flex items-center gap-2"><span class="w-7 h-7 bg-cream rounded-full grid place-items-center"><i class="ri-file-download-line"></i></span> Instant PDF • EPUB • MOBI • Audio Summary</span>
+    <span class="flex items-center gap-2"><span class="w-7 h-7 bg-cream rounded-full grid place-items-center"><i class="ri-refund-2-line"></i></span> 30-Day Money Back — No Questions</span>
+    <span class="hidden lg:flex items-center gap-2 text-muted font-medium">Available on <b class="text-ink">Phone • Tablet • Laptop • Kindle</b></span>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section id="collection" class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-10">
+  <div class="flex items-end justify-between gap-4">
+    <div>
+      <div class="text-[11px] tracking-[0.2em] font-extrabold text-muted">BROWSE BY TOPIC</div>
+      <h2 class="display text-[28px] sm:text-[32px] leading-none mt-1">Shop by Collection</h2>
+    </div>
+    <div class="hidden sm:flex gap-2">
+      <button onclick="filterCategory('all')" data-cat="all" class="cat-btn active bg-ink text-white px-5 py-2.5 rounded-full text-sm font-bold">All</button>
+      <button onclick="filterCategory('business')" data-cat="business" class="cat-btn bg-white border border-black/10 px-5 py-2.5 rounded-full text-sm font-bold hover:bg-black hover:text-white transition">Business</button>
+      <button onclick="filterCategory('selfhelp')" data-cat="selfhelp" class="cat-btn bg-white border border-black/10 px-5 py-2.5 rounded-full text-sm font-bold hover:bg-black hover:text-white transition">Self-Help</button>
+      <button onclick="filterCategory('fiction')" data-cat="fiction" class="cat-btn bg-white border border-black/10 px-5 py-2.5 rounded-full text-sm font-bold hover:bg-black hover:text-white transition">Fiction</button>
+      <button onclick="filterCategory('exam')" data-cat="exam" class="cat-btn bg-white border border-black/10 px-5 py-2.5 rounded-full text-sm font-bold hover:bg-black hover:text-white transition">Exams</button>
+    </div>
+  </div>
+  <!-- Mobile cat pills -->
+  <div class="flex sm:hidden gap-2 mt-4 overflow-x-auto hide-scrollbar pb-1">
+    <button onclick="filterCategory('all')" data-cat="all" class="cat-btn active shrink-0 bg-ink text-white px-5 py-2.5 rounded-full text-sm font-bold">All</button>
+    <button onclick="filterCategory('business')" data-cat="business" class="cat-btn shrink-0 bg-white border border-black/10 px-5 py-2.5 rounded-full text-sm font-bold">Business</button>
+    <button onclick="filterCategory('selfhelp')" data-cat="selfhelp" class="cat-btn shrink-0 bg-white border border-black/10 px-5 py-2.5 rounded-full text-sm font-bold">Self-Help</button>
+    <button onclick="filterCategory('fiction')" data-cat="fiction" class="cat-btn shrink-0 bg-white border border-black/10 px-5 py-2.5 rounded-full text-sm font-bold">Fiction</button>
+    <button onclick="filterCategory('exam')" data-cat="exam" class="cat-btn shrink-0 bg-white border border-black/10 px-5 py-2.5 rounded-full text-sm font-bold">Exams</button>
+    <button onclick="filterCategory('tech')" data-cat="tech" class="cat-btn shrink-0 bg-white border border-black/10 px-5 py-2.5 rounded-full text-sm font-bold">Tech</button>
+  </div>
+
+  <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4 mt-6">
+    <button onclick="filterCategory('business')" class="group text-left bg-white border border-black/5 rounded-[18px] p-4 hover:shadow-lg hover:-translate-y-1 transition">
+      <div class="w-10 h-10 rounded-xl bg-[#FFF1C7] grid place-items-center text-lg">💼</div>
+      <div class="font-bold text-sm mt-3">Business</div><div class="text-xs text-muted">24 ebooks</div>
+    </button>
+    <button onclick="filterCategory('selfhelp')" class="group text-left bg-white border border-black/5 rounded-[18px] p-4 hover:shadow-lg hover:-translate-y-1 transition">
+      <div class="w-10 h-10 rounded-xl bg-[#E0F2FE] grid place-items-center text-lg">🧘</div>
+      <div class="font-bold text-sm mt-3">Self-Help</div><div class="text-xs text-muted">32 ebooks</div>
+    </button>
+    <button onclick="filterCategory('fiction')" class="group text-left bg-white border border-black/5 rounded-[18px] p-4 hover:shadow-lg hover:-translate-y-1 transition">
+      <div class="w-10 h-10 rounded-xl bg-[#FCE7F3] grid place-items-center text-lg">📖</div>
+      <div class="font-bold text-sm mt-3">Fiction</div><div class="text-xs text-muted">18 ebooks</div>
+    </button>
+    <button onclick="filterCategory('exam')" class="group text-left bg-white border border-black/5 rounded-[18px] p-4 hover:shadow-lg hover:-translate-y-1 transition">
+      <div class="w-10 h-10 rounded-xl bg-[#DCFCE7] grid place-items-center text-lg">🎯</div>
+      <div class="font-bold text-sm mt-3">UPSC / SSC</div><div class="text-xs text-muted">15 ebooks</div>
+    </button>
+    <button onclick="filterCategory('tech')" class="group text-left bg-white border border-black/5 rounded-[18px] p-4 hover:shadow-lg hover:-translate-y-1 transition">
+      <div class="w-10 h-10 rounded-xl bg-[#E0E7FF] grid place-items-center text-lg">💻</div>
+      <div class="font-bold text-sm mt-3">Tech & AI</div><div class="text-xs text-muted">21 ebooks</div>
+    </button>
+    <button onclick="filterCategory('finance')" class="group text-left bg-gradient-to-br from-ink to-[#232323] text-white rounded-[18px] p-4 hover:shadow-lg hover:-translate-y-1 transition">
+      <div class="w-10 h-10 rounded-xl bg-white/10 grid place-items-center text-lg">💰</div>
+      <div class="font-bold text-sm mt-3">Finance</div><div class="text-xs text-white/60">12 ebooks • New</div>
+    </button>
+  </div>
+</section>
+
+<!-- BESTSELLERS -->
+<section id="bestsellers" class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-10">
+  <div class="flex items-end justify-between">
+    <h2 class="display text-[28px] sm:text-[32px] leading-none">Bestsellers <span class="text-muted font-normal text-[18px]">— sabse zyada bikne wale</span></h2>
+    <a href="#collection" class="hidden sm:inline-flex items-center gap-1 text-sm font-bold border border-black/10 rounded-full px-4 py-2 hover:bg-ink hover:text-white transition">View All <i class="ri-arrow-right-line"></i></a>
+  </div>
+
+  <div id="productGrid" class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mt-6">
+    <!-- Products injected by JS -->
+  </div>
+
+  <div class="mt-8 bg-gradient-to-r from-[#FFF7CC] to-[#FFE9A8] border border-black/5 rounded-[20px] px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div class="flex items-center gap-4">
+      <div class="w-12 h-12 bg-ink text-gold rounded-xl grid place-items-center text-xl"><i class="ri-gift-line"></i></div>
+      <div>
+        <div class="font-extrabold leading-none">Bundle Offer — 4 Ebooks @ ₹499 only!</div>
+        <div class="text-sm text-ink/70">Koi bhi 4 ebooks chuno, combo price auto-apply. Limited time.</div>
+      </div>
+    </div>
+    <button onclick="addBundle()" class="shrink-0 bg-ink text-white px-6 py-3 rounded-full font-bold text-sm hover:bg-black transition">Add Bundle to Cart</button>
+  </div>
+</section>
+
+<!-- HOW IT WORKS + VIDEO -->
+<section id="howItWorks" class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-10">
+  <div class="grid lg:grid-cols-2 gap-6">
+    <div class="bg-white border border-black/5 rounded-[24px] p-6 sm:p-8">
+      <div class="text-[11px] tracking-[0.2em] font-extrabold text-muted">3 STEPS • 10 SECONDS</div>
+      <h3 class="display text-[30px] leading-none mt-2">Kaise kaam karta hai?</h3>
+      <div class="mt-6 space-y-5">
+        <div class="flex gap-4">
+          <div class="w-10 h-10 rounded-full bg-ink text-white grid place-items-center font-bold shrink-0">1</div>
+          <div><div class="font-bold">Ebook chuno & Pay karo</div><div class="text-sm text-muted leading-relaxed">UPI, Card, Netbanking — Razorpay 100% secure. GST invoice auto milega.</div></div>
+        </div>
+        <div class="flex gap-4">
+          <div class="w-10 h-10 rounded-full bg-gold text-ink grid place-items-center font-bold shrink-0">2</div>
+          <div><div class="font-bold">Instant Delivery</div><div class="text-sm text-muted leading-relaxed">Payment ke turant baad Email + WhatsApp par download link. My Downloads me bhi.</div></div>
+        </div>
+        <div class="flex gap-4">
+          <div class="w-10 h-10 rounded-full bg-white border border-black/10 grid place-items-center font-bold shrink-0">3</div>
+          <div><div class="font-bold">Padho kahin bhi</div><div class="text-sm text-muted leading-relaxed">Phone, Kindle, laptop — PDF / EPUB / MOBI + free audio summary.</div></div>
+        </div>
+      </div>
+      <div class="mt-6 flex items-center gap-3 text-xs font-bold">
+        <span class="flex items-center gap-1.5 bg-green-50 text-green-700 border border-green-200 px-3 py-1.5 rounded-full"><i class="ri-lock-2-line"></i> 256-bit SSL</span>
+        <span class="flex items-center gap-1.5 bg-cream border border-black/5 px-3 py-1.5 rounded-full"><i class="ri-customer-service-line"></i> 24/7 Support</span>
+      </div>
+    </div>
+
+    <div class="relative overflow-hidden rounded-[24px] bg-ink text-white p-6 sm:p-8 flex flex-col justify-between min-h-[380px]">
+      <div class="absolute inset-0 opacity-20" style="background:radial-gradient(600px 300px at 70% 20%, #FFB800 0%, transparent 60%)"></div>
+      <div class="relative">
+        <div class="inline-flex items-center gap-2 bg-white/10 border border-white/15 rounded-full px-3 py-1 text-xs font-bold"><i class="ri-play-circle-fill text-gold"></i> Watch: 60-sec demo</div>
+        <h3 class="display text-[28px] leading-none mt-4">Productivity Essentials<br><span class="serif2 italic font-normal text-gold">for digital India</span></h3>
+        <p class="text-white/60 text-sm mt-3 max-w-[420px]">Dekho kaise Granth se students aur professionals roz 2 ghante bachate hain.</p>
+      </div>
+      <div class="relative mt-6 bg-white rounded-2xl overflow-hidden">
+        <div class="aspect-video bg-gradient-to-br from-[#1A1A1A] to-black grid place-items-center relative">
+          <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&q=80" class="absolute inset-0 w-full h-full object-cover opacity-60">
+          <button onclick="openVideo()" class="relative w-16 h-16 bg-white rounded-full grid place-items-center shadow-xl hover:scale-105 transition"><i class="ri-play-fill text-2xl ml-1"></i></button>
+          <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs">
+            <span class="bg-black/70 text-white px-2.5 py-1 rounded-full backdrop-blur">1:18 • HD</span>
+            <span class="bg-gold text-ink px-2.5 py-1 rounded-full font-bold">No fluff, only value</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-10">
+  <div class="bg-white border border-black/5 rounded-[24px] p-6 sm:p-8">
+    <div class="flex flex-wrap items-center justify-between gap-4">
+      <h3 class="display text-[24px]">Readers kya keh rahe hain ❤️</h3>
+      <div class="flex items-center gap-2 text-sm"><span class="flex text-gold">★★★★★</span> <b>4.9/5</b> <span class="text-muted">• 2,412 reviews</span></div>
+    </div>
+    <div class="grid md:grid-cols-3 gap-4 mt-6">
+      <div class="bg-paper border border-black/5 rounded-2xl p-5">
+        <div class="flex text-gold text-sm">★★★★★</div>
+        <p class="text-sm leading-relaxed mt-2">“Deep Work ne meri UPSC prep badal di. Direct PDF mila, raat me hi padhna start kiya. Worth every rupee!”</p>
+        <div class="flex items-center gap-3 mt-4"><img src="https://i.pravatar.cc/100?img=11" class="w-8 h-8 rounded-full"><div class="text-xs"><div class="font-bold">Priya S. • Delhi</div><div class="text-muted">Verified buyer • 2 days ago</div></div></div>
+      </div>
+      <div class="bg-paper border border-black/5 rounded-2xl p-5">
+        <div class="flex text-gold text-sm">★★★★★</div>
+        <p class="text-sm leading-relaxed mt-2">“UPI payment + instant download. No drama. Ebook quality top hai, Kindle me bhi perfect.”</p>
+        <div class="flex items-center gap-3 mt-4"><img src="https://i.pravatar.cc/100?img=33" class="w-8 h-8 rounded-full"><div class="text-xs"><div class="font-bold">Aman K. • Pune</div><div class="text-muted">Verified buyer • 5 days ago</div></div></div>
+      </div>
+      <div class="bg-paper border border-black/5 rounded-2xl p-5">
+        <div class="flex text-gold text-sm">★★★★★</div>
+        <p class="text-sm leading-relaxed mt-2">“Bundle liya 4 ebooks ka. Audio summaries are gold for revision. Support bhi fast hai.”</p>
+        <div class="flex items-center gap-3 mt-4"><img src="https://i.pravatar.cc/100?img=26" class="w-8 h-8 rounded-full"><div class="text-xs"><div class="font-bold">Rohit M. • Bangalore</div><div class="text-muted">Verified buyer • 1 week ago</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-6 mb-10">
+  <div class="rounded-[24px] bg-ink text-white p-6 sm:p-8 flex flex-col lg:flex-row items-center justify-between gap-6">
+    <div>
+      <h3 class="display text-[26px] leading-none">Free ebook chahiye? 🎁</h3>
+      <p class="text-white/60 text-sm mt-2">Join 40,000+ readers. Har Sunday ek free chapter + exclusive 30% code.</p>
+    </div>
+    <form onsubmit="subscribe(event)" class="flex w-full lg:w-auto gap-2 bg-white rounded-full p-1.5 lg:min-w-[420px]">
+      <input type="email" required placeholder="Apna email likho..." class="flex-1 px-5 py-2.5 rounded-full outline-none text-ink text-sm">
+      <button class="shrink-0 bg-gold text-ink px-6 py-2.5 rounded-full font-bold text-sm hover:bg-yellow-400 transition">Get Free Ebook</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="border-t border-black/5 bg-white">
+  <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <div class="grid md:grid-cols-4 gap-8 text-sm">
+      <div>
+        <div class="flex items-center gap-2"><div class="w-8 h-8 bg-ink text-gold rounded-lg grid place-items-center"><i class="ri-book-open-line"></i></div><span class="display text-lg">Granth.</span></div>
+        <p class="text-muted leading-relaxed mt-3">India ka digital bookstore. Instant download, lifetime access. GSTIN: 22ABCDE1234F1Z5</p>
+        <div class="flex gap-2 mt-4 text-lg text-muted"><i class="ri-instagram-line hover:text-ink cursor-pointer"></i><i class="ri-twitter-x-line hover:text-ink cursor-pointer"></i><i class="ri-youtube-line hover:text-ink cursor-pointer"></i><i class="ri-linkedin-line hover:text-ink cursor-pointer"></i></div>
+      </div>
+      <div><div class="font-bold">Shop</div><div class="mt-3 space-y-2 text-muted"><a class="block hover:text-ink">Bestsellers</a><a class="block hover:text-ink">New Releases</a><a class="block hover:text-ink">Bundles</a><a class="block hover:text-ink">Free Ebooks</a></div></div>
+      <div><div class="font-bold">Help</div><div class="mt-3 space-y-2 text-muted"><a class="block hover:text-ink">My Downloads</a><a class="block hover:text-ink">Refund Policy</a><a class="block hover:text-ink">Contact: hello@granth.store</a><a class="block hover:text-ink">WhatsApp Support</a></div></div>
+      <div><div class="font-bold">Payments</div><div class="flex flex-wrap gap-2 mt-3"><span class="bg-paper border border-black/10 px-3 py-2 rounded-xl text-xs font-bold">Razorpay</span><span class="bg-paper border border-black/10 px-3 py-2 rounded-xl text-xs font-bold">UPI</span><span class="bg-paper border border-black/10 px-3 py-2 rounded-xl text-xs font-bold">Cards</span><span class="bg-paper border border-black/10 px-3 py-2 rounded-xl text-xs font-bold">Netbanking</span></div><div class="text-xs text-muted mt-3">🔒 100% secure • Instant GST invoice</div></div>
+    </div>
+    <div class="mt-8 pt-6 border-t border-black/5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-muted">
+      <span>© 2026 Granth Store. Made with ❤️ in Asansol, West Bengal.</span>
+      <span class="flex gap-4"><a class="hover:text-ink">Privacy</a><a class="hover:text-ink">Terms</a><a class="hover:text-ink">Shipping (Digital)</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- CART DRAWER -->
+<div id="cartDrawer" class="fixed inset-0 z-50 hidden">
+  <div onclick="closeCart()" class="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
+  <div class="absolute right-0 top-0 h-full w-full sm:w-[420px] bg-paper flex flex-col shadow-2xl">
+    <div class="px-6 py-5 border-b border-black/5 flex items-center justify-between bg-white">
+      <h3 class="display text-xl">Your Cart <span id="cartCount2" class="text-sm font-sans font-bold text-muted">(0)</span></h3>
+      <button onclick="closeCart()" class="w-9 h-9 rounded-full bg-paper border border-black/5 grid place-items-center"><i class="ri-close-line text-xl"></i></button>
+    </div>
+    <div id="cartItems" class="flex-1 overflow-y-auto p-6 space-y-4">
+      <div id="emptyCart" class="text-center py-16">
+        <div class="w-20 h-20 bg-white border border-black/5 rounded-full grid place-items-center mx-auto text-2xl">🛒</div>
+        <div class="font-bold mt-4">Your cart is empty</div>
+        <div class="text-sm text-muted mt-1">Add some ebooks to get started</div>
+        <a href="#bestsellers" onclick="closeCart()" class="inline-flex mt-4 bg-ink text-white px-6 py-2.5 rounded-full font-bold text-sm">Continue Shopping</a>
+      </div>
+    </div>
+    <div id="cartFooter" class="hidden border-t border-black/5 bg-white p-6 space-y-4">
+      <div class="flex gap-2">
+        <input id="couponInput" placeholder="Coupon code (GRANTH40)" class="flex-1 bg-paper border border-black/10 rounded-full px-4 py-2.5 text-sm outline-none">
+        <button onclick="applyCoupon()" class="bg-ink text-white px-5 py-2.5 rounded-full text-sm font-bold">Apply</button>
+      </div>
+      <div id="couponMsg" class="hidden text-xs font-bold px-3 py-2 rounded-xl"></div>
+      <div class="space-y-2 text-sm">
+        <div class="flex justify-between"><span class="text-muted">Subtotal</span><span id="cartSubtotal" class="font-bold">₹0</span></div>
+        <div class="flex justify-between"><span class="text-muted">Discount</span><span id="cartDiscount" class="font-bold text-green-600">-₹0</span></div>
+        <div class="flex justify-between text-base font-extrabold border-t border-black/5 pt-3"><span>Total</span><span id="cartTotal">₹0</span></div>
+        <div class="text-xs text-muted text-center">Inclusive of GST • Instant download after payment</div>
+      </div>
+      <button onclick="checkout()" class="w-full bg-gold text-ink py-3.5 rounded-full font-extrabold text-[15px] hover:bg-yellow-400 transition flex items-center justify-center gap-2">Proceed to Checkout <i class="ri-lock-2-fill"></i></button>
+      <div class="flex items-center justify-center gap-2 text-[11px] font-bold text-muted"><i class="ri-shield-check-line"></i> 100% Secure • Razorpay • UPI • Cards</div>
+    </div>
+  </div>
+</div>
+
+<!-- PRODUCT MODAL -->
+<div id="productModal" class="fixed inset-0 z-50 hidden">
+  <div onclick="closeModal()" class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+  <div class="absolute inset-0 sm:inset-auto sm:top-1/2 sm:left-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 w-full sm:w-[900px] sm:max-h-[90vh] bg-paper sm:rounded-[24px] overflow-hidden flex flex-col max-w-full">
+    <button onclick="closeModal()" class="absolute top-4 right-4 z-10 w-9 h-9 bg-white rounded-full grid place-items-center shadow"><i class="ri-close-line text-xl"></i></button>
+    <div id="modalContent" class="overflow-y-auto"></div>
+  </div>
+</div>
+
+<!-- CHECKOUT MODAL -->
+<div id="checkoutModal" class="fixed inset-0 z-50 hidden">
+  <div onclick="closeCheckout()" class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+  <div class="absolute inset-0 sm:inset-auto sm:top-1/2 sm:left-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 w-full sm:w-[560px] bg-white sm:rounded-[24px] overflow-hidden flex flex-col max-h-[100vh] sm:max-h-[92vh]">
+    <div class="px-6 sm:px-8 py-6 border-b border-black/5 flex items-center justify-between">
+      <h3 class="display text-2xl">Checkout</h3>
+      <button onclick="closeCheckout()" class="w-9 h-9 rounded-full bg-paper border border-black/5 grid place-items-center"><i class="ri-close-line text-xl"></i></button>
+    </div>
+    <form onsubmit="placeOrder(event)" class="overflow-y-auto px-6 sm:px-8 py-6 space-y-5">
+      <div class="bg-cream border border-black/5 rounded-2xl p-4 flex items-center justify-between">
+        <div class="text-sm"><div class="font-bold" id="checkoutSummary">0 items</div><div class="text-muted text-xs">Instant delivery via Email & WhatsApp</div></div>
+        <div class="text-right"><div class="font-extrabold text-lg" id="checkoutTotal">₹0</div><div class="text-xs text-muted">incl. GST</div></div>
+      </div>
+      <div class="grid gap-4">
+        <label class="text-sm font-bold">Email (download link yahin ayega) *<input required type="email" id="cEmail" placeholder="you@gmail.com" class="mt-1.5 w-full bg-paper border border-black/10 rounded-xl px-4 py-3 text-sm outline-none focus:border-ink/20 focus:ring-4 focus:ring-black/5"></label>
+        <label class="text-sm font-bold">WhatsApp Number *<input required type="tel" id="cPhone" placeholder="+91 90000 12345" class="mt-1.5 w-full bg-paper border border-black/10 rounded-xl px-4 py-3 text-sm outline-none focus:border-ink/20"></label>
+        <label class="text-sm font-bold">Full Name<input type="text" id="cName" placeholder="Aapka naam" class="mt-1.5 w-full bg-paper border border-black/10 rounded-xl px-4 py-3 text-sm outline-none"></label>
+      </div>
+      <div>
+        <div class="text-sm font-bold mb-2">Payment Method</div>
+        <div class="grid grid-cols-3 gap-2">
+          <label class="cursor-pointer"><input type="radio" name="pay" value="upi" checked class="peer sr-only"><div class="peer-checked:bg-ink peer-checked:text-white peer-checked:border-ink bg-paper border border-black/10 rounded-xl p-3 text-center hover:border-black/20 transition"><div class="text-lg">📱</div><div class="text-xs font-bold mt-1">UPI</div><div class="text-[10px] opacity-70">GPay • PhonePe</div></div></label>
+          <label class="cursor-pointer"><input type="radio" name="pay" value="card" class="peer sr-only"><div class="peer-checked:bg-ink peer-checked:text-white peer-checked:border-ink bg-paper border border-black/10 rounded-xl p-3 text-center hover:border-black/20 transition"><div class="text-lg">💳</div><div class="text-xs font-bold mt-1">Card</div><div class="text-[10px] opacity-70">Razorpay</div></div></label>
+          <label class="cursor-pointer"><input type="radio" name="pay" value="cod" class="peer sr-only"><div class="peer-checked:bg-ink peer-checked:text-white peer-checked:border-ink bg-paper border border-black/10 rounded-xl p-3 text-center hover:border-black/20 transition"><div class="text-lg">📄</div><div class="text-xs font-bold mt-1">Demo</div><div class="text-[10px] opacity-70">Test Order</div></div></label>
+        </div>
+      </div>
+      <div class="bg-green-50 border border-green-200 rounded-xl px-4 py-3 flex gap-3 text-sm">
+        <i class="ri-shield-check-fill text-green-600 text-lg shrink-0 mt-0.5"></i>
+        <div><b>Secure & Instant:</b> Payment ke 10 sec me download link email/WhatsApp par. 30-day refund guarantee.</div>
+      </div>
+      <button type="submit" id="payBtn" class="w-full bg-gold text-ink py-4 rounded-full font-extrabold text-base hover:bg-yellow-400 transition flex items-center justify-center gap-2"><i class="ri-lock-2-fill"></i> Pay <span id="payAmount">₹0</span> & Download Instantly</button>
+      <div class="text-center text-xs text-muted">By placing order you agree to Terms & Privacy. GST invoice will be emailed.</div>
+    </form>
+  </div>
+</div>
+
+<!-- SUCCESS MODAL -->
+<div id="successModal" class="fixed inset-0 z-[60] hidden">
+  <div class="absolute inset-0 bg-black/60 backdrop-blur-md"></div>
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[92%] sm:w-[480px] bg-white rounded-[24px] p-8 text-center shadow-2xl">
+    <div class="w-16 h-16 bg-green-500 text-white rounded-full grid place-items-center mx-auto text-3xl">✓</div>
+    <h3 class="display text-2xl mt-4">Payment Successful! 🎉</h3>
+    <p class="text-sm text-muted leading-relaxed mt-2">Aapke ebooks ready hain. Download links email par bhej diye hain. Yahan se bhi download kar sakte ho.</p>
+    <div id="downloadLinks" class="mt-6 space-y-2 text-left"></div>
+    <button onclick="closeSuccess()" class="mt-6 w-full bg-ink text-white py-3 rounded-full font-bold">Continue Shopping</button>
+  </div>
+</div>
+
+<!-- Wishlist Drawer -->
+<div id="wishlistDrawer" class="fixed inset-0 z-50 hidden">
+  <div onclick="closeWishlist()" class="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
+  <div class="absolute right-0 top-0 h-full w-full sm:w-[420px] bg-paper flex flex-col shadow-2xl">
+    <div class="px-6 py-5 border-b border-black/5 flex items-center justify-between bg-white">
+      <h3 class="display text-xl">Wishlist</h3>
+      <button onclick="closeWishlist()" class="w-9 h-9 rounded-full bg-paper border border-black/5 grid place-items-center"><i class="ri-close-line text-xl"></i></button>
+    </div>
+    <div id="wishlistItems" class="flex-1 overflow-y-auto p-6 space-y-4"></div>
+  </div>
+</div>
+
+<script>
+// ---------- DATA ----------
+const products = [
+  {id:1, title:"The Art of Deep Work", author:"Aditya Sharma", cat:"selfhelp", price:199, mrp:499, rating:4.9, reviews:1842, pages:120, lang:"Hindi + English", badge:"Bestseller #1", color:"from-[#1A2332] to-[#0F172A]", desc:"Focus, discipline aur 10x productivity — bina burnout ke. Practical exercises, daily rituals, aur phone addiction se chutkara.", formats:"PDF • EPUB • MOBI + Audio", img:"https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=600&q=80"},
+  {id:2, title:"Zero to One — Startup Playbook", author:"Rahul Verma", cat:"business", price:249, mrp:599, rating:4.8, reviews:923, pages:156, lang:"English", badge:"Editors' Pick", color:"from-[#7C3AED] to-[#4F46E5]", desc:"Idea se IPO tak — Indian startups ke real case studies (Flipkart, Zerodha, Boat). Fundraising, GTM, hiring.", formats:"PDF • EPUB + Worksheets", img:"https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&q=80"},
+  {id:3, title:"Atomic Habits — Desi Edition", author:"Sneha Gupta", cat:"selfhelp", price:179, mrp:399, rating:4.9, reviews:2412, pages:98, lang:"Hindi", badge:"Trending", color:"from-[#059669] to-[#047857]", desc:"Chhoti aadatein, bade results. Habit tracking sheets + 30-day challenge included.", formats:"PDF • EPUB", img:"https://images.unsplash.com/photo-1512820790803-83ca734da794?w=600&q=80"},
+  {id:4, title:"UPSC Prelims — Last 10 Years Solved", author:"DRISHTI Team", cat:"exam", price:299, mrp:799, rating:4.7, reviews:1103, pages:420, lang:"Hindi + English", badge:"For Aspirants", color:"from-[#DC2626] to-[#991B1B]", desc:"2015-2024 solved papers with detailed explanations, toppers' notes & elimination tricks.", formats:"PDF • Printable", img:"https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=600&q=80"},
+  {id:5, title:"The Silent Valley — A Thriller", author:"Ananya Roy", cat:"fiction", price:149, mrp:349, rating:4.6, reviews:642, pages:210, lang:"English", badge:"New Release", color:"from-[#0F172A] to-[#334155]", desc:"Darjeeling ki khoobsurat waadi me ek raaz. Page-turner jo ek raat me khatam kar doge.", formats:"EPUB • MOBI • Audio", img:"https://images.unsplash.com/photo-1516979187457-637abb4f9353?w=600&q=80"},
+  {id:6, title:"AI for Everyone — No Code", author:"Kunal Shah", cat:"tech", price:279, mrp:649, rating:4.8, reviews:812, pages:180, lang:"English + Hindi", badge:"Hot", color:"from-[#0891B2] to-[#0E7490]", desc:"ChatGPT, Midjourney, automation — bina coding ke kaise business aur job me use karein. Prompts library included.", formats:"PDF • EPUB + Prompt Pack", img:"https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&q=80"},
+  {id:7, title:"Paisa Vasool — Money Mastery", author:"CA Neha Jain", cat:"finance", price:199, mrp:499, rating:4.9, reviews:1534, pages:134, lang:"Hindi", badge:"Finance Bestseller", color:"from-[#CA8A04] to-[#A16207]", desc:"Salary se wealth kaise banaye — SIP, taxes, emergency fund, aur pehla ghar. Calculator sheets free.", formats:"PDF • Excel Sheets", img:"https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=600&q=80"},
+  {id:8, title:"SSC CGL — Maths Shortcuts", author:"Gagan Pratap Style", cat:"exam", price:159, mrp:399, rating:4.7, reviews:734, pages:260, lang:"Hindi + English", badge:"Staff Pick", color:"from-[#7E22CE] to-[#6B21A8]", desc:"1000+ shortcuts, 20 mock tests, aur 5-min me question solve karne ke tricks.", formats:"PDF • Practice Tests", img:"https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&q=80"},
+];
+
+let cart = JSON.parse(localStorage.getItem('granth_cart')||'[]');
+let wishlist = JSON.parse(localStorage.getItem('granth_wish')||'[]');
+let coupon = null;
+
+// ---------- RENDER ----------
+function renderProducts(filter='all', search=''){
+  const grid = document.getElementById('productGrid');
+  let list = products;
+  if(filter!=='all') list = list.filter(p=>p.cat===filter);
+  if(search) {
+    const q=search.toLowerCase();
+    list = list.filter(p=> (p.title+p.author+p.cat).toLowerCase().includes(q));
+  }
+  if(list.length===0){
+    grid.innerHTML = `<div class="col-span-full text-center py-16 bg-white rounded-2xl border border-black/5">
+      <div class="text-4xl">🔍</div><div class="font-bold mt-3">Kuch nahi mila</div><div class="text-sm text-muted">Try searching 'business' or 'UPSC'</div>
+    </div>`;
+    return;
+  }
+  grid.innerHTML = list.map(p=>`
+    <div onclick="openProduct(${p.id})" class="group cursor-pointer bg-white border border-black/5 rounded-[22px] overflow-hidden hover:shadow-xl hover:-translate-y-1 transition flex flex-col">
+      <div class="relative p-4 pb-0">
+        <div class="relative h-[190px] rounded-[16px] overflow-hidden bg-gradient-to-br ${p.color} p-3 flex flex-col shadow-md">
+          <div class="text-[8px] tracking-[0.18em] text-white/60 font-bold">GRANTH • ${p.cat.toUpperCase()}</div>
+          <div class="mt-2 text-white font-bold leading-tight line-clamp-2 display text-[17px]">${p.title}</div>
+          <div class="text-[11px] text-white/70 mt-1">${p.author}</div>
+          <div class="mt-auto flex items-center justify-between">
+            <span class="text-[10px] bg-white/15 backdrop-blur text-white px-2 py-1 rounded-full border border-white/10">${p.pages} pages</span>
+            <span class="text-[10px] bg-gold text-ink px-2 py-1 rounded-full font-bold">PDF + EPUB</span>
+          </div>
+          <button onclick="event.stopPropagation(); toggleWish(${p.id})" class="absolute top-3 right-3 w-8 h-8 bg-white rounded-full grid place-items-center shadow ${wishlist.includes(p.id)?'text-red-500':'text-ink/40'} hover:text-red-500 transition"><i class="${wishlist.includes(p.id)?'ri-heart-3-fill':'ri-heart-3-line'}"></i></button>
+        </div>
+        <div class="absolute top-6 left-6 bg-white text-ink text-[10px] font-extrabold tracking-wide px-2.5 py-1 rounded-full shadow">${p.badge}</div>
+      </div>
+      <div class="p-4 flex-1 flex flex-col">
+        <div class="flex items-center gap-1.5 text-[11px]"><span class="flex text-gold">★★★★★</span> <b class="text-ink">${p.rating}</b> <span class="text-muted">(${p.reviews.toLocaleString('en-IN')})</span></div>
+        <h3 class="font-bold leading-tight mt-1.5 line-clamp-2 text-[15px]">${p.title}</h3>
+        <div class="text-xs text-muted mt-1">${p.author} • ${p.lang}</div>
+        <div class="flex items-baseline gap-2 mt-3">
+          <span class="text-[20px] font-extrabold">₹${p.price}</span>
+          <span class="text-xs line-through text-muted">₹${p.mrp}</span>
+          <span class="text-[11px] font-bold bg-green-500 text-white px-1.5 py-0.5 rounded-full">${Math.round((1-p.price/p.mrp)*100)}% OFF</span>
+        </div>
+        <div class="grid grid-cols-2 gap-2 mt-4">
+          <button onclick="event.stopPropagation(); addToCart(${p.id})" class="bg-white border border-black/10 rounded-full py-2.5 text-sm font-bold hover:bg-ink hover:text-white transition">Add to Cart</button>
+          <button onclick="event.stopPropagation(); buyNow(${p.id})" class="bg-ink text-white rounded-full py-2.5 text-sm font-bold hover:bg-black transition">Buy Now</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ---------- CART ----------
+function addToCart(id){
+  const item = cart.find(c=>c.id===id);
+  if(item) item.qty++;
+  else cart.push({id, qty:1});
+  saveCart(); renderCart(); openCart();
+  toast('Added to cart ✓');
+}
+function addBundle(){
+  [1,2,3,7].forEach(id=>{
+    if(!cart.find(c=>c.id===id)) cart.push({id, qty:1});
+  });
+  coupon='GRANTH40';
+  saveCart(); renderCart(); openCart();
+  toast('Bundle added — 40% off auto-applied!');
+}
+function saveCart(){ localStorage.setItem('granth_cart', JSON.stringify(cart)); updateCounts(); }
+function updateCounts(){
+  const totalQty = cart.reduce((s,c)=>s+c.qty,0);
+  document.getElementById('cartCount').textContent = totalQty;
+  document.getElementById('cartCount2').textContent = `(${totalQty})`;
+  document.getElementById('cartCount').classList.toggle('hidden', totalQty===0);
+  document.getElementById('wishlistCount').textContent = wishlist.length;
+  document.getElementById('wishlistCount').classList.toggle('hidden', wishlist.length===0);
+}
+function renderCart(){
+  const el = document.getElementById('cartItems');
+  const footer = document.getElementById('cartFooter');
+  const empty = document.getElementById('emptyCart');
+  if(cart.length===0){
+    empty.style.display='block';
+    footer.classList.add('hidden');
+    el.querySelectorAll('.cart-row').forEach(n=>n.remove());
+    document.getElementById('couponMsg').classList.add('hidden');
+    return;
+  }
+  empty.style.display='none';
+  footer.classList.remove('hidden');
+  // remove old rows
+  el.querySelectorAll('.cart-row').forEach(n=>n.remove());
+  let subtotal=0;
+  cart.forEach(c=>{
+    const p=products.find(x=>x.id===c.id);
+    subtotal+=p.price*c.qty;
+    const row=document.createElement('div');
+    row.className='cart-row bg-white border border-black/5 rounded-2xl p-3 flex gap-3';
+    row.innerHTML=`
+      <div class="w-[72px] h-[92px] rounded-xl bg-gradient-to-br ${p.color} p-2 flex flex-col shrink-0 text-white">
+        <div class="text-[7px] tracking-widest opacity-60 font-bold">GRANTH</div>
+        <div class="text-[11px] font-bold leading-tight mt-1 line-clamp-3">${p.title}</div>
+        <div class="mt-auto text-[9px] bg-white/20 rounded-full px-1.5 py-0.5 text-center">PDF</div>
+      </div>
+      <div class="flex-1 min-w-0">
+        <div class="font-bold text-sm leading-tight line-clamp-2">${p.title}</div>
+        <div class="text-xs text-muted">${p.author}</div>
+        <div class="flex items-center gap-2 mt-1"><span class="font-extrabold text-sm">₹${p.price}</span><span class="text-xs line-through text-muted">₹${p.mrp}</span></div>
+        <div class="flex items-center gap-2 mt-2">
+          <button onclick="changeQty(${p.id},-1)" class="w-7 h-7 rounded-full bg-paper border border-black/10 grid place-items-center">−</button>
+          <span class="w-7 text-center text-sm font-bold">${c.qty}</span>
+          <button onclick="changeQty(${p.id},1)" class="w-7 h-7 rounded-full bg-ink text-white grid place-items-center">+</button>
+          <button onclick="removeFromCart(${p.id})" class="ml-auto text-xs font-bold text-red-500 hover:underline">Remove</button>
+        </div>
+      </div>`;
+    el.appendChild(row);
+  });
+  let discount=0;
+  if(coupon==='GRANTH40') discount=Math.round(subtotal*0.4);
+  if(coupon==='WELCOME20') discount=Math.round(subtotal*0.2);
+  const total=subtotal-discount;
+  document.getElementById('cartSubtotal').textContent='₹'+subtotal.toLocaleString('en-IN');
+  document.getElementById('cartDiscount').textContent='-₹'+discount.toLocaleString('en-IN');
+  document.getElementById('cartTotal').textContent='₹'+total.toLocaleString('en-IN');
+  document.getElementById('checkoutTotal').textContent='₹'+total.toLocaleString('en-IN');
+  document.getElementById('payAmount').textContent='₹'+total.toLocaleString('en-IN');
+  document.getElementById('checkoutSummary').textContent=cart.reduce((s,c)=>s+c.qty,0)+' items • Instant delivery';
+  const msg=document.getElementById('couponMsg');
+  if(coupon){
+    msg.classList.remove('hidden');
+    msg.className='text-xs font-bold px-3 py-2 rounded-xl bg-green-50 text-green-700 border border-green-200';
+    msg.textContent='✓ Coupon '+coupon+' applied — you saved ₹'+discount+'!';
+  } else msg.classList.add('hidden');
+}
+function changeQty(id, delta){
+  const c=cart.find(x=>x.id===id);
+  if(!c) return;
+  c.qty+=delta;
+  if(c.qty<=0) cart=cart.filter(x=>x.id!==id);
+  saveCart(); renderCart();
+}
+function removeFromCart(id){ cart=cart.filter(x=>x.id!==id); saveCart(); renderCart(); }
+function applyCoupon(){
+  const val=document.getElementById('couponInput').value.trim().toUpperCase();
+  if(['GRANTH40','WELCOME20'].includes(val)){ coupon=val; renderCart(); toast('Coupon applied: '+val); }
+  else { const m=document.getElementById('couponMsg'); m.classList.remove('hidden'); m.className='text-xs font-bold px-3 py-2 rounded-xl bg-red-50 text-red-600 border border-red-200'; m.textContent='✕ Invalid coupon. Try GRANTH40'; }
+}
+function openCart(){ document.getElementById('cartDrawer').classList.remove('hidden'); document.body.style.overflow='hidden'; renderCart(); }
+function closeCart(){ document.getElementById('cartDrawer').classList.add('hidden'); document.body.style.overflow=''; }
+function buyNow(id){ addToCart(id); setTimeout(()=>checkout(), 200); }
+function checkout(){
+  if(cart.length===0) return toast('Cart empty!');
+  closeCart();
+  document.getElementById('checkoutModal').classList.remove('hidden');
+  document.body.style.overflow='hidden';
+  renderCart();
+}
+function closeCheckout(){ document.getElementById('checkoutModal').classList.add('hidden'); document.body.style.overflow=''; }
+
+// ---------- WISHLIST ----------
+function toggleWish(id){
+  if(wishlist.includes(id)) wishlist=wishlist.filter(x=>x!==id);
+  else wishlist.push(id);
+  localStorage.setItem('granth_wish', JSON.stringify(wishlist));
+  updateCounts(); renderProducts(currentCat, currentSearch); renderWishlist();
+  toast(wishlist.includes(id)?'Added to wishlist ♥':'Removed from wishlist');
+}
+function renderWishlist(){
+  const el=document.getElementById('wishlistItems');
+  if(wishlist.length===0){ el.innerHTML=`<div class="text-center py-16"><div class="w-16 h-16 bg-white rounded-full grid place-items-center mx-auto text-2xl">♡</div><div class="font-bold mt-3">No favourites yet</div><div class="text-sm text-muted">Tap heart on any ebook</div></div>`; return; }
+  el.innerHTML=wishlist.map(id=>{
+    const p=products.find(x=>x.id===id);
+    return `<div class="bg-white border border-black/5 rounded-2xl p-3 flex gap-3">
+      <div class="w-[64px] h-[84px] rounded-xl bg-gradient-to-br ${p.color} p-2 text-white shrink-0"><div class="text-[10px] font-bold leading-tight line-clamp-3">${p.title}</div></div>
+      <div class="flex-1"><div class="font-bold text-sm">${p.title}</div><div class="text-xs text-muted">${p.author}</div><div class="font-extrabold mt-1">₹${p.price}</div>
+      <div class="flex gap-2 mt-2"><button onclick="addToCart(${p.id})" class="flex-1 bg-ink text-white rounded-full py-1.5 text-xs font-bold">Add to Cart</button><button onclick="toggleWish(${p.id})" class="px-3 bg-paper border border-black/10 rounded-full text-xs font-bold">Remove</button></div></div></div>`
+  }).join('');
+}
+function toggleWishlist(){ document.getElementById('wishlistDrawer').classList.remove('hidden'); document.body.style.overflow='hidden'; renderWishlist(); }
+function closeWishlist(){ document.getElementById('wishlistDrawer').classList.add('hidden'); document.body.style.overflow=''; }
+
+// ---------- PRODUCT MODAL ----------
+function openProduct(id){
+  const p=products.find(x=>x.id===id);
+  const modal=document.getElementById('productModal');
+  const content=document.getElementById('modalContent');
+  content.innerHTML=`
+    <div class="grid md:grid-cols-[380px_1fr] gap-0">
+      <div class="bg-gradient-to-br ${p.color} p-8 flex flex-col items-center justify-center relative min-h-[420px]">
+        <div class="w-[220px] h-[320px] bg-white rounded-2xl shadow-2xl p-4 flex flex-col relative overflow-hidden">
+          <div class="text-[10px] tracking-[0.2em] font-bold text-muted">GRANTH ORIGINALS • ${p.cat.toUpperCase()}</div>
+          <div class="display text-[22px] leading-none mt-4 font-semibold">${p.title}</div>
+          <div class="text-sm text-muted mt-2">${p.author}</div>
+          <div class="mt-auto flex items-center gap-2"><span class="text-xs bg-ink text-white px-2 py-1 rounded-full">${p.pages} pages</span><span class="text-xs bg-gold text-ink px-2 py-1 rounded-full font-bold">${p.lang}</span></div>
+          <div class="absolute -right-8 -bottom-8 w-24 h-24 bg-gold/30 blur-2xl rounded-full"></div>
+        </div>
+        <div class="flex gap-2 mt-6 text-xs font-bold">
+          <span class="bg-white text-ink px-3 py-1.5 rounded-full">PDF</span><span class="bg-white/15 text-white border border-white/20 px-3 py-1.5 rounded-full">EPUB</span><span class="bg-white/15 text-white border border-white/20 px-3 py-1.5 rounded-full">MOBI</span><span class="bg-gold text-ink px-3 py-1.5 rounded-full">Audio Summary</span>
+        </div>
+        <div class="absolute top-4 left-4 bg-white text-ink text-xs font-extrabold px-3 py-1.5 rounded-full shadow">${p.badge}</div>
+      </div>
+      <div class="p-6 sm:p-8 bg-white">
+        <div class="flex items-center gap-2 text-xs font-bold"><span class="bg-green-50 text-green-700 border border-green-200 px-2.5 py-1 rounded-full">● Instant Download</span><span class="text-muted">30-day refund</span></div>
+        <h2 class="display text-[28px] leading-tight mt-3">${p.title}</h2>
+        <div class="text-sm text-muted">by <b class="text-ink">${p.author}</b> • ${p.lang} • ${p.pages} pages</div>
+        <div class="flex items-center gap-2 mt-3"><span class="flex text-gold text-sm">★★★★★</span><b class="text-sm">${p.rating}</b><span class="text-sm text-muted">(${p.reviews.toLocaleString('en-IN')} reviews)</span><span class="ml-2 w-2 h-2 bg-green-500 rounded-full animate-pulse"></span><span class="text-xs font-bold text-green-600">1.2k bought this week</span></div>
+        <p class="text-[14px] leading-relaxed text-ink/80 mt-4">${p.desc} Formats: ${p.formats}. Lifetime re-download, GST invoice, email + WhatsApp delivery in 10 seconds.</p>
+        <div class="bg-cream border border-dashed border-black/10 rounded-2xl p-4 mt-5">
+          <div class="text-xs font-bold tracking-wide">WHAT YOU'LL GET</div>
+          <div class="grid grid-cols-2 gap-2 mt-2 text-sm">
+            <span class="flex gap-2"><i class="ri-checkbox-circle-fill text-green-500"></i> PDF + EPUB + MOBI</span>
+            <span class="flex gap-2"><i class="ri-checkbox-circle-fill text-green-500"></i> Audio summary (18 min)</span>
+            <span class="flex gap-2"><i class="ri-checkbox-circle-fill text-green-500"></i> Worksheets / Notes</span>
+            <span class="flex gap-2"><i class="ri-checkbox-circle-fill text-green-500"></i> Lifetime updates free</span>
+          </div>
+        </div>
+        <div class="flex items-baseline gap-3 mt-6">
+          <span class="text-[32px] font-extrabold">₹${p.price}</span>
+          <span class="text-sm line-through text-muted">₹${p.mrp}</span>
+          <span class="bg-green-500 text-white text-xs font-extrabold px-2.5 py-1 rounded-full">${Math.round((1-p.price/p.mrp)*100)}% OFF</span>
+          <span class="text-xs text-muted ml-auto">Inclusive of GST</span>
+        </div>
+        <div class="flex gap-3 mt-5">
+          <button onclick="addToCart(${p.id}); closeModal();" class="flex-1 bg-white border border-black/10 rounded-full py-3.5 font-bold hover:bg-paper transition">Add to Cart</button>
+          <button onclick="buyNow(${p.id}); closeModal();" class="flex-1 bg-gold text-ink rounded-full py-3.5 font-extrabold hover:bg-yellow-400 transition">Buy Now — Instant Download</button>
+        </div>
+        <div class="flex items-center justify-center gap-4 mt-3 text-xs font-semibold text-muted">
+          <span class="flex items-center gap-1"><i class="ri-lock-2-line"></i> Razorpay Secure</span><span>•</span><span class="flex items-center gap-1"><i class="ri-refund-2-line"></i> 30-day refund</span><span>•</span><span>💬 WhatsApp Support</span>
+        </div>
+        <details class="mt-6 bg-paper rounded-xl p-4 text-sm"><summary class="font-bold cursor-pointer">Sample preview dekho (first 5 pages)</summary><p class="text-muted mt-2 leading-relaxed">Chapter 1: Deep work kya hai? Kaise distractions kam karein aur 4 ghante me 8 ghante ka kaam karein... (Preview PDF download link checkout ke baad milega)</p></details>
+      </div>
+    </div>`;
+  modal.classList.remove('hidden'); document.body.style.overflow='hidden';
+}
+function closeModal(){ document.getElementById('productModal').classList.add('hidden'); document.body.style.overflow=''; }
+
+// ---------- FILTERS & SEARCH ----------
+let currentCat='all', currentSearch='';
+function filterCategory(cat){
+  currentCat=cat;
+  document.querySelectorAll('.cat-btn').forEach(b=>{
+    if(b.dataset.cat===cat){ b.classList.add('bg-ink','text-white'); b.classList.remove('bg-white','text-ink'); }
+    else { b.classList.remove('bg-ink','text-white'); b.classList.add('bg-white'); }
+  });
+  renderProducts(currentCat, currentSearch);
+  document.getElementById('bestsellers').scrollIntoView({behavior:'smooth', block:'start'});
+}
+['searchInput','searchInputMobile'].forEach(id=>{
+  const el=document.getElementById(id);
+  if(!el) return;
+  el.addEventListener('input', e=>{
+    currentSearch=e.target.value;
+    // sync both inputs
+    document.getElementById('searchInput').value=currentSearch;
+    const m=document.getElementById('searchInputMobile'); if(m) m.value=currentSearch;
+    renderProducts(currentCat, currentSearch);
+  });
+});
+document.addEventListener('keydown', e=>{
+  if((e.metaKey||e.ctrlKey) && e.key.toLowerCase()==='k'){ e.preventDefault(); document.getElementById('searchInput').focus(); }
+});
+
+// ---------- CHECKOUT ----------
+function placeOrder(e){
+  e.preventDefault();
+  const email=document.getElementById('cEmail').value;
+  const btn=document.getElementById('payBtn');
+  btn.innerHTML=`<i class="ri-loader-4-line animate-spin"></i> Processing...`; btn.disabled=true;
+  setTimeout(()=>{
+    btn.innerHTML=`<i class="ri-lock-2-fill"></i> Pay ₹0 & Download Instantly`; btn.disabled=false;
+    closeCheckout();
+    // generate download links
+    const linksDiv=document.getElementById('downloadLinks');
+    linksDiv.innerHTML=cart.map(c=>{
+      const p=products.find(x=>x.id===c.id);
+      return `<a href="#" onclick="event.preventDefault(); toast('Downloading ${p.title}...'); " class="flex items-center justify-between bg-paper border border-black/5 rounded-xl px-4 py-3 hover:bg-white transition">
+        <div class="flex items-center gap-3"><span class="w-9 h-9 bg-ink text-white rounded-lg grid place-items-center"><i class="ri-file-pdf-line"></i></span>
+        <div><div class="font-bold text-sm">${p.title}</div><div class="text-xs text-muted">PDF • ${p.pages} pages</div></div></div>
+        <span class="bg-gold text-ink px-3 py-1.5 rounded-full text-xs font-bold">Download</span></a>`;
+    }).join('') + `<div class="text-xs text-muted text-center mt-3">Links also sent to <b>${email}</b> + WhatsApp. Re-download anytime at granth.store/downloads</div>`;
+    document.getElementById('successModal').classList.remove('hidden');
+    cart=[]; saveCart(); renderCart();
+    // confetti toast
+    toast('Payment successful! Downloads ready 🎉');
+  }, 1400);
+}
+function closeSuccess(){ document.getElementById('successModal').classList.add('hidden'); document.body.style.overflow=''; }
+
+// ---------- UTILS ----------
+function toast(msg){
+  let t=document.createElement('div');
+  t.className='fixed bottom-6 left-1/2 -translate-x-1/2 bg-ink text-white px-5 py-3 rounded-full text-sm font-bold shadow-xl z-[70] flex items-center gap-2';
+  t.innerHTML=`<span>${msg}</span>`;
+  document.body.appendChild(t);
+  setTimeout(()=>{ t.style.transition='all .3s'; t.style.opacity='0'; t.style.transform='translate(-50%, 10px)'; setTimeout(()=>t.remove(),300)},2200);
+}
+function toggleMobileMenu(){ document.getElementById('mobileMenu').classList.toggle('hidden'); }
+function toggleSearchMobile(){ document.getElementById('mobileSearch').classList.toggle('hidden'); }
+function openVideo(){ toast('Demo video — integrate YouTube/Vimeo iframe here'); }
+function openAbout(){ toast('Granth — Made in Asansol, ships digitally across India 🇮🇳'); }
+function subscribe(e){ e.preventDefault(); toast('Subscribed! Free ebook sent to your email 🎁'); e.target.reset(); }
+
+// INIT
+renderProducts(); updateCounts(); renderCart(); renderWishlist();
+</script>
+</body>
+</html>
