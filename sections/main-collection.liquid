@@ -1,57 +1,38 @@
-<div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-4">
-  <nav class="flex items-center gap-2 text-xs font-semibold text-muted">
-    <a href="{{ routes.root_url }}" class="hover:text-ink">Home</a> <i class="ri-arrow-right-s-line"></i> <span class="text-ink">{{ collection.title }}</span>
+<div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-6 border-b border-stone/50">
+  <nav class="flex items-center gap-2 text-xs text-muted">
+    <a href="{{ routes.root_url }}" class="hover:text-ink">Home</a><i class="ri-arrow-right-s-line"></i><span class="text-ink">{{ collection.title }}</span>
   </nav>
 </div>
 
-<section class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 pb-12">
-  <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+<section class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
+  <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-stone pb-6">
     <div>
       <h1 class="display text-[32px] sm:text-[40px] leading-none">{{ collection.title }}</h1>
-      {% if collection.description != blank %}<p class="text-sm text-muted mt-2 max-w-[560px]">{{ collection.description }}</p>{% endif %}
+      {% if collection.description != blank %}<p class="text-sm text-muted mt-2 max-w-[560px]">{{ collection.description }}</p>{% else %}<p class="text-sm text-muted mt-2">{{ collection.products_count }} titles</p>{% endif %}
     </div>
-    <div class="flex items-center gap-2">
-      <span class="bg-white border border-black/10 rounded-full px-4 py-2 text-xs font-bold">{{ collection.products_count }} ebooks</span>
-    </div>
+    <div class="text-xs text-muted border border-stone rounded-full px-3 py-1.5">{{ collection.products_count }} titles</div>
   </div>
 
-  <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6 mt-8">
+  {% if collection.products_count > 0 %}
+  <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mt-8">
     {% for product in collection.products %}
-      <a href="{{ product.url }}" class="group bg-white border border-black/5 rounded-[22px] overflow-hidden card-hover flex flex-col">
-        <div class="relative p-4 pb-0">
-          <div class="relative h-[160px] sm:h-[190px] rounded-[16px] overflow-hidden bg-gradient-to-br from-[#1A2332] to-[#0F172A] p-3 flex flex-col">
-            {% if product.featured_image %}<img src="{{ product.featured_image | image_url: width: 400 }}" alt="{{ product.title }}" class="absolute inset-0 w-full h-full object-cover opacity-50"><div class="absolute inset-0 bg-gradient-to-br from-black/40 to-black/60"></div>{% endif %}
-            <div class="relative text-[8px] tracking-[0.18em] text-white/60 font-bold">MAVIZIO • {{ product.type | upcase | default: 'EBOOK' }}</div>
-            <div class="relative mt-2 text-white font-bold leading-tight line-clamp-2 display text-[14px] sm:text-[17px]">{{ product.title }}</div>
-            <div class="relative text-[11px] text-white/70 mt-1">{{ product.vendor }}</div>
-            <div class="relative mt-auto flex items-center justify-between">
-              <span class="text-[10px] bg-white/15 text-white px-2 py-1 rounded-full border border-white/10">PDF + EPUB</span>
-            </div>
-          </div>
+      <a href="{{ product.url }}" class="group">
+        <div class="aspect-[3/4] overflow-hidden rounded-[20px] border border-stone bg-sand">
+          {% if product.featured_image %}<img src="{{ product.featured_image | image_url: width: 600 }}" alt="{{ product.title | escape }}" class="w-full h-full object-cover group-hover:scale-[1.02] transition duration-700">{% else %}<div class="w-full h-full grid place-items-center text-muted"><i class="ri-image-line text-2xl"></i></div>{% endif %}
         </div>
-        <div class="p-4 flex-1 flex flex-col">
-          <h3 class="font-bold leading-tight line-clamp-2 text-[14px] sm:text-[15px]">{{ product.title }}</h3>
-          <div class="text-xs text-muted mt-1">{{ product.vendor }}</div>
-          <div class="flex items-baseline gap-2 mt-3">
-            <span class="text-[20px] font-extrabold">{{ product.price | money }}</span>
-            {% if product.compare_at_price > product.price %}<span class="text-xs line-through text-muted">{{ product.compare_at_price | money }}</span>{% endif %}
-          </div>
-          <div class="mt-4 bg-ink text-white rounded-full py-2.5 text-sm font-bold text-center">View Details</div>
+        <div class="pt-3">
+          <div class="text-[11px] tracking-[0.18em] text-muted">{{ product.type | default: 'Ebook' | upcase }}</div>
+          <div class="text-sm font-medium leading-tight mt-1 line-clamp-2">{{ product.title }}</div>
+          <div class="text-sm font-semibold mt-2">{{ product.price | money }}{% if product.compare_at_price > product.price %} <span class="text-xs text-muted line-through font-normal">{{ product.compare_at_price | money }}</span>{% endif %}</div>
         </div>
       </a>
-    {% else %}
-      <div class="col-span-full text-center py-16 bg-white rounded-2xl border border-black/5">
-        <div class="w-14 h-14 bg-paper border border-black/5 rounded-full grid place-items-center mx-auto text-xl text-muted"><i class="ri-search-line text-2xl"></i></div>
-        <div class="font-bold mt-3">No products found</div>
-        <div class="text-sm text-muted">Add products to this collection in Shopify admin</div>
-      </div>
     {% endfor %}
   </div>
+  {% else %}
+    <div class="mt-12 bg-white border border-stone rounded-[20px] p-10 text-center">
+      <div class="text-sm font-medium">No titles in this collection</div>
+      <div class="text-sm text-muted mt-1">Add products to “{{ collection.title }}” in Shopify Admin.</div>
+    </div>
+  {% endif %}
 </section>
-
-{% schema %}
-{
-  "name": "Main Collection",
-  "settings": []
-}
-{% endschema %}
+{% schema %}{"name":"Main Collection Clean","settings":[]}{% endschema %}

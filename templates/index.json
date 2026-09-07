@@ -4,44 +4,24 @@
       "type": "hero",
       "settings": {}
     },
-    "social-proof": {
-      "type": "social-proof",
-      "settings": {}
-    },
     "featured-products": {
       "type": "featured-products",
       "settings": {
-        "heading": "Bestsellers",
-        "subheading": "Our most-loved titles",
+        "heading": "Recent titles",
+        "subheading": "",
         "products_to_show": 8
       }
-    },
-    "trust-bar": {
-      "type": "trust-bar",
-      "settings": {}
-    },
-    "testimonials": {
-      "type": "testimonials",
-      "settings": {}
-    },
-    "faq-selling": {
-      "type": "faq-selling",
-      "settings": {}
     },
     "collection-list": {
       "type": "collection-list",
       "settings": {
-        "heading": "Shop by Collection"
+        "heading": "Collections"
       }
     }
   },
   "order": [
     "hero",
-    "social-proof",
     "featured-products",
-    "trust-bar",
-    "testimonials",
-    "faq-selling",
     "collection-list"
   ]
 }

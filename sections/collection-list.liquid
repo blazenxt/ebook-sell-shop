@@ -1,69 +1,35 @@
-<section id="collection" class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-10">
-  <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3 sm:gap-4">
+<section id="collection" class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-12 sm:mt-16">
+  <div class="flex items-end justify-between gap-6 border-b border-stone pb-4">
     <div>
-      <div class="text-[11px] tracking-[0.2em] font-extrabold text-muted">BROWSE BY TOPIC</div>
-      <h2 class="display text-[28px] sm:text-[32px] leading-none mt-1">{{ section.settings.heading | default: 'Shop by Collection' }}</h2>
+      <div class="text-[11px] tracking-[0.2em] text-muted">— BROWSE</div>
+      <h2 class="display text-[26px] sm:text-[32px] leading-none mt-1">{{ section.settings.heading | default: 'Collections' }}</h2>
     </div>
+    <a href="{{ routes.collections_url }}" class="hidden sm:inline-flex text-sm border-b border-ink pb-1">All collections</a>
   </div>
-  <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4 mt-6">
-    {% assign shown = 0 %}
+
+  {% if collections.size > 0 %}
+  <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mt-6">
     {% for collection in collections limit: 6 %}
-      {% assign shown = shown | plus: 1 %}
-      <a href="{{ collection.url }}" class="group text-left bg-white border border-black/5 rounded-[18px] p-4 card-hover block">
-        <div class="w-10 h-10 rounded-xl bg-cream grid place-items-center text-lg">
-          {% if collection.title contains 'Business' %}<i class="ri-briefcase-4-line"></i>
-          {% elsif collection.title contains 'Self' %}<i class="ri-sparkling-2-line"></i>
-          {% elsif collection.title contains 'Fiction' %}<i class="ri-book-open-line"></i>
-          {% elsif collection.title contains 'UPSC' %}<i class="ri-graduation-cap-line"></i>
-          {% elsif collection.title contains 'Tech' %}<i class="ri-cpu-line"></i>
-          {% elsif collection.title contains 'Finance' %}<i class="ri-money-dollar-circle-line"></i>
-          {% else %}<i class="ri-stack-line"></i>{% endif %}
+      <a href="{{ collection.url }}" class="group">
+        <div class="aspect-[4/3] overflow-hidden rounded-[16px] border border-stone bg-white">
+          {% if collection.featured_image %}
+            <img src="{{ collection.featured_image | image_url: width: 400 }}" alt="{{ collection.title }}" class="w-full h-full object-cover group-hover:scale-[1.02] transition duration-700">
+          {% else %}
+            <div class="w-full h-full grid place-items-center bg-sand text-muted"><i class="ri-folder-3-line text-xl"></i></div>
+          {% endif %}
         </div>
-        <div class="font-bold text-sm mt-3">{{ collection.title }}</div><div class="text-xs text-muted">{{ collection.products_count }} ebooks</div>
+        <div class="pt-3">
+          <div class="text-sm font-medium leading-tight">{{ collection.title }}</div>
+          <div class="text-xs text-muted mt-1">{{ collection.products_count }} {% if collection.products_count == 1 %}title{% else %}titles{% endif %}</div>
+        </div>
       </a>
     {% endfor %}
-    {% if shown == 0 %}
-      {% assign cats = "Business:24,Self-Help:32,Fiction:18,UPSC / SSC:15,Tech & AI:21,Finance:12" | split: "," %}
-      {% for cat in cats %}
-        {% assign parts = cat | split: ":" %}
-        <a href="{{ routes.collections_url }}/all" class="group text-left bg-white border border-black/5 rounded-[18px] p-4 card-hover block">
-          <div class="w-10 h-10 rounded-xl bg-cream grid place-items-center text-lg"><i class="ri-folder-3-line"></i></div>
-          <div class="font-bold text-sm mt-3">{{ parts[0] }}</div><div class="text-xs text-muted">{{ parts[1] }} ebooks</div>
-        </a>
-      {% endfor %}
-    {% elsif shown < 6 %}
-      {% assign placeholders = "Business:24,Self-Help:32,Fiction:18,UPSC / SSC:15,Tech & AI:21,Finance:12" | split: "," %}
-      {% assign need = 6 | minus: shown %}
-      {% for cat in placeholders limit: need %}
-        {% assign parts = cat | split: ":" %}
-        {% assign already_shown = false %}
-        {% for col in collections limit: 6 %}{% if col.title contains parts[0] %}{% assign already_shown = true %}{% endif %}{% endfor %}
-        {% unless already_shown %}
-        <a href="{{ routes.collections_url }}/all" class="group text-left bg-white/60 border border-dashed border-black/10 rounded-[18px] p-4 card-hover block">
-          <div class="w-10 h-10 rounded-xl bg-paper grid place-items-center text-lg opacity-60"><i class="ri-folder-3-line"></i></div>
-          <div class="font-bold text-sm mt-3">{{ parts[0] }}</div><div class="text-xs text-muted">{{ parts[1] }} ebooks • Soon</div>
-        </a>
-        {% endunless %}
-      {% endfor %}
-    {% endif %}
   </div>
+  {% else %}
+    <div class="mt-6 bg-white border border-stone rounded-[20px] p-8 text-center">
+      <div class="text-sm font-medium">No collections yet</div>
+      <div class="text-sm text-muted mt-1">Create collections in Shopify Admin → Products → Collections.</div>
+    </div>
+  {% endif %}
 </section>
-
-{% schema %}
-{
-  "name": "Collection List",
-  "settings": [
-    {
-      "type": "text",
-      "id": "heading",
-      "label": "Heading",
-      "default": "Shop by Collection"
-    }
-  ],
-  "presets": [
-    {
-      "name": "Collection List"
-    }
-  ]
-}
-{% endschema %}
+{% schema %}{"name":"Collection List Clean","settings":[{"type":"text","id":"heading","label":"Heading","default":"Collections"}]}{% endschema %}

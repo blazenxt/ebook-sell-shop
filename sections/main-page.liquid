@@ -1,10 +1,7 @@
-<div class="max-w-[820px] mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
-  <div class="text-center">
-    <div class="inline-flex items-center gap-2 bg-cream border border-black/5 rounded-full px-3 py-1.5 text-xs font-bold tracking-wide"><i class="ri-file-text-line"></i> {{ page.title }}</div>
-    <h1 class="display text-[32px] sm:text-[48px] leading-none mt-4">{{ page.title }}</h1>
-  </div>
-  <div class="mt-8 bg-white border border-black/5 rounded-[24px] p-6 sm:p-10 prose prose-sm sm:prose-base max-w-none prose-headings:font-bold prose-a:text-ink prose-a:underline">
+<div class="max-w-[760px] mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
+  <h1 class="display text-[32px] sm:text-[42px] leading-[0.95]">{{ page.title }}</h1>
+  <div class="prose prose-sm max-w-none mt-6 leading-relaxed text-ink/80">
     {{ page.content }}
   </div>
 </div>
-{% schema %}{"name":"Main Page","settings":[]}{% endschema %}
+{% schema %}{"name":"Main Page Clean","settings":[]}{% endschema %}
