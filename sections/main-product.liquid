@@ -14,14 +14,14 @@
         {% if product.featured_image %}<img src="{{ product.featured_image | image_url: width: 640 }}" alt="{{ product.title | escape }}" class="w-full h-auto object-contain max-h-[460px] mx-auto">{% else %}<div class="aspect-[3/4] bg-paper grid place-items-center rounded-xl"><i class="ri-image-line text-3xl text-muted"></i></div>{% endif %}
       </div>
       <div class="grid grid-cols-2 gap-3 mt-4">
-        {% form 'product', product %}
+        <form method="post" action="/cart/add">
           <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
           <button type="submit" name="add" class="w-full bg-white border border-line text-ink py-3 rounded-full font-bold flex items-center justify-center gap-2 hover:border-ink hover:bg-paper"><i class="ri-shopping-bag-line"></i> Add to Cart</button>
-        {% endform %}
-        {% form 'product', product %}
+        </form>
+        <form method="post" action="/cart/add">
           <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
           <button type="submit" class="w-full bg-ink text-white py-3 rounded-full font-bold flex items-center justify-center gap-2 hover:bg-black">Buy Now <i class="ri-flashlight-fill text-gold"></i></button>
-        {% endform %}
+        </form>
       </div>
       <div class="mt-3 flex items-center justify-center gap-2 text-xs text-muted"><i class="ri-shield-check-line text-leaf"></i> Secure checkout • Razorpay • UPI • Cards • GST</div>
     </div>
@@ -58,4 +58,4 @@
     </div>
   </div>
 </section>
-{% schema %}{"name":"Main Product Clean Refined","settings":[]}{% endschema %}
+{% schema %}{"name":"Main Product Clean Refined Post","settings":[]}{% endschema %}
