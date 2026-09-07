@@ -1,4 +1,26 @@
 <section class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-4">
+  <!-- leafSoft Steps -->
+  <div class="bg-white rounded-2xl border border-line p-4 mb-4">
+    <div class="flex items-center justify-between gap-2 text-xs">
+      <div class="flex items-center gap-2 flex-1">
+        <span class="w-7 h-7 rounded-full bg-leaf text-white grid place-items-center font-bold">1</span>
+        <span class="hidden sm:inline font-bold">Cart</span>
+        <span class="flex-1 h-px bg-leaf mx-2 hidden sm:block"></span>
+        <span class="w-7 h-7 rounded-full bg-leafSoft border border-leaf/20 text-leaf grid place-items-center font-bold">2</span>
+        <span class="hidden sm:inline font-medium text-muted">Address</span>
+        <span class="flex-1 h-px bg-line mx-2 hidden sm:block"></span>
+        <span class="w-7 h-7 rounded-full bg-paper border border-line text-muted grid place-items-center font-bold">3</span>
+        <span class="hidden sm:inline font-medium text-muted">Payment</span>
+      </div>
+      <span class="hidden md:inline-flex items-center gap-1.5 text-leaf bg-leafSoft border border-leaf/10 px-3 py-1.5 rounded-full font-bold"><i class="ri-shield-check-fill"></i> 100% Secure</span>
+    </div>
+    <div class="mt-2 flex gap-1.5">
+      <div class="flex-1 h-1.5 bg-leaf rounded-full"></div>
+      <div class="flex-1 h-1.5 bg-leafSoft rounded-full"></div>
+      <div class="flex-1 h-1.5 bg-line rounded-full"></div>
+    </div>
+  </div>
+
   <div class="grid lg:grid-cols-12 gap-4">
     <div class="lg:col-span-8 bg-white rounded-2xl border border-line overflow-hidden">
       <div class="px-5 py-4 border-b border-line flex items-center justify-between bg-paper/50">
@@ -20,7 +42,7 @@
               <div class="flex-1 min-w-0">
                 <a href="{{ item.url }}" class="text-sm leading-tight line-clamp-2 hover:text-ink font-medium">{{ item.product.title }}</a>
                 <div class="text-xs text-muted mt-1">{{ item.variant.title }} • <span class="text-leaf font-bold">7-day replacement</span></div>
-                <div class="flex items-baseline gap-2 mt-2"><span class="font-bold">{{ item.final_price | money }}</span>{% if item.original_price > item.final_price %}<span class="text-xs line-through text-muted">{{ item.original_price | money }}</span><span class="text-xs text-leaf bg-leafSoft border border-leaf/10 px-1.5 py-0.5 rounded-full font-bold">{{ item.original_price | minus: item.final_price | times: 100 | divided_by: item.original_price }}% off</span>{% endif %}</div>
+                <div class="flex items-baseline gap-2 mt-2"><span class="font-bold">{{ item.final_price | money }}</span>{% if item.original_price > item.final_price %}<span class="text-xs line-through text-muted">{{ item.original_price | money }}</span><span class="text-xs text-leaf bg-leafSoft border border-leaf/10 px-1.5 py-0.5 rounded-full font-bold">Special Offer</span>{% endif %}</div>
                 <div class="flex items-center gap-3 mt-3">
                   <div class="flex items-center gap-2 border border-line rounded-full overflow-hidden bg-white">
                     <a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity={{ item.quantity | minus: 1 }}" class="px-3 py-1 hover:bg-paper">−</a>
@@ -43,7 +65,7 @@
     {% if cart.item_count > 0 %}
     <div class="lg:col-span-4 space-y-4">
       <div class="bg-white rounded-2xl border border-line p-5">
-        <div class="text-xs font-bold tracking-[0.12em] text-muted uppercase border-b border-line pb-3">Price Details</div>
+        <div class="text-xs font-bold tracking-[0.12em] text-muted uppercase border-b border-line pb-3 flex items-center gap-2"><i class="ri-route-line text-leaf"></i> Price Details — Step 1 of 3</div>
         <div class="mt-3 space-y-3 text-sm">
           <div class="flex justify-between"><span class="text-muted">Price ({{ cart.item_count }} items)</span><span>{{ cart.total_price | money }}</span></div>
           <div class="flex justify-between"><span class="text-muted">Discount</span><span class="text-leaf font-bold">— ₹0</span></div>
@@ -52,11 +74,20 @@
           <div class="text-xs text-leaf bg-leafSoft border border-leaf/10 rounded-full px-3 py-1.5 font-bold text-center">You save ₹0 on this order • Bank Offer applied</div>
         </div>
         <a href="/checkout" class="mt-4 flex justify-center bg-gold text-ink py-3 rounded-full font-bold hover:bg-goldDeep hover:text-white transition">Place Order — Secure <i class="ri-lock-2-fill ml-1"></i></a>
+        <div class="mt-2 text-center text-xs text-muted">Next: <span class="font-bold text-ink">Address</span> → Payment</div>
         <div class="mt-3 flex items-center justify-center gap-1.5 text-xs text-muted"><i class="ri-shield-check-fill text-leaf"></i> 100% Secure • Razorpay • UPI • Cards</div>
       </div>
       <div class="bg-cream border border-gold/20 rounded-2xl p-3 flex gap-2 text-xs"><i class="ri-gift-line text-gold text-lg shrink-0"></i><span><b>Add ₹200 more</b> to unlock <b>MAVIZIO40</b> — 40% off on 4 books</span></div>
+      <div class="bg-white rounded-2xl border border-line p-4">
+        <div class="text-xs font-bold tracking-wide">Why Mavizio?</div>
+        <div class="mt-2 space-y-2 text-xs text-muted">
+          <div class="flex gap-2"><i class="ri-checkbox-circle-fill text-leaf"></i> Instant download in 10 sec</div>
+          <div class="flex gap-2"><i class="ri-checkbox-circle-fill text-leaf"></i> Lifetime re-download</div>
+          <div class="flex gap-2"><i class="ri-checkbox-circle-fill text-leaf"></i> GST invoice + 30-day refund</div>
+        </div>
+      </div>
     </div>
     {% endif %}
   </div>
 </section>
-{% schema %}{"name":"Main Cart Refined","settings":[]}{% endschema %}
+{% schema %}{"name":"Main Cart leafSoft Steps","settings":[]}{% endschema %}
