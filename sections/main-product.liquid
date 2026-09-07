@@ -38,6 +38,23 @@
         {% if product.compare_at_price > product.price %}<span class="text-sm line-through text-muted">{{ product.compare_at_price | money }}</span><span class="text-sm text-leaf font-bold bg-leafSoft border border-leaf/10 px-2 py-0.5 rounded-full">Special Offer</span>{% endif %}
       </div>
       <div class="text-xs text-muted">Inclusive of all taxes • GST invoice available • Instant download</div>
+      {% if product.description != blank %}
+      <div class="mt-6 border-t border-line pt-5">
+        <h3 class="font-bold text-sm flex items-center gap-2"><i class="ri-book-open-line text-gold"></i> About this ebook</h3>
+        <div class="prose prose-sm max-w-none mt-2 text-sm leading-relaxed text-[#2b2b2b]">{{ product.description }}</div>
+      </div>
+      {% endif %}
+      <div class="mt-6 grid grid-cols-2 gap-3 text-xs">
+        <div class="flex gap-3 bg-paper border border-line rounded-xl p-3"><i class="ri-download-2-line text-ink text-lg shrink-0"></i><span><b>Instant download</b><br><span class="text-muted">PDF + EPUB • Lifetime</span></span></div>
+        <div class="flex gap-3 bg-paper border border-line rounded-xl p-3"><i class="ri-refresh-line text-ink text-lg shrink-0"></i><span><b>7-day replacement</b><br><span class="text-muted">30-day refund</span></span></div>
+      </div>
+      <div class="mt-6 border border-gold/20 rounded-xl p-4 bg-cream">
+        <div class="text-sm font-bold flex items-center gap-2"><i class="ri-price-tag-3-fill text-gold"></i> Available offers</div>
+        <div class="mt-2 space-y-1.5 text-xs">
+          <div class="flex gap-2"><i class="ri-checkbox-circle-fill text-leaf"></i> <span><b>Bank Offer</b> 10% off on HDFC Bank • <a href="#" class="text-ink underline decoration-gold">T&C</a></span></div>
+          <div class="flex gap-2"><i class="ri-checkbox-circle-fill text-leaf"></i> <span><b>Special Price</b> Extra 40% off (MAVIZIO40) • <a href="#" class="text-ink underline decoration-gold">T&C</a></span></div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
