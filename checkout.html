@@ -31,9 +31,13 @@
         <span class="flex items-center gap-1.5"><i class="ri-customer-service-line"></i> +91 90000 12345</span>
         <a href="shop.html" class="text-muted hover:text-ink">Continue Shopping</a>
       </div>
-      <div class="flex items-center gap-2">
-        <span class="hidden sm:inline text-xs text-muted">Step 2 of 2</span>
-        <div class="w-24 h-1.5 bg-paper rounded-full overflow-hidden"><div class="h-full w-[66%] bg-gold"></div></div>
+      <div class="hidden sm:flex items-center gap-2 text-xs font-bold">
+        <span class="w-6 h-6 rounded-full bg-leaf text-white grid place-items-center">1</span><span class="text-leaf">Cart</span>
+        <span class="w-6 h-6 rounded-full bg-leaf text-white grid place-items-center">2</span><span class="text-ink">Address</span>
+        <span class="w-6 h-6 rounded-full bg-leafSoft border border-leaf/20 text-leaf grid place-items-center">3</span><span class="text-muted">Payment</span>
+      </div>
+      <div class="flex items-center gap-2 sm:hidden">
+        <span class="text-xs font-bold text-leaf bg-leafSoft border border-leaf/10 px-2.5 py-1 rounded-full">Step 2 — Address</span>
       </div>
     </div>
   </div>
@@ -55,7 +59,7 @@
         </div>
 
         <div>
-          <h3 class="font-bold text-sm flex items-center gap-2"><span class="w-6 h-6 bg-ink text-white rounded-full grid place-items-center text-xs">1</span> Contact Information</h3>
+          <h3 class="font-bold text-sm flex items-center gap-2"><span class="w-6 h-6 bg-leaf text-white rounded-full grid place-items-center text-xs">1</span> Contact Information <span class="ml-auto text-xs font-bold text-leaf bg-leafSoft border border-leaf/10 px-2 py-0.5 rounded-full">Current</span></h3>
           <div class="grid gap-4 mt-4">
             <label class="text-sm font-bold block">Email address (download link sent here) *<input required type="email" id="cEmail" placeholder="you@email.com" class="mt-1.5 w-full bg-paper border border-black/10 rounded-xl px-4 py-3 text-sm outline-none focus:border-ink/20 focus:ring-4 focus:ring-black/5"></label>
             <label class="text-sm font-bold block">WhatsApp number *<input required type="tel" id="cPhone" placeholder="+91 90000 12345" class="mt-1.5 w-full bg-paper border border-black/10 rounded-xl px-4 py-3 text-sm outline-none focus:border-ink/20"></label>
@@ -65,7 +69,7 @@
         </div>
 
         <div class="border-t border-black/5 pt-6">
-          <h3 class="font-bold text-sm flex items-center gap-2"><span class="w-6 h-6 bg-gold text-ink rounded-full grid place-items-center text-xs font-bold">2</span> Payment Method</h3>
+          <h3 class="font-bold text-sm flex items-center gap-2"><span class="w-6 h-6 bg-leafSoft border border-leaf/20 text-leaf rounded-full grid place-items-center text-xs font-bold">2</span> Payment Method <span class="ml-auto text-xs text-muted">Next</span></h3>
           <div class="grid grid-cols-3 gap-2 mt-4">
             <label class="cursor-pointer"><input type="radio" name="pay" value="upi" checked class="peer sr-only"><div class="peer-checked:bg-ink peer-checked:text-white peer-checked:border-ink bg-paper border border-black/10 rounded-xl p-3 text-center hover:border-black/20 transition"><div class="text-lg"><i class="ri-smartphone-line"></i></div><div class="text-xs font-bold mt-1">UPI</div><div class="text-[10px] opacity-70">GPay • PhonePe</div></div></label>
             <label class="cursor-pointer"><input type="radio" name="pay" value="card" class="peer sr-only"><div class="peer-checked:bg-ink peer-checked:text-white peer-checked:border-ink bg-paper border border-black/10 rounded-xl p-3 text-center hover:border-black/20 transition"><div class="text-lg"><i class="ri-bank-card-line"></i></div><div class="text-xs font-bold mt-1">Card</div><div class="text-[10px] opacity-70">Razorpay</div></div></label>
