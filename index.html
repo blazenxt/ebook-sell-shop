@@ -46,11 +46,20 @@ tailwind.config = {
   @keyframes fadeIn{from{opacity:0; transform:translateY(8px)} to{opacity:1; transform:translateY(0)}}
   .icon-box{transition:all 0.3s ease}
   .group:hover .icon-box{transform:scale(1.08) rotate(-3deg)}
+  /* Responsive collapse fixes */
+  html,body{max-width:100%; overflow-x:hidden}
+  img{max-width:100%; height:auto}
+  .display{overflow-wrap:break-word; word-break:break-word}
+  p, h1, h2, h3, span, div{overflow-wrap:break-word; word-break:break-word}
+  @supports (overflow-wrap: anywhere){ p, h1, h2, h3, span, div{overflow-wrap:anywhere} }
+  @media (max-width: 380px){
+    .display{font-size:32px !important}
+  }
   /* stars */
   .ri-star-fill{font-size:13px}
 </style>
 </head>
-<body class="bg-paper text-ink antialiased">
+<body class="bg-paper text-ink antialiased overflow-x-hidden">
 
 <!-- Top Bar -->
 <div class="bg-ink text-white text-[12px] tracking-wide text-center py-2.5 px-4 flex items-center justify-center gap-2 border-b border-white/10">
@@ -63,10 +72,10 @@ tailwind.config = {
   <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-[68px] gap-4">
       <!-- Logo + Nav -->
-      <div class="flex items-center gap-8">
-        <a href="#" class="flex items-center gap-2.5">
+      <div class="flex items-center gap-4 sm:gap-8 min-w-0 flex-1 lg:flex-none">
+        <a href="#" class="flex items-center gap-2.5 min-w-0 shrink-0">
           <div class="w-9 h-9 bg-ink text-gold rounded-xl grid place-items-center text-[18px]"><i class="ri-book-open-line"></i></div>
-          <span class="display text-[22px] tracking-tight leading-none">Mavizio<span class="text-gold">.</span></span>
+          <span class="display text-[20px] sm:text-[22px] tracking-tight leading-none shrink-0">Mavizio<span class="text-gold">.</span></span>
           <span class="hidden lg:inline text-[10px] tracking-[0.18em] font-bold text-muted border border-black/10 rounded-full px-2 py-1 ml-1">EBOOK STORE</span>
         </a>
         <nav class="hidden lg:flex items-center gap-6 text-[13px] font-semibold tracking-wide">
@@ -86,7 +95,7 @@ tailwind.config = {
       </div>
 
       <!-- Actions -->
-      <div class="flex items-center gap-1 sm:gap-2">
+      <div class="flex items-center gap-1 sm:gap-2 shrink-0">
         <button onclick="toggleSearchMobile()" class="md:hidden w-9 h-9 grid place-items-center rounded-full hover:bg-black/5"><i class="ri-search-line text-lg"></i></button>
         <button onclick="toggleWishlist()" class="relative w-9 h-9 sm:w-10 sm:h-10 grid place-items-center rounded-full hover:bg-black/5 transition">
           <i class="ri-heart-3-line text-[20px]"></i><span id="wishlistCount" class="absolute -top-1 -right-1 bg-gold text-ink text-[11px] font-bold w-5 h-5 rounded-full grid place-items-center hidden">0</span>
@@ -115,28 +124,28 @@ tailwind.config = {
 </header>
 
 <!-- HERO -->
-<section class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 pt-6 sm:pt-10">
-  <div class="grid lg:grid-cols-[1.15fr_0.85fr] gap-6 items-stretch">
+<section class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 pt-6 sm:pt-10 overflow-hidden">
+  <div class="grid lg:grid-cols-[1.15fr_0.85fr] gap-6 items-stretch min-w-0">
     <!-- Left Hero Card -->
-    <div class="relative overflow-hidden rounded-[28px] bg-ink text-white p-6 sm:p-10 lg:p-12 flex flex-col justify-between min-h-[520px]">
+    <div class="relative overflow-hidden rounded-[28px] bg-ink text-white p-5 sm:p-10 lg:p-12 flex flex-col justify-between min-h-[460px] sm:min-h-[520px]">
       <div class="absolute inset-0 opacity-[0.07]" style="background-image:radial-gradient(circle at 1px 1px, white 1px, transparent 0);background-size:22px 22px"></div>
       <div class="absolute -right-20 -bottom-20 w-[380px] h-[380px] bg-gold/20 blur-[80px] rounded-full"></div>
       <div class="relative">
-        <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur border border-white/10 rounded-full px-3 py-1.5 text-xs font-semibold tracking-wide">
+        <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur border border-white/10 rounded-full px-3 py-1.5 text-[11px] sm:text-xs font-semibold tracking-wide max-w-full flex-wrap">
           <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span> 12,847+ readers downloaded today
         </div>
-        <h1 class="display text-[42px] sm:text-[54px] lg:text-[62px] leading-[0.92] tracking-tight mt-6">
+        <h1 class="display text-[34px] xs:text-[38px] sm:text-[54px] lg:text-[62px] leading-[0.92] tracking-tight mt-6 break-words max-w-full">
           Knowledge,<br>
           <span class="serif2 italic font-normal text-gold">instantly yours.</span>
         </h1>
         <p class="text-white/70 text-[15px] sm:text-[16px] leading-relaxed max-w-[520px] mt-4">
           Curated ebooks — Business, Self-Help, Fiction, UPSC. Pay via UPI / Razorpay & download in 10 seconds. No waiting, no shipping.
         </p>
-        <div class="flex flex-wrap gap-3 mt-8">
+        <div class="flex flex-wrap gap-3 mt-8 w-full">
           <a href="#bestsellers" class="inline-flex items-center gap-2 bg-gold text-ink px-7 py-3.5 rounded-full font-bold text-sm hover:bg-white transition btn-primary">Explore Ebooks <i class="ri-arrow-right-line"></i></a>
           <button onclick="document.getElementById('howItWorks').scrollIntoView({behavior:'smooth'})" class="inline-flex items-center gap-2 bg-white/10 backdrop-blur border border-white/20 text-white px-7 py-3.5 rounded-full font-bold text-sm hover:bg-white hover:text-ink transition"><i class="ri-play-circle-line"></i> How does it work?</button>
         </div>
-        <div class="flex items-center gap-6 mt-10">
+        <div class="flex flex-wrap items-center gap-4 sm:gap-6 mt-8 sm:mt-10">
           <div class="flex -space-x-2">
             <img src="https://i.pravatar.cc/100?img=32" class="w-9 h-9 rounded-full border-2 border-ink">
             <img src="https://i.pravatar.cc/100?img=14" class="w-9 h-9 rounded-full border-2 border-ink">
@@ -156,12 +165,12 @@ tailwind.config = {
     </div>
 
     <!-- Right: Featured Product + Mini -->
-    <div class="grid grid-rows-[1.6fr_0.9fr] gap-6">
+    <div class="grid lg:grid-rows-[1.6fr_0.9fr] gap-6 auto-rows-auto">
       <!-- Featured Ebook Card -->
-      <div class="relative overflow-hidden rounded-[28px] bg-white border border-black/5 p-6 sm:p-7 flex gap-6 items-center">
+      <div class="relative overflow-hidden rounded-[28px] bg-white border border-black/5 p-5 sm:p-7 flex flex-col sm:flex-row gap-5 sm:gap-6 items-center sm:items-start">
         <div class="absolute top-0 right-0 bg-gold text-ink text-[11px] font-extrabold tracking-widest px-4 py-1.5 rounded-bl-2xl">EDITORS' CHOICE</div>
-        <div class="shrink-0">
-          <div class="w-[160px] sm:w-[185px] h-[232px] sm:h-[268px] rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.22)] rotate-[-2deg] relative bg-gradient-to-br from-[#1A2332] to-[#0F172A] p-3 flex flex-col hover:rotate-0 transition duration-500 hover:shadow-[0_24px_60px_rgba(0,0,0,0.28)]">
+        <div class="shrink-0 mx-auto sm:mx-0">
+          <div class="w-[150px] xs:w-[160px] sm:w-[185px] h-[215px] xs:h-[232px] sm:h-[268px] rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.22)] sm:rotate-[-2deg] relative bg-gradient-to-br from-[#1A2332] to-[#0F172A] p-3 flex flex-col hover:sm:rotate-0 transition duration-500 hover:shadow-[0_24px_60px_rgba(0,0,0,0.28)] max-w-full">
             <div class="text-[9px] tracking-[0.2em] text-white/60 font-bold">MAVIZIO ORIGINALS</div>
             <div class="mt-3 text-white leading-tight">
               <div class="text-[18px] font-bold leading-none display">The Art of<br><span class="text-gold">Deep Work</span></div>
@@ -174,15 +183,15 @@ tailwind.config = {
             <div class="absolute -right-6 -bottom-6 w-24 h-24 bg-gold/30 blur-2xl rounded-full"></div>
           </div>
         </div>
-        <div class="flex-1 min-w-0">
-          <div class="flex items-center gap-2 text-xs font-bold">
+        <div class="flex-1 min-w-0 w-full sm:w-auto text-center sm:text-left">
+          <div class="flex items-center justify-center sm:justify-start gap-2 text-xs font-bold flex-wrap">
             <span class="bg-green-50 text-green-700 border border-green-200 px-2.5 py-1 rounded-full"><i class="ri-flashlight-fill text-green-600"></i> Instant Download</span>
             <span class="hidden sm:inline text-muted font-medium">PDF + EPUB + MOBI</span>
           </div>
           <h3 class="display text-[22px] leading-tight mt-3">The Art of Deep Work</h3>
           <p class="text-sm text-muted leading-relaxed mt-1.5 line-clamp-2">Focus, discipline and 10x productivity — without burnout. 120 pages of practical exercises.</p>
-          <div class="flex items-center gap-1.5 mt-3 text-gold text-sm"><span class="flex gap-0.5"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></span> <span class="text-ink font-bold text-sm">4.9</span> <span class="text-muted font-medium text-xs">(1,842)</span> <span class="ml-2 bg-cream border border-black/5 px-2 py-0.5 rounded-full text-ink text-xs font-bold">Bestseller #1</span></div>
-          <div class="flex items-baseline gap-2 mt-4">
+          <div class="flex flex-wrap items-center justify-center sm:justify-start gap-1.5 mt-3 text-gold text-sm"><span class="flex gap-0.5"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></span> <span class="text-ink font-bold text-sm">4.9</span> <span class="text-muted font-medium text-xs">(1,842)</span> <span class="bg-cream border border-black/5 px-2 py-0.5 rounded-full text-ink text-xs font-bold">Bestseller #1</span></div>
+          <div class="flex items-baseline justify-center sm:justify-start gap-2 mt-4 flex-wrap">
             <span class="text-[26px] font-extrabold tracking-tight">₹199</span>
             <span class="text-sm line-through text-muted">₹499</span>
             <span class="text-xs font-extrabold bg-green-500 text-white px-2 py-1 rounded-full">60% OFF</span>
@@ -200,18 +209,18 @@ tailwind.config = {
       </div>
 
       <!-- Stats strip -->
-      <div class="grid grid-cols-3 gap-4">
-        <div class="bg-gold rounded-[22px] p-5 flex flex-col justify-center">
-          <div class="text-[28px] font-extrabold leading-none">50k+</div>
+      <div class="grid grid-cols-3 gap-3 sm:gap-4">
+        <div class="bg-gold rounded-[22px] p-4 sm:p-5 flex flex-col justify-center">
+          <div class="text-[22px] sm:text-[28px] font-extrabold leading-none">50k+</div>
           <div class="text-xs font-bold tracking-wide opacity-70 mt-1">EBOOKS SOLD</div>
           <div class="mt-3 text-xs font-medium opacity-70">Trusted by readers across India</div>
         </div>
-        <div class="bg-white border border-black/5 rounded-[22px] p-5 flex flex-col justify-center">
+        <div class="bg-white border border-black/5 rounded-[22px] p-4 sm:p-5 flex flex-col justify-center">
           <div class="w-8 h-8 bg-cream rounded-full grid place-items-center"><i class="ri-flashlight-line"></i></div>
           <div class="text-sm font-extrabold mt-3 leading-tight">10 Sec<br>Delivery</div>
           <div class="text-xs text-muted mt-1">Email + WhatsApp</div>
         </div>
-        <div class="bg-white border border-black/5 rounded-[22px] p-5 flex flex-col justify-center">
+        <div class="bg-white border border-black/5 rounded-[22px] p-4 sm:p-5 flex flex-col justify-center">
           <div class="w-8 h-8 bg-cream rounded-full grid place-items-center"><i class="ri-customer-service-2-line"></i></div>
           <div class="text-sm font-extrabold mt-3 leading-tight">Lifetime<br>Access</div>
           <div class="text-xs text-muted mt-1">Re-download anytime</div>
@@ -223,7 +232,7 @@ tailwind.config = {
 
 <!-- TRUST BAR -->
 <section class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-6">
-  <div class="bg-white border border-black/5 rounded-[18px] px-4 sm:px-6 py-4 flex flex-wrap items-center justify-between gap-4 text-xs font-bold tracking-wide">
+  <div class="bg-white border border-black/5 rounded-[18px] px-4 sm:px-6 py-4 grid grid-cols-1 sm:flex sm:flex-wrap items-start sm:items-center justify-between gap-3 sm:gap-4 text-xs font-bold tracking-wide">
     <span class="flex items-center gap-2"><span class="w-7 h-7 bg-green-50 rounded-full grid place-items-center text-green-600"><i class="ri-shield-keyhole-line"></i></span> 100% Secure Payments via Razorpay & UPI</span>
     <span class="hidden sm:flex items-center gap-2"><span class="w-7 h-7 bg-cream rounded-full grid place-items-center"><i class="ri-file-download-line"></i></span> Instant PDF • EPUB • MOBI • Audio Summary</span>
     <span class="flex items-center gap-2"><span class="w-7 h-7 bg-cream rounded-full grid place-items-center"><i class="ri-refund-2-line"></i></span> 30-Day Money Back — No Questions</span>
@@ -233,7 +242,7 @@ tailwind.config = {
 
 <!-- CATEGORIES -->
 <section id="collection" class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-10">
-  <div class="flex items-end justify-between gap-4">
+  <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3 sm:gap-4">
     <div>
       <div class="text-[11px] tracking-[0.2em] font-extrabold text-muted">BROWSE BY TOPIC</div>
       <h2 class="display text-[28px] sm:text-[32px] leading-none mt-1">Shop by Collection</h2>
@@ -286,16 +295,16 @@ tailwind.config = {
 
 <!-- BESTSELLERS -->
 <section id="bestsellers" class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-10">
-  <div class="flex items-end justify-between">
-    <h2 class="display text-[28px] sm:text-[32px] leading-none">Bestsellers <span class="text-muted font-normal text-[18px]">— Our most-loved titles</span></h2>
+  <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3">
+    <h2 class="display text-[26px] sm:text-[32px] leading-tight sm:leading-none">Bestsellers <span class="text-muted font-normal text-[16px] sm:text-[18px] block sm:inline mt-1 sm:mt-0">— Our most-loved titles</span></h2>
     <a href="#collection" class="hidden sm:inline-flex items-center gap-1 text-sm font-bold border border-black/10 rounded-full px-4 py-2 hover:bg-ink hover:text-white transition">View All <i class="ri-arrow-right-line"></i></a>
   </div>
 
-  <div id="productGrid" class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mt-6">
+  <div id="productGrid" class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6 mt-6 min-w-0">
     <!-- Products injected by JS -->
   </div>
 
-  <div class="mt-8 bg-gradient-to-r from-[#FFF7CC] to-[#FFE9A8] border border-black/5 rounded-[20px] px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-4">
+  <div class="mt-8 bg-gradient-to-r from-[#FFF7CC] to-[#FFE9A8] border border-black/5 rounded-[20px] px-5 sm:px-6 py-5 flex flex-col sm:flex-row items-center sm:items-center justify-between gap-4 text-center sm:text-left">
     <div class="flex items-center gap-4">
       <div class="w-12 h-12 bg-ink text-gold rounded-xl grid place-items-center text-xl shadow-lg shimmer"><i class="ri-gift-line"></i></div>
       <div>
@@ -303,7 +312,7 @@ tailwind.config = {
         <div class="text-sm text-ink/70">Pick any 4 ebooks — combo price applies automatically. Limited time.</div>
       </div>
     </div>
-    <button onclick="addBundle()" class="shrink-0 bg-ink text-white px-6 py-3 rounded-full font-bold text-sm hover:bg-black transition">Add Bundle to Cart</button>
+    <button onclick="addBundle()" class="shrink-0 w-full sm:w-auto bg-ink text-white px-6 py-3 rounded-full font-bold text-sm hover:bg-black transition">Add Bundle to Cart</button>
   </div>
 </section>
 
@@ -312,7 +321,7 @@ tailwind.config = {
   <div class="grid lg:grid-cols-2 gap-6">
     <div class="bg-white border border-black/5 rounded-[24px] p-6 sm:p-8">
       <div class="text-[11px] tracking-[0.2em] font-extrabold text-muted">3 STEPS • 10 SECONDS</div>
-      <h3 class="display text-[30px] leading-none mt-2">How does it work?</h3>
+      <h3 class="display text-[26px] sm:text-[30px] leading-none mt-2 break-words">How does it work?</h3>
       <div class="mt-6 space-y-5">
         <div class="flex gap-4">
           <div class="w-10 h-10 rounded-full bg-ink text-white grid place-items-center font-bold shrink-0">1</div>
@@ -357,8 +366,8 @@ tailwind.config = {
 <!-- REVIEWS -->
 <section class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-10">
   <div class="bg-white border border-black/5 rounded-[24px] p-6 sm:p-8">
-    <div class="flex flex-wrap items-center justify-between gap-4">
-      <h3 class="display text-[24px] flex items-center gap-2">What our readers are saying <span class="w-7 h-7 bg-red-50 text-red-500 rounded-full grid place-items-center text-sm"><i class="ri-heart-3-fill"></i></span></h3>
+    <div class="flex flex-col sm:flex-row sm:flex-wrap items-start sm:items-center justify-between gap-3 sm:gap-4">
+      <h3 class="display text-[22px] sm:text-[24px] flex flex-wrap items-center gap-2">What our readers are saying <span class="w-7 h-7 bg-red-50 text-red-500 rounded-full grid place-items-center text-sm"><i class="ri-heart-3-fill"></i></span></h3>
       <div class="flex items-center gap-2 text-sm"><span class="flex text-gold gap-0.5"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></span> <b>4.9/5</b> <span class="text-muted">• 2,412 reviews</span></div>
     </div>
     <div class="grid md:grid-cols-3 gap-4 mt-6">
@@ -383,14 +392,14 @@ tailwind.config = {
 
 <!-- NEWSLETTER -->
 <section class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-6 mb-10">
-  <div class="rounded-[24px] bg-ink text-white p-6 sm:p-8 flex flex-col lg:flex-row items-center justify-between gap-6">
+  <div class="rounded-[24px] bg-ink text-white p-6 sm:p-8 flex flex-col lg:flex-row items-center lg:items-center justify-between gap-6 text-center lg:text-left">
     <div>
       <h3 class="display text-[26px] leading-none flex items-center gap-2.5">Want a free ebook? <span class="w-8 h-8 bg-gold text-ink rounded-lg grid place-items-center text-lg"><i class="ri-gift-line"></i></span></h3>
       <p class="text-white/60 text-sm mt-2">Join 40,000+ readers. Get a free chapter every Sunday + an exclusive 30% code.</p>
     </div>
-    <form onsubmit="subscribe(event)" class="flex w-full lg:w-auto gap-2 bg-white rounded-full p-1.5 lg:min-w-[420px]">
-      <input type="email" required placeholder="Enter your email address..." class="flex-1 px-5 py-2.5 rounded-full outline-none text-ink text-sm">
-      <button class="shrink-0 bg-gold text-ink px-6 py-2.5 rounded-full font-bold text-sm hover:bg-yellow-400 transition">Get Free Ebook</button>
+    <form onsubmit="subscribe(event)" class="flex flex-col sm:flex-row w-full lg:w-auto gap-2 bg-white rounded-[20px] sm:rounded-full p-1.5 lg:min-w-[420px]">
+      <input type="email" required placeholder="Enter your email address..." class="flex-1 w-full px-5 py-3 sm:py-2.5 rounded-full outline-none text-ink text-sm min-w-0">
+      <button class="shrink-0 w-full sm:w-auto bg-gold text-ink px-6 py-3 sm:py-2.5 rounded-full font-bold text-sm hover:bg-yellow-400 transition btn-primary">Get Free Ebook</button>
     </form>
   </div>
 </section>
@@ -431,7 +440,7 @@ tailwind.config = {
         <a href="#bestsellers" onclick="closeCart()" class="inline-flex mt-4 bg-ink text-white px-6 py-2.5 rounded-full font-bold text-sm">Continue Shopping</a>
       </div>
     </div>
-    <div id="cartFooter" class="hidden border-t border-black/5 bg-white p-6 space-y-4">
+    <div id="cartFooter" class="hidden border-t border-black/5 bg-white p-4 sm:p-6 space-y-4 shrink-0">
       <div class="flex gap-2">
         <input id="couponInput" placeholder="Coupon code (MAVIZIO40)" class="flex-1 bg-paper border border-black/10 rounded-full px-4 py-2.5 text-sm outline-none">
         <button onclick="applyCoupon()" class="bg-ink text-white px-5 py-2.5 rounded-full text-sm font-bold">Apply</button>
@@ -452,7 +461,7 @@ tailwind.config = {
 <!-- PRODUCT MODAL -->
 <div id="productModal" class="fixed inset-0 z-50 hidden">
   <div onclick="closeModal()" class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
-  <div class="absolute inset-0 sm:inset-auto sm:top-1/2 sm:left-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 w-full sm:w-[900px] sm:max-h-[90vh] bg-paper sm:rounded-[24px] overflow-hidden flex flex-col max-w-full">
+  <div class="absolute inset-0 sm:inset-auto sm:top-1/2 sm:left-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 w-full sm:w-[900px] sm:max-h-[90vh] bg-paper sm:rounded-[24px] overflow-hidden flex flex-col max-w-full overflow-y-auto">
     <button onclick="closeModal()" class="absolute top-4 right-4 z-10 w-9 h-9 bg-white rounded-full grid place-items-center shadow"><i class="ri-close-line text-xl"></i></button>
     <div id="modalContent" class="overflow-y-auto"></div>
   </div>
@@ -471,8 +480,8 @@ tailwind.config = {
         <div class="text-sm"><div class="font-bold" id="checkoutSummary">0 items</div><div class="text-muted text-xs">Instant delivery via Email & WhatsApp</div></div>
         <div class="text-right"><div class="font-extrabold text-lg" id="checkoutTotal">₹0</div><div class="text-xs text-muted">incl. GST</div></div>
       </div>
-      <div class="grid gap-4">
-        <label class="text-sm font-bold">Email (your download link will be sent here) *<input required type="email" id="cEmail" placeholder="you@email.com" class="mt-1.5 w-full bg-paper border border-black/10 rounded-xl px-4 py-3 text-sm outline-none focus:border-ink/20 focus:ring-4 focus:ring-black/5"></label>
+      <div class="grid gap-4 min-w-0">
+        <label class="text-sm font-bold block min-w-0">Email (your download link will be sent here) *<input required type="email" id="cEmail" placeholder="you@email.com" class="mt-1.5 w-full bg-paper border border-black/10 rounded-xl px-4 py-3 text-sm outline-none focus:border-ink/20 focus:ring-4 focus:ring-black/5"></label>
         <label class="text-sm font-bold">WhatsApp number *<input required type="tel" id="cPhone" placeholder="+91 90000 12345" class="mt-1.5 w-full bg-paper border border-black/10 rounded-xl px-4 py-3 text-sm outline-none focus:border-ink/20"></label>
         <label class="text-sm font-bold">Full name<input type="text" id="cName" placeholder="Your full name" class="mt-1.5 w-full bg-paper border border-black/10 rounded-xl px-4 py-3 text-sm outline-none"></label>
       </div>
@@ -553,7 +562,7 @@ function renderProducts(filter='all', search=''){
   grid.innerHTML = list.map(p=>`
     <div onclick="openProduct(${p.id})" class="group cursor-pointer bg-white border border-black/5 rounded-[22px] overflow-hidden card-hover flex flex-col fade-in">
       <div class="relative p-4 pb-0">
-        <div class="relative h-[190px] rounded-[16px] overflow-hidden bg-gradient-to-br ${p.color} p-3 flex flex-col shadow-md">
+        <div class="relative h-[160px] sm:h-[190px] rounded-[16px] overflow-hidden bg-gradient-to-br ${p.color} p-3 flex flex-col shadow-md min-w-0">
           <div class="text-[8px] tracking-[0.18em] text-white/60 font-bold">MAVIZIO • ${p.cat.toUpperCase()}</div>
           <div class="mt-2 text-white font-bold leading-tight line-clamp-2 display text-[17px]">${p.title}</div>
           <div class="text-[11px] text-white/70 mt-1">${p.author}</div>
@@ -567,16 +576,16 @@ function renderProducts(filter='all', search=''){
       </div>
       <div class="p-4 flex-1 flex flex-col">
         <div class="flex items-center gap-1.5 text-[11px]"><span class="flex text-gold gap-0.5"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></span> <b class="text-ink">${p.rating}</b> <span class="text-muted">(${p.reviews.toLocaleString('en-IN')})</span></div>
-        <h3 class="font-bold leading-tight mt-1.5 line-clamp-2 text-[15px]">${p.title}</h3>
+        <h3 class="font-bold leading-tight mt-1.5 line-clamp-2 text-[14px] sm:text-[15px] break-words">${p.title}</h3>
         <div class="text-xs text-muted mt-1">${p.author} • ${p.lang}</div>
         <div class="flex items-baseline gap-2 mt-3">
           <span class="text-[20px] font-extrabold">₹${p.price}</span>
           <span class="text-xs line-through text-muted">₹${p.mrp}</span>
           <span class="text-[11px] font-bold bg-green-500 text-white px-1.5 py-0.5 rounded-full">${Math.round((1-p.price/p.mrp)*100)}% OFF</span>
         </div>
-        <div class="grid grid-cols-2 gap-2 mt-4">
-          <button onclick="event.stopPropagation(); addToCart(${p.id})" class="bg-white border border-black/10 rounded-full py-2.5 text-sm font-bold hover:bg-ink hover:text-white transition">Add to Cart</button>
-          <button onclick="event.stopPropagation(); buyNow(${p.id})" class="bg-ink text-white rounded-full py-2.5 text-sm font-bold hover:bg-black transition">Buy Now</button>
+        <div class="grid grid-cols-2 gap-2 mt-4 min-w-0">
+          <button onclick="event.stopPropagation(); addToCart(${p.id})" class="bg-white border border-black/10 rounded-full py-2.5 text-xs sm:text-sm font-bold hover:bg-ink hover:text-white transition min-w-0 truncate px-2">Add to Cart</button>
+          <button onclick="event.stopPropagation(); buyNow(${p.id})" class="bg-ink text-white rounded-full py-2.5 text-xs sm:text-sm font-bold hover:bg-black transition min-w-0 truncate px-2">Buy Now</button>
         </div>
       </div>
     </div>
