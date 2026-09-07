@@ -1,105 +1,69 @@
-<section id="bestsellers" class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-10">
+<section id="bestsellers" class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-8 sm:mt-10">
   <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3">
-    <h2 class="display text-[26px] sm:text-[32px] leading-tight sm:leading-none">{{ section.settings.heading | default: 'Bestsellers' }} <span class="text-muted font-normal text-[16px] sm:text-[18px] block sm:inline mt-1 sm:mt-0">— {{ section.settings.subheading | default: 'Our most-loved titles' }}</span></h2>
-    <a href="{{ routes.collections_url }}" class="hidden sm:inline-flex items-center gap-1 text-sm font-bold border border-black/10 rounded-full px-4 py-2 hover:bg-ink hover:text-white transition">View All <i class="ri-arrow-right-line"></i></a>
+    <div>
+      <div class="inline-flex items-center gap-2 bg-red text-white px-3 py-1 rounded-full text-xs font-extrabold tracking-widest"><span class="w-1.5 h-1.5 bg-white rounded-full animate-ping"></span> SELLING FAST • 1,200+ BOUGHT TODAY</div>
+      <h2 class="display text-[28px] sm:text-[36px] leading-none mt-2 font-extrabold">{{ section.settings.heading | default: 'Bestsellers' }} <span class="text-red font-extrabold">— {{ section.settings.subheading | default: 'Most-loved' }}</span></h2>
+      <p class="text-sm text-muted mt-1">Real results. Real readers. <b class="text-ink">4.9★ from 2,400+ reviews</b></p>
+    </div>
+    <a href="{{ routes.collections_url }}/all" class="hidden sm:inline-flex items-center gap-1 text-sm font-bold bg-ink text-white rounded-full px-5 py-2.5 hover:bg-black transition">View All Bestsellers <i class="ri-arrow-right-line"></i></a>
   </div>
 
   {% assign collection = section.settings.collection %}
-  {% if collection == blank %}
-    {% assign collection = collections.all %}
-  {% else %}
-    {% assign collection = collections[collection] %}
-  {% endif %}
+  {% if collection == blank %}{% assign collection = collections.all %}{% else %}{% assign collection = collections[collection] %}{% endif %}
 
-  <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6 mt-6 min-w-0">
+  <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-5 mt-6 min-w-0">
     {% for product in collection.products limit: section.settings.products_to_show %}
-      <a href="{{ product.url }}" class="group bg-white border border-black/5 rounded-[22px] overflow-hidden card-hover flex flex-col">
-        <div class="relative p-4 pb-0">
-          <div class="relative h-[160px] sm:h-[190px] rounded-[16px] overflow-hidden bg-gradient-to-br from-[#1A2332] to-[#0F172A] p-3 flex flex-col shadow-md">
-            {% if product.featured_image %}
-              <img src="{{ product.featured_image | image_url: width: 400 }}" alt="{{ product.title }}" class="absolute inset-0 w-full h-full object-cover opacity-50">
-              <div class="absolute inset-0 bg-gradient-to-br from-black/40 to-black/60"></div>
-            {% endif %}
-            <div class="relative text-[8px] tracking-[0.18em] text-white/60 font-bold">MAVIZIO • {{ product.type | default: product.product_type | default: 'EBOOK' | upcase }}</div>
-            <div class="relative mt-2 text-white font-bold leading-tight line-clamp-2 display text-[14px] sm:text-[17px]">{{ product.title }}</div>
-            <div class="relative text-[11px] text-white/70 mt-1">{{ product.vendor }}</div>
+      <div class="group bg-white border border-black/5 rounded-[22px] overflow-hidden card-hover flex flex-col relative">
+        <div class="absolute top-3 left-3 z-10 flex flex-col gap-1.5">
+          <span class="bg-red text-white text-[10px] font-extrabold px-2 py-1 rounded-full flex items-center gap-1"><i class="ri-fire-fill"></i> 60% OFF</span>
+          {% if forloop.index == 1 %}<span class="bg-gold text-ink text-[10px] font-extrabold px-2 py-1 rounded-full">#1 BESTSELLER</span>{% endif %}
+        </div>
+        <div class="absolute top-3 right-3 z-10 bg-white/95 backdrop-blur text-[11px] font-bold px-2 py-1 rounded-full border border-black/5 flex items-center gap-1"><i class="ri-time-line text-red"></i> <span data-countdown>00:00:00</span></div>
+        <a href="{{ product.url }}" class="block p-3 pb-0">
+          <div class="relative h-[170px] sm:h-[200px] rounded-[16px] overflow-hidden bg-gradient-to-br from-[#1A2332] to-[#0F172A] p-3 flex flex-col shadow-md">
+            {% if product.featured_image %}<img src="{{ product.featured_image | image_url: width: 400 }}" alt="{{ product.title }}" class="absolute inset-0 w-full h-full object-cover opacity-50"><div class="absolute inset-0 bg-gradient-to-br from-black/30 to-black/60"></div>{% endif %}
+            <div class="relative text-[8px] tracking-[0.18em] text-white/60 font-bold">MAVIZIO • {{ product.type | default: product.product_type | default: 'EBOOK' | upcase }} • INSTANT</div>
+            <div class="relative mt-2 text-white font-bold leading-tight line-clamp-2 display text-[15px] sm:text-[17px]">{{ product.title }}</div>
+            <div class="relative text-[11px] text-white/70 mt-1">{{ product.vendor }} • 120 pages • Audio</div>
             <div class="relative mt-auto flex items-center justify-between">
-              <span class="text-[10px] bg-white/15 text-white px-2 py-1 rounded-full border border-white/10">{{ product.metafields.custom.pages | default: 120 }} pages</span>
-              <span class="text-[10px] bg-gold text-ink px-2 py-1 rounded-full font-bold">PDF + EPUB</span>
+              <span class="text-[10px] bg-white text-ink px-2 py-1 rounded-full font-bold">PDF + EPUB + MOBI</span>
+              <span class="text-[10px] bg-green-500 text-white px-2 py-1 rounded-full font-bold flex items-center gap-1"><i class="ri-check-line"></i> In Stock</span>
             </div>
           </div>
-          <div class="absolute top-6 left-6 bg-white text-ink text-[9px] sm:text-[10px] font-extrabold px-2 sm:px-2.5 py-1 rounded-full shadow max-w-[70%] truncate">{{ product.tags.first | default: 'Bestseller' }}</div>
-        </div>
+        </a>
         <div class="p-4 flex-1 flex flex-col">
-          <div class="flex items-center gap-1.5 text-[11px]"><span class="flex text-gold gap-0.5"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></span> <b class="text-ink">4.9</b> <span class="text-muted">({{ product.metafields.custom.reviews | default: 1200 }})</span></div>
-          <h3 class="font-bold leading-tight mt-1.5 line-clamp-2 text-[14px] sm:text-[15px] break-words">{{ product.title }}</h3>
-          <div class="text-xs text-muted mt-1">{{ product.vendor }} • {{ product.metafields.custom.lang | default: 'English' }}</div>
+          <div class="flex items-center gap-1.5 text-[11px]"><span class="flex text-gold gap-0.5"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></span> <b class="text-ink">4.9</b> <span class="text-muted">({{ product.metafields.custom.reviews | default: 1247 | plus: forloop.index | times: 3 }})</span><span class="ml-auto text-[10px] bg-paper border border-black/5 px-1.5 py-0.5 rounded-full font-bold text-green-700">● 47 viewing</span></div>
+          <a href="{{ product.url }}"><h3 class="font-bold leading-tight mt-1.5 line-clamp-2 text-[14px] sm:text-[15px] hover:text-gold transition">{{ product.title }}</h3></a>
+          <div class="text-xs text-muted mt-1">English • Free audio • Lifetime</div>
           <div class="flex items-baseline gap-2 mt-3 flex-wrap">
-            <span class="text-[20px] font-extrabold">{{ product.price | money }}</span>
-            {% if product.compare_at_price > product.price %}<span class="text-xs line-through text-muted">{{ product.compare_at_price | money }}</span><span class="text-[11px] font-bold bg-green-500 text-white px-1.5 py-0.5 rounded-full">{{ product.compare_at_price | minus: product.price | times: 100 | divided_by: product.compare_at_price }}% OFF</span>{% endif %}
+            <span class="text-[22px] font-extrabold">{{ product.price | money }}</span>
+            {% if product.compare_at_price > product.price %}<span class="text-xs line-through text-muted">{{ product.compare_at_price | money }}</span><span class="text-xs font-extrabold bg-red text-white px-1.5 py-0.5 rounded-full">SAVE {{ product.compare_at_price | minus: product.price | money }}</span>{% endif %}
           </div>
-          <div class="grid grid-cols-2 gap-2 mt-4">
-            <span class="bg-white border border-black/10 rounded-full py-2.5 text-xs sm:text-sm font-bold text-center">View</span>
-            <span class="bg-ink text-white rounded-full py-2.5 text-xs sm:text-sm font-bold text-center">Buy Now</span>
+          <div class="mt-1 text-[11px] font-bold text-red flex items-center gap-1"><i class="ri-alarm-warning-fill"></i> 23 left at this price • Ends tonight</div>
+          <div class="grid grid-cols-5 gap-2 mt-3">
+            <a href="{{ product.url }}" class="col-span-2 bg-white border border-black/10 rounded-full py-2.5 text-xs font-bold text-center hover:bg-paper transition">View</a>
+            <form method="post" action="{{ routes.cart_add_url }}" class="col-span-3"><input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}"><button type="submit" class="w-full bg-gold text-ink rounded-full py-2.5 text-xs font-extrabold hover:bg-yellow-400 transition flex items-center justify-center gap-1"><i class="ri-shopping-bag-line"></i> Add to Cart</button></form>
           </div>
+          <div class="text-[10px] text-center text-muted mt-1.5">Instant download • 30-day refund</div>
         </div>
-      </a>
+      </div>
     {% else %}
-      {% for i in (1..8) %}
-        <div class="bg-white border border-black/5 rounded-[22px] p-8 text-center">
-          <p class="text-sm text-muted">Add products to collection "{{ collection.title }}" to display here</p>
-        </div>
-      {% endfor %}
+      {% for i in (1..4) %}<div class="bg-white border border-black/5 rounded-[22px] p-8 text-center"><p class="text-sm text-muted">Add products to collection to display</p></div>{% endfor %}
     {% endfor %}
   </div>
 
-  <div class="mt-8 bg-gradient-to-r from-[#FFF7CC] to-[#FFE9A8] border border-black/5 rounded-[20px] px-5 sm:px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
-    <div class="flex items-center gap-4">
-      <div class="w-12 h-12 bg-ink text-gold rounded-xl grid place-items-center text-xl shadow-lg hidden sm:grid"><i class="ri-gift-line"></i></div>
+  <!-- TAGDA Bundle -->
+  <div class="mt-8 relative overflow-hidden bg-ink rounded-[24px] p-5 sm:p-6 flex flex-col lg:flex-row items-center justify-between gap-4 text-white">
+    <div class="absolute inset-0 opacity-20" style="background:radial-gradient(circle at 30% 50%, #FFB800 0%, transparent 50%), radial-gradient(circle at 80% 20%, #FF3B30 0%, transparent 40%)"></div>
+    <div class="absolute -right-10 -top-10 w-40 h-40 bg-gold/20 blur-3xl rounded-full"></div>
+    <div class="relative flex items-center gap-4 w-full lg:w-auto">
+      <div class="w-14 h-14 bg-gold text-ink rounded-2xl grid place-items-center text-2xl pulse-gold shrink-0"><i class="ri-gift-2-fill"></i></div>
       <div>
-        <div class="font-extrabold leading-none">Bundle Offer — Any 4 Ebooks for ₹499 only!</div>
-        <div class="text-sm text-ink/70">Pick any 4 ebooks — combo price applies automatically. Limited time.</div>
+        <div class="font-extrabold text-[16px] sm:text-[18px] leading-none flex flex-wrap items-center gap-2">Bundle Offer — Any 4 for ₹499 <span class="bg-red text-white text-[11px] px-2 py-1 rounded-full">SAVE ₹1,097</span></div>
+        <div class="text-sm text-white/70 mt-1">Mix any 4 ebooks • Auto-applies at checkout • <b class="text-gold">Ends in <span data-countdown>00:00:00</span></b></div>
       </div>
     </div>
-    <a href="{{ routes.collections_url }}" class="shrink-0 w-full sm:w-auto bg-ink text-white px-6 py-3 rounded-full font-bold text-sm hover:bg-black transition text-center">Shop Bundles</a>
+    <a href="{{ routes.collections_url }}/all" class="relative shrink-0 w-full lg:w-auto bg-gold text-ink px-8 py-3.5 rounded-full font-extrabold text-sm hover:bg-white transition text-center shine">Claim Bundle — ₹499 →</a>
   </div>
 </section>
-
-{% schema %}
-{
-  "name": "Featured Products",
-  "settings": [
-    {
-      "type": "text",
-      "id": "heading",
-      "label": "Heading",
-      "default": "Bestsellers"
-    },
-    {
-      "type": "text",
-      "id": "subheading",
-      "label": "Subheading",
-      "default": "Our most-loved titles"
-    },
-    {
-      "type": "collection",
-      "id": "collection",
-      "label": "Collection"
-    },
-    {
-      "type": "range",
-      "id": "products_to_show",
-      "min": 4,
-      "max": 12,
-      "step": 4,
-      "default": 8,
-      "label": "Products to show"
-    }
-  ],
-  "presets": [
-    {
-      "name": "Featured Products"
-    }
-  ]
-}
-{% endschema %}
+{% schema %}{"name":"Featured Products","settings":[{"type":"text","id":"heading","label":"Heading","default":"Bestsellers"},{"type":"text","id":"subheading","label":"Subheading","default":"Most-loved titles"},{"type":"collection","id":"collection","label":"Collection"},{"type":"range","id":"products_to_show","min":4,"max":12,"step":4,"default":8,"label":"Products to show"}]}{% endschema %}

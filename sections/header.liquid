@@ -1,7 +1,9 @@
-<div class="bg-ink text-white text-[12px] tracking-wide text-center py-2.5 px-4 flex items-center justify-center gap-2 border-b border-white/10">
-  <span class="hidden sm:inline w-6 h-6 bg-white/15 rounded-full grid place-items-center"><i class="ri-gift-line text-gold"></i></span>
-  <span><b>DIWALI SALE LIVE</b> — 40% OFF on every ebook • Code: <b class="text-gold">MAVIZIO40</b> • Instant Download</span>
-  <a href="{{ routes.collections_url }}" class="ml-2 hidden md:inline-flex bg-white text-ink px-3 py-1 rounded-full font-bold text-[11px]">Shop Now →</a>
+<div class="bg-ink text-white text-[11px] sm:text-[12px] tracking-wide text-center py-2.5 px-3 flex flex-wrap items-center justify-center gap-2 sm:gap-3 border-b border-white/10">
+  <span class="inline-flex items-center gap-1.5 bg-red text-white px-2.5 py-1 rounded-full text-[10px] font-extrabold tracking-widest animate-pulse"><span class="w-1.5 h-1.5 bg-white rounded-full"></span> LIVE</span>
+  <span class="font-bold"><span class="hidden sm:inline">🔥</span> DIWALI SALE — <span class="text-gold">40% OFF</span> on every ebook • Code: <b class="text-gold">MAVIZIO40</b></span>
+  <span class="hidden sm:inline-flex items-center gap-1.5 bg-white/10 border border-white/15 rounded-full px-2.5 py-1 text-[11px] font-bold">Ends in <span class="countdown flex gap-1" data-countdown>00:00:00</span></span>
+  <span class="hidden lg:inline-flex items-center gap-1 text-white/70"><i class="ri-eye-line"></i> <span data-viewers>1,847</span> viewing now</span>
+  <a href="{{ routes.collections_url }}/all" class="ml-1 sm:ml-2 inline-flex bg-gold text-ink px-3 py-1 rounded-full font-extrabold text-[11px] hover:bg-white transition">Claim Now →</a>
 </div>
 
 <header class="sticky top-0 z-40 bg-paper/90 backdrop-blur-xl border-b border-black/5">
@@ -9,16 +11,16 @@
     <div class="flex items-center justify-between h-[68px] gap-4">
       <div class="flex items-center gap-4 sm:gap-8 min-w-0 flex-1 lg:flex-none">
         <a href="{{ routes.root_url }}" class="flex items-center gap-2.5 min-w-0 shrink-0">
-          <div class="w-9 h-9 bg-ink text-gold rounded-xl grid place-items-center text-[18px]"><i class="ri-book-open-line"></i></div>
-          <span class="display text-[20px] sm:text-[22px] tracking-tight leading-none shrink-0">{{ section.settings.logo_text | default: 'Mavizio' }}<span class="text-gold">.</span></span>
-          <span class="hidden lg:inline text-[10px] tracking-[0.18em] font-bold text-muted border border-black/10 rounded-full px-2 py-1 ml-1">EBOOK STORE</span>
+          <div class="w-9 h-9 bg-ink text-gold rounded-xl grid place-items-center text-[18px] pulse-gold"><i class="ri-flashlight-fill"></i></div>
+          <span class="display text-[20px] sm:text-[22px] tracking-tight leading-none shrink-0 font-extrabold">{{ section.settings.logo_text | default: 'Mavizio' }}<span class="text-gold">.</span></span>
+          <span class="hidden lg:inline text-[10px] tracking-[0.18em] font-extrabold text-white bg-red rounded-full px-2 py-1 ml-1">SELLING FAST</span>
         </a>
-        <nav class="hidden lg:flex items-center gap-6 text-[13px] font-semibold tracking-wide">
-          <a href="{{ routes.collections_url }}" class="hover:text-gold transition">Shop</a>
-          <a href="{{ routes.collections_url }}" class="hover:text-gold transition">Categories</a>
-          <a href="{{ pages.about.url | default: '/pages/about' }}" class="hover:text-gold transition">About</a>
+        <nav class="hidden lg:flex items-center gap-6 text-[13px] font-bold tracking-wide">
+          <a href="{{ routes.collections_url }}/all" class="hover:text-gold transition flex items-center gap-1">Shop <span class="bg-gold text-ink text-[9px] px-1.5 py-0.5 rounded-full">HOT</span></a>
+          <a href="{{ routes.collections_url }}" class="hover:text-gold transition">Bundles</a>
+          <a href="#testimonials" class="hover:text-gold transition">Reviews</a>
           <span class="w-px h-4 bg-black/10"></span>
-          <span class="text-muted font-medium">Support: <b class="text-ink">+91 90000 12345</b></span>
+          <span class="text-muted font-medium text-xs">⚡ Instant download • Lifetime</span>
         </nav>
       </div>
 
@@ -27,20 +29,15 @@
           <input type="search" name="q" placeholder="Search ebooks, authors, topics..." class="w-full bg-white border border-black/10 rounded-full pl-11 pr-4 py-[11px] text-[14px] focus:outline-none focus:border-ink/20 focus:ring-4 focus:ring-black/5 transition">
           <i class="ri-search-line absolute left-4 top-1/2 -translate-y-1/2 text-muted"></i>
         </form>
-        <kbd class="absolute right-2 top-1/2 -translate-y-1/2 hidden xl:flex bg-cream border border-black/10 rounded-full px-2.5 py-1 text-[11px] font-bold text-muted">⌘ K</kbd>
       </div>
 
       <div class="flex items-center gap-1 sm:gap-2 shrink-0">
-        <button onclick="document.getElementById('mobileSearch').classList.toggle('hidden')" class="md:hidden w-9 h-9 grid place-items-center rounded-full hover:bg-black/5"><i class="ri-search-line text-lg"></i></button>
-        <a href="{{ routes.search_url }}?q=wishlist" class="relative w-9 h-9 sm:w-10 sm:h-10 grid place-items-center rounded-full hover:bg-black/5 transition">
-          <i class="ri-heart-3-line text-[20px]"></i>
-        </a>
-        <a href="{{ routes.cart_url }}" class="relative flex items-center gap-2 bg-ink text-white rounded-full pl-2 pr-3 sm:pr-4 py-1.5 hover:bg-black transition">
-          <span class="w-7 h-7 bg-white text-ink rounded-full grid place-items-center"><i class="ri-shopping-bag-line"></i></span>
+        <a href="{{ routes.cart_url }}" class="relative flex items-center gap-2 bg-ink text-white rounded-full pl-2 pr-3 sm:pr-4 py-1.5 hover:bg-black transition shine">
+          <span class="w-7 h-7 bg-gold text-ink rounded-full grid place-items-center"><i class="ri-shopping-bag-line"></i></span>
           <span class="hidden sm:inline text-sm font-bold">Cart</span>
-          <span class="bg-gold text-ink text-xs font-bold px-1.5 py-0.5 rounded-full min-w-[20px] text-center">{{ cart.item_count }}</span>
+          <span class="bg-white text-ink text-xs font-bold px-1.5 py-0.5 rounded-full min-w-[20px] text-center">{{ cart.item_count }}</span>
         </a>
-        <a href="{{ routes.account_url }}" class="hidden sm:grid w-10 h-10 place-items-center rounded-full bg-white border border-black/10"><i class="ri-user-3-line"></i></a>
+        <a href="{{ routes.account_login_url }}" class="hidden sm:grid w-10 h-10 place-items-center rounded-full bg-white border border-black/10"><i class="ri-user-3-line"></i></a>
       </div>
     </div>
     <div id="mobileSearch" class="hidden md:hidden pb-4">
@@ -51,17 +48,4 @@
     </div>
   </div>
 </header>
-
-{% schema %}
-{
-  "name": "Header",
-  "settings": [
-    {
-      "type": "text",
-      "id": "logo_text",
-      "label": "Logo text",
-      "default": "Mavizio"
-    }
-  ]
-}
-{% endschema %}
+{% schema %}{"name":"Header","settings":[{"type":"text","id":"logo_text","label":"Logo text","default":"Mavizio"}]}{% endschema %}

@@ -4,13 +4,13 @@
   </nav>
 </div>
 
-<section class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+<section data-sticky-trigger class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 pb-12">
   <div class="grid lg:grid-cols-12 gap-6 lg:gap-10">
     <div class="lg:col-span-5">
       <div class="bg-white border border-black/5 rounded-[24px] p-6 sm:p-8">
         <div class="aspect-[3/4] max-w-[360px] mx-auto rounded-2xl overflow-hidden bg-gradient-to-br from-[#1A2332] to-[#0F172A] p-6 flex flex-col shadow-xl relative">
           {% if product.featured_image %}
-            <img src="{{ product.featured_image | image_url: width: 600 }}" alt="{{ product.title }}" class="absolute inset-0 w-full h-full object-cover opacity-40">
+            <img data-product-img src="{{ product.featured_image | image_url: width: 600 }}" alt="{{ product.title }}" class="absolute inset-0 w-full h-full object-cover opacity-40">
             <div class="absolute inset-0 bg-gradient-to-br from-[#1A2332]/80 to-[#0F172A]/80"></div>
           {% endif %}
           <div class="relative text-[10px] tracking-[0.2em] font-bold text-white/70">MAVIZIO ORIGINALS • {{ product.type | upcase | default: 'EBOOK' }}</div>
@@ -35,7 +35,7 @@
         <span class="bg-white border border-black/10 px-3 py-1.5 rounded-full text-muted">30-day refund</span>
         {% if product.tags.first %}<span class="bg-gold text-ink px-3 py-1.5 rounded-full">{{ product.tags.first }}</span>{% endif %}
       </div>
-      <h1 class="display text-[28px] sm:text-[36px] leading-tight mt-4 break-words">{{ product.title }}</h1>
+      <h1 data-product-title class="display text-[28px] sm:text-[36px] leading-tight mt-4 break-words">{{ product.title }}</h1>
       <div class="text-sm text-muted mt-2">by <b class="text-ink">{{ product.vendor }}</b> • {{ product.type | default: 'English' }} • Digital</div>
       <div class="flex flex-wrap items-center gap-3 mt-4">
         <span class="flex text-gold gap-0.5"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></span>
@@ -44,12 +44,12 @@
       <div class="text-[15px] leading-relaxed text-ink/80 mt-5">{{ product.description }}</div>
 
       <div class="flex flex-wrap items-baseline gap-3 mt-6">
-        <span class="text-[34px] font-extrabold">{{ product.price | money }}</span>
-        {% if product.compare_at_price > product.price %}<span class="text-sm line-through text-muted">{{ product.compare_at_price | money }}</span><span class="bg-green-500 text-white text-xs font-extrabold px-2.5 py-1 rounded-full">{{ product.compare_at_price | minus: product.price | times: 100 | divided_by: product.compare_at_price }}% OFF</span>{% endif %}
+        <span data-product-price class="text-[34px] font-extrabold">{{ product.price | money }}</span>
+        {% if product.compare_at_price > product.price %}<span data-product-compare class="text-sm line-through text-muted">{{ product.compare_at_price | money }}</span><span class="bg-green-500 text-white text-xs font-extrabold px-2.5 py-1 rounded-full">{{ product.compare_at_price | minus: product.price | times: 100 | divided_by: product.compare_at_price }}% OFF</span>{% endif %}
       </div>
 
       {% form 'product', product %}
-        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+        <input data-variant-id type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
         <div class="flex gap-3 mt-6">
           <div class="flex items-center gap-2 bg-white border border-black/10 rounded-full p-1">
             <button type="button" onclick="this.nextElementSibling.stepDown()" class="w-9 h-9 rounded-full bg-paper grid place-items-center">−</button>
