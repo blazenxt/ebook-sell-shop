@@ -1,52 +1,27 @@
-<div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-6">
-  <h1 class="display text-[32px] sm:text-[40px] leading-none">Collections</h1>
-  <p class="text-sm text-muted mt-2">Browse by topic — curated by Mavizio</p>
+<div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-8 border-b border-white/10">
+  <h1 class="display text-[32px] sm:text-[40px] text-white">Collections</h1>
+  <p class="text-sm text-white/50 mt-2">{{ collections.size }} collections</p>
 </div>
-<section class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 pb-12">
-  <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
+<section class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
+  {% if collections.size > 0 %}
+  <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
     {% for collection in collections %}
-      <a href="{{ collection.url }}" class="group bg-white border border-black/5 rounded-[18px] p-4 card-hover block">
-        {% if collection.featured_image %}
-          <img src="{{ collection.featured_image | image_url: width: 400 }}" alt="{{ collection.title }}" class="w-full h-28 object-cover rounded-xl bg-paper border border-black/5">
-        {% else %}
-          <div class="w-full h-28 rounded-xl bg-cream border border-black/5 grid place-items-center text-2xl">
-            {% if collection.title contains 'Business' %}<i class="ri-briefcase-4-line"></i>
-            {% elsif collection.title contains 'Self' %}<i class="ri-sparkling-2-line"></i>
-            {% elsif collection.title contains 'Fiction' %}<i class="ri-book-open-line"></i>
-            {% elsif collection.title contains 'UPSC' %}<i class="ri-graduation-cap-line"></i>
-            {% elsif collection.title contains 'Tech' %}<i class="ri-cpu-line"></i>
-            {% elsif collection.title contains 'Finance' %}<i class="ri-money-dollar-circle-line"></i>
-            {% else %}<i class="ri-stack-line"></i>{% endif %}
-          </div>
-        {% endif %}
-        <div class="font-bold text-sm mt-3 line-clamp-1">{{ collection.title }}</div>
-        <div class="text-xs text-muted">{{ collection.products_count }} ebooks</div>
+      <a href="{{ collection.url }}" class="group bg-[#141414] border border-white/10 rounded-[16px] overflow-hidden hover:border-[#FFB800]/30 transition">
+        <div class="aspect-[4/3] overflow-hidden bg-[#1A1A1A]">
+          {% if collection.featured_image %}<img src="{{ collection.featured_image | image_url: width: 500 }}" alt="{{ collection.title | escape }}" class="w-full h-full object-cover group-hover:scale-[1.02] transition duration-700">{% else %}<div class="w-full h-full grid place-items-center text-white/30"><i class="ri-folder-3-line text-xl"></i></div>{% endif %}
+        </div>
+        <div class="p-4">
+          <div class="text-sm font-medium text-white">{{ collection.title }}</div>
+          <div class="text-xs text-white/50">{{ collection.products_count }} titles</div>
+        </div>
       </a>
     {% endfor %}
-    {% if collections.size == 0 %}
-      {% assign cats = "Business:24,Self-Help:32,Fiction:18,UPSC / SSC:15,Tech & AI:21,Finance:12" | split: "," %}
-      {% for cat in cats %}
-        {% assign parts = cat | split: ":" %}
-        <a href="{{ routes.collections_url }}/all" class="group bg-white border border-black/5 rounded-[18px] p-4 card-hover block">
-          <div class="w-10 h-10 rounded-xl bg-cream grid place-items-center text-lg"><i class="ri-folder-3-line"></i></div>
-          <div class="font-bold text-sm mt-3">{{ parts[0] }}</div><div class="text-xs text-muted">{{ parts[1] }} ebooks</div>
-        </a>
-      {% endfor %}
-    {% elsif collections.size < 6 %}
-      {% assign need = 6 | minus: collections.size %}
-      {% assign placeholders = "Business:24,Self-Help:32,Fiction:18,UPSC / SSC:15,Tech & AI:21,Finance:12" | split: "," %}
-      {% for cat in placeholders limit: need %}
-        {% assign parts = cat | split: ":" %}
-        {% assign already = false %}
-        {% for col in collections %}{% if col.title contains parts[0] %}{% assign already = true %}{% endif %}{% endfor %}
-        {% unless already %}
-        <a href="{{ routes.collections_url }}/all" class="group bg-white/60 border border-dashed border-black/10 rounded-[18px] p-4 card-hover block">
-          <div class="w-10 h-10 rounded-xl bg-paper grid place-items-center text-lg opacity-60"><i class="ri-folder-3-line"></i></div>
-          <div class="font-bold text-sm mt-3">{{ parts[0] }}</div><div class="text-xs text-muted">{{ parts[1] }} ebooks • Soon</div>
-        </a>
-        {% endunless %}
-      {% endfor %}
-    {% endif %}
   </div>
+  {% else %}
+    <div class="bg-[#141414] border border-white/10 rounded-[16px] p-10 text-center">
+      <div class="text-sm font-medium text-white">No collections yet</div>
+      <div class="text-sm text-white/50 mt-1">Create collections in Shopify Admin.</div>
+    </div>
+  {% endif %}
 </section>
-{% schema %}{"name":"Main List Collections","settings":[]}{% endschema %}
+{% schema %}{"name":"Main List Collections Luxury","settings":[]}{% endschema %}

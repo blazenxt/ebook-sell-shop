@@ -1,22 +1,14 @@
-<section class="max-w-[820px] mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 text-center">
-  <div class="inline-flex items-center gap-2 bg-cream border border-black/5 rounded-full px-3 py-1.5 text-xs font-bold"><i class="ri-error-warning-line"></i> 404 — Page not found</div>
-  <h1 class="display text-[40px] sm:text-[56px] leading-none mt-4">Lost?<br><span class="serif2 italic font-normal">We’ll get you back.</span></h1>
-  <p class="text-sm sm:text-[15px] text-muted leading-relaxed max-w-[520px] mx-auto mt-4">The page you’re looking for doesn’t exist or was moved. Try searching or browse our bestselling ebooks.</p>
-  <form action="{{ routes.search_url }}" method="get" class="flex gap-2 max-w-[520px] mx-auto mt-8">
-    <input type="search" name="q" placeholder="Search ebooks..." class="flex-1 bg-white border border-black/10 rounded-full px-5 py-3.5 text-sm outline-none focus:border-ink">
-    <button class="bg-ink text-white px-6 py-3.5 rounded-full font-bold text-sm shrink-0">Search</button>
+<section class="max-w-[720px] mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 text-center">
+  <div class="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-3 py-1 text-xs tracking-[0.15em] text-white/60">— 404</div>
+  <h1 class="display text-[40px] sm:text-[52px] leading-[0.9] mt-4 text-white">Page not found</h1>
+  <p class="text-sm text-white/60 leading-relaxed max-w-[480px] mx-auto mt-4">The page you’re looking for doesn’t exist or was moved.</p>
+  <form action="{{ routes.search_url }}" method="get" class="flex gap-2 max-w-[460px] mx-auto mt-8">
+    <input type="search" name="q" placeholder="Search titles" class="flex-1 bg-[#141414] border border-white/10 rounded-full px-5 py-3 text-sm text-white placeholder:text-white/40 focus:outline-none focus:border-[#FFB800]/50">
+    <button class="bg-[#FFB800] text-black px-6 py-3 rounded-full text-sm font-bold">Search</button>
   </form>
-  <div class="flex flex-wrap justify-center gap-3 mt-6">
-    <a href="{{ routes.root_url }}" class="bg-ink text-white px-6 py-3 rounded-full font-bold text-sm">Back to Home</a>
-    <a href="{{ routes.collections_url }}/all" class="bg-white border border-black/10 px-6 py-3 rounded-full font-bold text-sm">View All Ebooks</a>
-  </div>
-  <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 mt-12 text-left">
-    {% for collection in collections limit:3 %}
-      <a href="{{ collection.url }}" class="bg-white border border-black/5 rounded-2xl p-4 card-hover">
-        <div class="w-10 h-10 rounded-xl bg-cream grid place-items-center"><i class="ri-stack-line"></i></div>
-        <div class="font-bold text-sm mt-3">{{ collection.title }}</div><div class="text-xs text-muted">{{ collection.products_count }} ebooks</div>
-      </a>
-    {% endfor %}
+  <div class="flex justify-center gap-3 mt-6">
+    <a href="{{ routes.root_url }}" class="bg-white text-black px-6 py-3 rounded-full text-sm font-bold">Back to home</a>
+    <a href="{{ routes.collections_url }}/all" class="bg-white/5 border border-white/10 text-white px-6 py-3 rounded-full text-sm font-bold hover:bg-white hover:text-black transition">All titles</a>
   </div>
 </section>
-{% schema %}{"name":"Main 404","settings":[]}{% endschema %}
+{% schema %}{"name":"Main 404 Luxury","settings":[]}{% endschema %}
