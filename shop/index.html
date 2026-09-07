@@ -8,7 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css">
-<script>tailwind.config={theme:{extend:{fontFamily:{serif:['Fraunces','serif'],sans:['Inter','sans-serif']},colors:{ink:'#0A0A0A',paper:'#F8F6F0',line:'#ECE8E0',gold:'#C9A86A',leaf:'#1A7F64',muted:'#6B6B6B'}}}}</script>
+<script>tailwind.config={theme:{extend:{fontFamily:{serif:['Fraunces','serif'],sans:['Inter','sans-serif']},colors:{ink:'#0A0A0A',paper:'#FBF9F5',surface:'#FFFFFF',line:'#EDE9E3',gold:'#C19A5C',goldDeep:'#A68B4F',leaf:'#18794E',leafSoft:'#E6F2ED',muted:'#706E65',cream:'#FFF8E6'}}}}</script>
 <style>*{font-family:'Inter',sans-serif} .font-serif{font-family:'Fraunces',serif} .scrollbar-hide{scrollbar-width:none;-ms-overflow-style:none} .scrollbar-hide::-webkit-scrollbar{display:none} .line-clamp-2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}</style>
 </head>
 <body class="bg-paper text-ink antialiased">
@@ -88,6 +88,51 @@
     <div class="px-4 sm:px-6 py-3 bg-paper border-t border-line flex flex-col sm:flex-row items-center justify-between gap-2 text-xs">
       <span class="text-muted">Any 4 ebooks for <b class="text-ink">₹499</b> • Code <b>MAVIZIO40</b> auto-applies</span>
       <button onclick="addBundle()" class="bg-ink text-white px-4 py-2 rounded-full font-bold text-xs">Add Bundle (4) →</button>
+    </div>
+  </div>
+</section>
+
+<!-- Collection Showcase -->
+<section class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-4">
+  <div class="bg-white rounded-2xl border border-line overflow-hidden">
+    <div class="px-4 sm:px-6 py-4 flex items-center justify-between border-b border-line">
+      <h2 class="font-serif text-lg sm:text-xl font-bold">Shop by Collection</h2>
+      <span class="text-xs font-bold border border-line rounded-full px-3 py-1.5">6 Collections</span>
+    </div>
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 divide-x divide-y divide-line">
+      <div class="p-4 sm:p-5 flex flex-col gap-3 hover:bg-paper transition cursor-pointer"><div class="w-10 h-10 rounded-xl bg-paper border border-line grid place-items-center"><i class="ri-briefcase-4-line text-xl"></i></div><div><div class="text-sm font-bold">Business</div><div class="text-xs text-muted">Explore →</div></div></div>
+      <div class="p-4 sm:p-5 flex flex-col gap-3 hover:bg-paper transition cursor-pointer"><div class="w-10 h-10 rounded-xl bg-paper border border-line grid place-items-center"><i class="ri-sparkling-line text-xl"></i></div><div><div class="text-sm font-bold">Self-Help</div><div class="text-xs text-muted">Explore →</div></div></div>
+      <div class="p-4 sm:p-5 flex flex-col gap-3 hover:bg-paper transition cursor-pointer"><div class="w-10 h-10 rounded-xl bg-paper border border-line grid place-items-center"><i class="ri-book-open-line text-xl"></i></div><div><div class="text-sm font-bold">Fiction</div><div class="text-xs text-muted">Explore →</div></div></div>
+      <div class="p-4 sm:p-5 flex flex-col gap-3 hover:bg-paper transition cursor-pointer"><div class="w-10 h-10 rounded-xl bg-paper border border-line grid place-items-center"><i class="ri-graduation-cap-line text-xl"></i></div><div><div class="text-sm font-bold">UPSC</div><div class="text-xs text-muted">Explore →</div></div></div>
+      <div class="p-4 sm:p-5 flex flex-col gap-3 hover:bg-paper transition cursor-pointer"><div class="w-10 h-10 rounded-xl bg-paper border border-line grid place-items-center"><i class="ri-cpu-line text-xl"></i></div><div><div class="text-sm font-bold">Tech</div><div class="text-xs text-muted">Explore →</div></div></div>
+      <div class="p-4 sm:p-5 flex flex-col gap-3 hover:bg-paper transition cursor-pointer"><div class="w-10 h-10 rounded-xl bg-paper border border-line grid place-items-center"><i class="ri-funds-line text-xl"></i></div><div><div class="text-sm font-bold">Finance</div><div class="text-xs text-muted">Explore →</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-4">
+  <div class="bg-white rounded-2xl border border-line p-6 sm:p-8">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+      <h3 class="font-serif text-xl font-bold flex items-center gap-2">What readers say <span class="w-7 h-7 bg-cream border border-line rounded-full grid place-items-center text-gold"><i class="ri-heart-3-fill text-sm"></i></span></h3>
+      <div class="flex items-center gap-2 text-sm"><span class="flex text-gold gap-0.5"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></span><b>4.9/5</b><span class="text-muted">• 2,412 reviews</span></div>
+    </div>
+    <div class="grid md:grid-cols-3 gap-4 mt-6">
+      <div class="bg-paper border border-line rounded-2xl p-5"><div class="flex text-gold gap-0.5 text-sm"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></div><p class="text-sm leading-relaxed mt-2">“Deep Work transformed my UPSC prep. Instant PDF, same night start!”</p><div class="flex items-center gap-3 mt-4"><img src="https://i.pravatar.cc/100?img=11" class="w-8 h-8 rounded-full"><div class="text-xs"><div class="font-bold">Priya S. • Delhi</div><div class="text-muted">Verified • 2 days ago</div></div><span class="ml-auto text-leaf bg-leafSoft border border-leaf/10 px-2 py-0.5 rounded-full text-[11px] font-bold">Verified</span></div></div>
+      <div class="bg-paper border border-line rounded-2xl p-5"><div class="flex text-gold gap-0.5 text-sm"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></div><p class="text-sm leading-relaxed mt-2">“UPI payment, instant download, perfect on Kindle. No hassle.”</p><div class="flex items-center gap-3 mt-4"><img src="https://i.pravatar.cc/100?img=33" class="w-8 h-8 rounded-full"><div class="text-xs"><div class="font-bold">Aman K. • Pune</div><div class="text-muted">Verified • 5 days ago</div></div><span class="ml-auto text-leaf bg-leafSoft border border-leaf/10 px-2 py-0.5 rounded-full text-[11px] font-bold">Verified</span></div></div>
+      <div class="bg-paper border border-line rounded-2xl p-5"><div class="flex text-gold gap-0.5 text-sm"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></div><p class="text-sm leading-relaxed mt-2">“Bundle of 4 + audio summaries = perfect revision. Support super fast.”</p><div class="flex items-center gap-3 mt-4"><img src="https://i.pravatar.cc/100?img=26" class="w-8 h-8 rounded-full"><div class="text-xs"><div class="font-bold">Rohit M. • Bangalore</div><div class="text-muted">Verified • 1 week ago</div></div><span class="ml-auto text-leaf bg-leafSoft border border-leaf/10 px-2 py-0.5 rounded-full text-[11px] font-bold">Verified</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="max-w-[960px] mx-auto px-4 sm:px-6 lg:px-8 mt-4">
+  <div class="bg-white rounded-2xl border border-line p-6 sm:p-8">
+    <div class="text-center"><div class="inline-flex bg-cream border border-line rounded-full px-3 py-1 text-xs font-bold tracking-wide">FAQ</div><h3 class="font-serif text-2xl font-bold mt-3">Got questions?</h3><p class="text-sm text-muted mt-1">Instant delivery, GST, refunds — all clear.</p></div>
+    <div class="mt-6 divide-y divide-line border border-line rounded-2xl overflow-hidden">
+      <details class="group p-4 sm:p-5 bg-white open:bg-paper transition" open><summary class="flex items-center justify-between cursor-pointer list-none font-semibold text-sm">How fast is delivery? <i class="ri-add-line group-open:ri-subtract-line text-muted"></i></summary><p class="text-sm text-muted leading-relaxed mt-2">10 seconds. Email + WhatsApp with PDF/EPUB/MOBI. Also in My Downloads.</p></details>
+      <details class="group p-4 sm:p-5 bg-white open:bg-paper transition"><summary class="flex items-center justify-between cursor-pointer list-none font-semibold text-sm">Do I get lifetime access? <i class="ri-add-line group-open:ri-subtract-line text-muted"></i></summary><p class="text-sm text-muted leading-relaxed mt-2">Yes. Re-download anytime. Free updates included.</p></details>
+      <details class="group p-4 sm:p-5 bg-white open:bg-paper transition"><summary class="flex items-center justify-between cursor-pointer list-none font-semibold text-sm">Refund policy? <i class="ri-add-line group-open:ri-subtract-line text-muted"></i></summary><p class="text-sm text-muted leading-relaxed mt-2">30-day money back, no questions. Email support@mavizio.store</p></details>
     </div>
   </div>
 </section>

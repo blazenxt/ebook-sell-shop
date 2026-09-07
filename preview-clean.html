@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mavizio Clean — Preview (Flipkart-inspired, original colors)</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css">
+<script>tailwind.config={theme:{extend:{fontFamily:{serif:['Fraunces','serif'],sans:['Inter','sans-serif']},colors:{ink:'#0A0A0A',paper:'#FBF9F5',surface:'#FFFFFF',line:'#EDE9E3',gold:'#C19A5C',goldDeep:'#A68B4F',leaf:'#18794E',leafSoft:'#E6F2ED',muted:'#706E65',cream:'#FFF8E6'}}}}</script>
+<style>*{font-family:'Inter',sans-serif} .font-serif{font-family:'Fraunces',serif}</style>
+</head>
+<body class="bg-paper text-ink">
+<!-- Header -->
+<header class="bg-white border-b border-line sticky top-0 z-40">
+  <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center gap-4 sm:gap-6 h-[64px]">
+      <div class="flex items-center gap-2 shrink-0"><span class="font-serif text-[22px] font-bold tracking-tight">MAVIZIO<span class="text-gold">.</span></span><span class="hidden sm:inline text-[10px] tracking-[0.18em] text-muted font-semibold border border-line rounded-full px-2 py-0.5">EST. 2024</span></div>
+      <div class="flex-1 max-w-[640px] flex"><div class="flex-1 relative"><i class="ri-search-line absolute left-3 top-1/2 -translate-y-1/2 text-muted"></i><input placeholder="Search ebooks, authors, UPSC, business..." class="w-full bg-paper border border-line rounded-l-full pl-9 pr-4 py-2.5 text-sm focus:outline-none"></div><button class="bg-ink text-white rounded-r-full px-6 text-sm font-semibold">Search</button></div>
+      <div class="hidden lg:flex items-center gap-5 text-sm shrink-0"><span class="flex items-center gap-1.5 font-medium"><i class="ri-user-line text-lg"></i> Account</span><span class="w-px h-5 bg-line"></span><span class="flex items-center gap-1.5 font-semibold"><i class="ri-shopping-bag-line text-lg"></i> Cart <span class="bg-ink text-white text-xs px-1.5 py-0.5 rounded-full">2</span></span></div>
+      <span class="lg:hidden bg-ink text-white px-3 py-1.5 rounded-full text-sm font-bold"><i class="ri-shopping-bag-line"></i> 2</span>
+    </div>
+    <nav class="hidden md:flex items-center gap-6 text-sm border-t border-line -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-2.5 overflow-x-auto">
+      <span class="font-semibold">All Titles</span><span class="text-muted">Bestsellers</span><span class="text-muted">New Releases</span><span class="text-muted">Business</span><span class="text-muted">UPSC</span><span class="text-muted">Fiction</span><span class="ml-auto hidden lg:flex items-center gap-1.5 text-xs font-medium text-leaf"><i class="ri-truck-line"></i> Instant delivery</span>
+    </nav>
+  </div>
+</header>
+
+<!-- Category -->
+<div class="bg-white border-b border-line">
+  <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex gap-4 sm:gap-5 overflow-x-auto py-4">
+      <div class="flex flex-col items-center gap-2 min-w-[84px]"><div class="w-[64px] h-[64px] rounded-2xl bg-paper border border-line grid place-items-center text-xl"><i class="ri-briefcase-4-line"></i></div><span class="text-xs font-medium">Business</span></div>
+      <div class="flex flex-col items-center gap-2 min-w-[84px]"><div class="w-[64px] h-[64px] rounded-2xl bg-paper border border-line grid place-items-center text-xl"><i class="ri-mental-health-line"></i></div><span class="text-xs font-medium">Self-Help</span></div>
+      <div class="flex flex-col items-center gap-2 min-w-[84px]"><div class="w-[64px] h-[64px] rounded-2xl bg-paper border border-line grid place-items-center text-xl"><i class="ri-book-open-line"></i></div><span class="text-xs font-medium">Fiction</span></div>
+      <div class="flex flex-col items-center gap-2 min-w-[84px]"><div class="w-[64px] h-[64px] rounded-2xl bg-paper border border-line grid place-items-center text-xl"><i class="ri-graduation-cap-line"></i></div><span class="text-xs font-medium">UPSC</span></div>
+      <div class="flex flex-col items-center gap-2 min-w-[84px]"><div class="w-[64px] h-[64px] rounded-2xl bg-paper border border-line grid place-items-center text-xl"><i class="ri-cpu-line"></i></div><span class="text-xs font-medium">Tech</span></div>
+      <div class="flex flex-col items-center gap-2 min-w-[84px]"><div class="w-[64px] h-[64px] rounded-2xl bg-paper border border-line grid place-items-center text-xl"><i class="ri-funds-line"></i></div><span class="text-xs font-medium">Finance</span></div>
+      <div class="flex flex-col items-center gap-2 min-w-[84px]"><div class="w-[64px] h-[64px] rounded-2xl bg-paper border border-line grid place-items-center text-xl"><i class="ri-bear-smile-line"></i></div><span class="text-xs font-medium">Kids</span></div>
+      <div class="flex flex-col items-center gap-2 min-w-[84px]"><div class="w-[64px] h-[64px] rounded-2xl bg-paper border border-line grid place-items-center text-xl"><i class="ri-user-star-line"></i></div><span class="text-xs font-medium">Biography</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- Banner -->
+<div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-4">
+  <div class="bg-white rounded-2xl border border-line overflow-hidden grid md:grid-cols-12">
+    <div class="md:col-span-8 relative min-h-[260px] sm:min-h-[320px]">
+      <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?w=1200&h=600&fit=crop" class="absolute inset-0 w-full h-full object-cover">
+      <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent"></div>
+      <div class="relative h-full flex flex-col justify-center p-6 sm:p-10 max-w-[560px]">
+        <span class="inline-flex self-start bg-gold text-ink text-xs font-bold px-2.5 py-1 rounded-full">NEW SEASON • UP TO 40% OFF</span>
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white leading-tight mt-3">Read it today,<br>own it forever.</h2>
+        <p class="text-white/80 text-sm mt-2">Bestsellers, UPSC, business — instant PDF + EPUB, lifetime access.</p>
+        <span class="inline-flex mt-5 bg-white text-ink px-6 py-2.5 rounded-full text-sm font-bold self-start">Shop Bestsellers <i class="ri-arrow-right-line ml-1"></i></span>
+      </div>
+    </div>
+    <div class="hidden md:flex md:col-span-4 flex-col border-l border-line bg-paper/60">
+      <div class="flex-1 flex items-center gap-4 p-5 border-b border-line"><img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=200&h=200&fit=crop" class="w-20 h-20 object-cover rounded-xl border border-line"><div><div class="text-sm font-bold">Bestsellers</div><div class="text-xs text-leaf font-semibold">Min 40% off</div><div class="text-xs text-muted">Business • Self-Help</div></div><i class="ri-arrow-right-s-line text-muted ml-auto"></i></div>
+      <div class="flex-1 flex items-center gap-4 p-5"><img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=200&h=200&fit=crop" class="w-20 h-20 object-cover rounded-xl border border-line"><div><div class="text-sm font-bold">UPSC / SSC</div><div class="text-xs text-leaf font-semibold">From ₹149</div><div class="text-xs text-muted">Quick revision notes</div></div><i class="ri-arrow-right-s-line text-muted ml-auto"></i></div>
+    </div>
+  </div>
+</div>
+
+<!-- Trust -->
+<div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-4">
+  <div class="bg-white rounded-2xl border border-line p-4 grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs">
+    <div class="flex items-center gap-2"><i class="ri-truck-line text-lg text-leaf"></i><span><b>Instant</b> download<br><span class="text-muted">10 sec delivery</span></span></div>
+    <div class="flex items-center gap-2"><i class="ri-shield-check-line text-lg text-leaf"></i><span><b>Secure</b> payment<br><span class="text-muted">Razorpay • UPI</span></span></div>
+    <div class="flex items-center gap-2"><i class="ri-refresh-line text-lg text-leaf"></i><span><b>Lifetime</b> access<br><span class="text-muted">Re-download anytime</span></span></div>
+    <div class="flex items-center gap-2"><i class="ri-customer-service-2-line text-lg text-leaf"></i><span><b>24x7</b> support<br><span class="text-muted">WhatsApp + Email</span></span></div>
+  </div>
+</div>
+
+<!-- Best of -->
+<div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-4">
+  <div class="bg-white rounded-2xl border border-line overflow-hidden">
+    <div class="flex items-center justify-between px-4 sm:px-6 py-4 border-b border-line">
+      <div><h2 class="font-serif text-xl font-bold">Best of Mavizio</h2><p class="text-xs text-muted mt-1">Inspired by Flipkart's grid — but 100% our design & colors</p></div>
+      <span class="hidden sm:inline-flex items-center gap-1 bg-ink text-white px-4 py-2 rounded-full text-xs font-bold">View All <i class="ri-arrow-right-line"></i></span>
+    </div>
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 divide-x divide-y divide-line">
+      <!-- 6 cards -->
+      <div class="bg-white p-3 sm:p-4 flex flex-col">
+        <div class="aspect-[3/4] rounded-xl bg-paper border border-line p-2 flex items-center justify-center"><img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=300&h=400&fit=crop" class="max-h-full max-w-full object-contain"></div>
+        <div class="mt-3 flex-1 flex flex-col"><div class="text-[11px] text-muted">Mavizio Originals</div><div class="text-sm leading-tight font-medium mt-1">Atomic Habits — Tamil Edition</div><div class="flex items-center gap-1.5 mt-2"><span class="bg-leaf text-white text-xs px-1.5 py-0.5 rounded-full font-bold">4.9 <i class="ri-star-fill text-[10px]"></i></span><span class="text-xs text-muted">(1,842)</span></div><div class="flex items-baseline gap-2 mt-2"><span class="font-bold text-sm">₹299</span><span class="text-xs line-through text-muted">₹499</span></div><div class="text-xs text-leaf font-bold">40% off • Bank Offer</div></div>
+      </div>
+      <div class="bg-white p-3 sm:p-4 flex flex-col"><div class="aspect-[3/4] rounded-xl bg-paper border border-line p-2 flex items-center justify-center"><img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?w=300&h=400&fit=crop" class="max-h-full max-w-full object-contain"></div><div class="mt-3 flex-1 flex flex-col"><div class="text-[11px] text-muted">Mavizio Originals</div><div class="text-sm leading-tight font-medium mt-1">Deep Work — Focus Mastery</div><div class="flex items-center gap-1.5 mt-2"><span class="bg-leaf text-white text-xs px-1.5 py-0.5 rounded-full font-bold">4.8 <i class="ri-star-fill text-[10px]"></i></span><span class="text-xs text-muted">(923)</span></div><div class="flex items-baseline gap-2 mt-2"><span class="font-bold text-sm">₹199</span><span class="text-xs line-through text-muted">₹399</span></div><div class="text-xs text-leaf font-bold">50% off</div></div></div>
+      <div class="bg-white p-3 sm:p-4 flex flex-col"><div class="aspect-[3/4] rounded-xl bg-paper border border-line p-2 flex items-center justify-center"><img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=300&h=400&fit=crop" class="max-h-full max-w-full object-contain"></div><div class="mt-3 flex-1 flex flex-col"><div class="text-[11px] text-muted">Mavizio Originals</div><div class="text-sm leading-tight font-medium mt-1">UPSC Prelims 2026 Notes</div><div class="flex items-center gap-1.5 mt-2"><span class="bg-leaf text-white text-xs px-1.5 py-0.5 rounded-full font-bold">4.9 <i class="ri-star-fill text-[10px]"></i></span><span class="text-xs text-muted">(2.1k)</span></div><div class="flex items-baseline gap-2 mt-2"><span class="font-bold text-sm">₹149</span><span class="text-xs line-through text-muted">₹299</span></div><div class="text-xs text-leaf font-bold">From ₹149</div></div></div>
+      <div class="bg-white p-3 sm:p-4 flex flex-col"><div class="aspect-[3/4] rounded-xl bg-paper border border-line p-2 flex items-center justify-center"><img src="https://images.unsplash.com/photo-1528207776546-365bb710ee93?w=300&h=400&fit=crop" class="max-h-full max-w-full object-contain"></div><div class="mt-3 flex-1 flex flex-col"><div class="text-[11px] text-muted">Mavizio Originals</div><div class="text-sm leading-tight font-medium mt-1">Psychology of Money</div><div class="flex items-center gap-1.5 mt-2"><span class="bg-leaf text-white text-xs px-1.5 py-0.5 rounded-full font-bold">4.7 <i class="ri-star-fill text-[10px]"></i></span><span class="text-xs text-muted">(812)</span></div><div class="flex items-baseline gap-2 mt-2"><span class="font-bold text-sm">₹249</span><span class="text-xs line-through text-muted">₹349</span></div><div class="text-xs text-leaf font-bold">29% off</div></div></div>
+      <div class="bg-white p-3 sm:p-4 flex flex-col"><div class="aspect-[3/4] rounded-xl bg-paper border border-line p-2 flex items-center justify-center"><img src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?w=300&h=400&fit=crop" class="max-h-full max-w-full object-contain"></div><div class="mt-3 flex-1 flex flex-col"><div class="text-[11px] text-muted">Mavizio Originals</div><div class="text-sm leading-tight font-medium mt-1">Fiction — Eloria Chronicles</div><div class="flex items-center gap-1.5 mt-2"><span class="bg-leaf text-white text-xs px-1.5 py-0.5 rounded-full font-bold">4.8 <i class="ri-star-fill text-[10px]"></i></span><span class="text-xs text-muted">(445)</span></div><div class="flex items-baseline gap-2 mt-2"><span class="font-bold text-sm">₹349</span><span class="text-xs line-through text-muted">₹599</span></div><div class="text-xs text-leaf font-bold">42% off</div></div></div>
+      <div class="bg-white p-3 sm:p-4 flex flex-col"><div class="aspect-[3/4] rounded-xl bg-paper border border-line p-2 flex items-center justify-center"><img src="https://images.unsplash.com/photo-1532012197267-da84d127e765?w=300&h=400&fit=crop" class="max-h-full max-w-full object-contain"></div><div class="mt-3 flex-1 flex flex-col"><div class="text-[11px] text-muted">Mavizio Originals</div><div class="text-sm leading-tight font-medium mt-1">Business — Zero to One</div><div class="flex items-center gap-1.5 mt-2"><span class="bg-leaf text-white text-xs px-1.5 py-0.5 rounded-full font-bold">4.9 <i class="ri-star-fill text-[10px]"></i></span><span class="text-xs text-muted">(1.1k)</span></div><div class="flex items-baseline gap-2 mt-2"><span class="font-bold text-sm">₹279</span><span class="text-xs line-through text-muted">₹499</span></div><div class="text-xs text-leaf font-bold">44% off</div></div></div>
+    </div>
+    <div class="px-4 sm:px-6 py-3 bg-paper border-t border-line flex items-center justify-between text-xs"><span class="text-muted">Free instant download • Lifetime access • GST invoice</span><span class="hidden sm:inline font-bold">View All →</span></div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-ink text-white mt-6">
+  <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <div class="grid grid-cols-2 md:grid-cols-5 gap-8 text-sm">
+      <div><div class="font-serif text-lg font-bold">MAVIZIO<span class="text-gold">.</span></div><p class="text-white/60 text-xs leading-relaxed mt-2">Ebooks that feel like real books. Instant, lifetime, GST-ready.</p><div class="flex gap-2 mt-4 text-xs"><span class="w-8 h-8 rounded-full bg-white/10 grid place-items-center"><i class="ri-instagram-line"></i></span><span class="w-8 h-8 rounded-full bg-white/10 grid place-items-center"><i class="ri-twitter-x-line"></i></span></div></div>
+      <div><div class="text-white/40 text-[11px] tracking-widest font-semibold">SHOP</div><div class="mt-3 space-y-2 text-white/80 text-xs"><div>All Titles</div><div>Bestsellers</div><div>New Releases</div><div>Search</div></div></div>
+      <div><div class="text-white/40 text-[11px] tracking-widest font-semibold">COMPANY</div><div class="mt-3 space-y-2 text-white/80 text-xs"><div>About Us</div><div>Contact</div><div>Careers</div><div>BlazeNXT</div></div></div>
+      <div><div class="text-white/40 text-[11px] tracking-widest font-semibold">LEGAL</div><div class="mt-3 space-y-2 text-white/80 text-xs"><div>Privacy Policy</div><div>Terms of Use</div><div>Refund Policy</div><div>Shipping Policy</div></div></div>
+      <div class="col-span-2 md:col-span-1"><div class="text-white/40 text-[11px] tracking-widest font-semibold">NEWSLETTER</div><p class="text-white/60 text-xs mt-3">Get 10% off your first order.</p><div class="mt-3 flex"><input placeholder="you@email.com" class="flex-1 bg-white/10 border border-white/20 rounded-l-full px-3 py-2 text-xs"><button class="bg-gold text-ink px-4 rounded-r-full text-xs font-bold">Join</button></div></div>
+    </div>
+    <div class="mt-8 pt-6 border-t border-white/10 flex flex-col md:flex-row justify-between gap-3 text-xs text-white/60"><div>© 2026 Mavizio. Made with ♥ by BlazeNXT</div><div class="bg-white text-ink px-2 py-1 rounded-full font-bold text-[11px]">VISA • MC • UPI • Razorpay</div></div>
+  </div>
+</footer>
+<div class="max-w-[1280px] mx-auto px-4 py-6 text-center">
+  <div class="inline-flex bg-leaf/10 border border-leaf/20 text-leaf px-4 py-2 rounded-full text-xs font-bold"><i class="ri-checkbox-circle-fill mr-1"></i> Preview — Flipkart-inspired structure, ORIGINAL colors (no #2874F0). Ready for Shopify.</div>
+</div>
+</body>
+</html>
