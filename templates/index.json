@@ -13,11 +13,31 @@
       "settings": {
         "products_to_show": 6
       }
+    },
+    "collection-showcase": {
+      "type": "collection-showcase",
+      "settings": {}
+    },
+    "testimonials-clean": {
+      "type": "testimonials-clean",
+      "settings": {}
+    },
+    "faq-clean": {
+      "type": "faq-clean",
+      "settings": {}
+    },
+    "trust-bar": {
+      "type": "trust-bar",
+      "settings": {}
     }
   },
   "order": [
     "category-strip",
     "banner",
-    "featured-products"
+    "featured-products",
+    "collection-showcase",
+    "testimonials-clean",
+    "faq-clean",
+    "trust-bar"
   ]
 }

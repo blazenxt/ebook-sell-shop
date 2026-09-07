@@ -1,0 +1,19 @@
+<section class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mt-4">
+  <div class="bg-white rounded-2xl border border-line overflow-hidden">
+    <div class="px-4 sm:px-6 py-4 flex items-center justify-between border-b border-line">
+      <h2 class="font-serif text-lg sm:text-xl font-bold">Shop by Collection</h2>
+      <a href="{{ routes.collections_url }}/all" class="text-xs font-bold border border-line rounded-full px-3 py-1.5 hover:bg-ink hover:text-white transition">View All</a>
+    </div>
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 divide-x divide-y divide-line">
+      {% assign showcases = "Business:ri-briefcase-4-line|Self-Help:ri-sparkling-line|Fiction:ri-book-open-line|UPSC:ri-graduation-cap-line|Tech:ri-cpu-line|Finance:ri-funds-line" | split: "|" %}
+      {% for item in showcases %}
+        {% assign p = item | split: ":" %}
+        <a href="{{ routes.collections_url }}/all" class="group p-4 sm:p-5 flex flex-col gap-3 hover:bg-paper transition">
+          <div class="w-10 h-10 rounded-xl bg-paper border border-line grid place-items-center text-ink group-hover:bg-ink group-hover:text-white transition"><i class="{{ p[1] }} text-xl"></i></div>
+          <div><div class="text-sm font-bold">{{ p[0] }}</div><div class="text-xs text-muted">Explore →</div></div>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% schema %}{"name":"Collection Showcase Clean","settings":[]}{% endschema %}
